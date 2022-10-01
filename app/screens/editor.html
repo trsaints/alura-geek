@@ -1,0 +1,41 @@
+<main>
+  <section class="editor">
+    <h1 class="editor__title">Adicionar produto</h1>
+
+    <form class="editor__form">
+      <fieldset>
+        <legend class="editor__legend">Detalhes do produto</legend>
+
+        <div class="editor__field">
+          <label for="product" class="editor__label">Nome</label>
+          <input id="product" class="editor__input" type="text" />
+        </div>
+
+        <div class="editor__field">
+          <label for="price" class="editor__label">Preço</label>
+          <input id="price" class="editor__input" type="text" />
+        </div>
+
+        <div class="editor__field">
+          <label for="category" class="editor__label">Categoria</label>
+          <select
+            data-select="category"
+            id="category"
+            class="editor__select"
+          ></select>
+        </div>
+
+        <div class="editor__field">
+          <label for="description" class="editor__label">Descrição</label>
+          <textarea
+            id="description"
+            class="editor__input"
+            type="text"
+          ></textarea>
+        </div>
+      </fieldset>
+
+      <input type="submit" value="Adicionar produto">
+    </form>
+  </section>
+</main>

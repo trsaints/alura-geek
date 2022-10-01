@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Alura Geek.\n Encontre artigos de HQs, séries, jogos e filmes."
+    />
+    <link rel="stylesheet" href="./app/assets/icons/css/fontawesome.min.css" />
+    <link rel="stylesheet" href="./app/assets/icons/css/brands.min.css" />
+    <link rel="stylesheet" href="./app/assets/icons/css/solid.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./favicon-16x16.png"
+    />
+    <link rel="manifest" href="./site.webmanifest" />
+
+    <link rel="stylesheet" href="./app/styles/main/main.css" />
+
+    <title>Alura Geek</title>
+  </head>
+  <body data-context="index">
+    <header>
+      <div class="header__logo">
+        <img src="./app/assets/images/alura_geek_logo.svg" alt="" />
+      </div>
+
+      <div class="header__search">
+        <input
+          data-search
+          id="search"
+          class="header__search--input"
+          type="search"
+          name="search"
+          placeholder="O que deseja encontrar?"
+        />
+
+        <button data-load="search" type="button">
+          <i class="fas fa-search"></i>
+          Buscar
+        </button>
+      </div>
+
+      <button data-load="login" class="header__login" type="button">
+        Login
+      </button>
+    </header>
+
+    <main>
+      <header class="main__hero">
+        <h1 class="hero__title">Produtos <span lang="en">Geek</span></h1>
+        <p class="hero__description">
+          Para aqueles que amam as séries, jogos, filmes e quadrinhos que
+          marcaram gerações.
+        </p>
+        <button class="hero__button" type="button" data-load="products">
+          Ver Todos
+        </button>
+      </header>
+
+      <div class="main__content" data-content></div>
+    </main>
+
+    <aside class="info">
+      <a
+        href="./index.html"
+        class="navigation__link logo"
+        title="Voltar ao Início"
+      >
+        <img
+          src="./app/assets/images/alura_geek_logo_dark.svg"
+          alt=""
+          class="info__logo"
+        />
+      </a>
+
+      <nav class="info__navigation">
+        <ul class="navigation__list">
+          <li class="navigation__item">
+            <a href="" class="navigation__link">Quem somos nós</a>
+          </li>
+
+          <li class="navigation__item">
+            <a href="" class="navigation__link">Política de privacidade</a>
+          </li>
+
+          <li class="navigation__item">
+            <a href="" class="navigation__link">Programa de fidelidade</a>
+          </li>
+          <li class="navigation__item">
+            <a href="" class="navigation__link">Nossas lojas</a>
+          </li>
+
+          <li class="navigation__item">
+            <a href="" class="navigation__link">Quero ser franqueado</a>
+          </li>
+
+          <li class="navigation__item">
+            <a href="" class="navigation__link">Anuncie aqui</a>
+          </li>
+        </ul>
+      </nav>
+
+      <form action="index.html" class="info__contact">
+        <fieldset class="contact__fieldset">
+          <legend class="fieldset__legend">Fale conosco</legend>
+
+          <label class="fieldset__section"
+            >Nome <input type="text" class="section__input"
+          /></label>
+
+          <label class="fieldset__section"
+            >Mensagem
+            <textarea name="message" class="section__textarea"></textarea>
+          </label>
+        </fieldset>
+
+        <input class="contact__submit" type="submit" value="Enviar mensagem" />
+      </form>
+    </aside>
+
+    <footer class="footer">
+      <p>
+        Desenvolvido por
+        <a
+          href="https://github.com/trsaints/challenge-ecommerce/"
+          class="footer__link"
+          >@trsaints</a
+        ><br />
+        2022
+      </p>
+    </footer>
+    <script src="./app/src/app.js" type="module"></script>
+  </body>
+</html>
