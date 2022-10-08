@@ -1,4 +1,5 @@
 import { contextController } from "./controllers/context-controller.js";
+import { databaseService } from "./services/database-service.js";
 
 (() => {
   const productBtn = document.querySelector('[data-load="products"]');
@@ -19,4 +20,8 @@ import { contextController } from "./controllers/context-controller.js";
     contextController.render("login", contextWrapper);
     loginBtn.remove();
   });
+
+  if (!databaseService.checkPreLoad()) {
+    databaseService.configure();
+  }
 })();
