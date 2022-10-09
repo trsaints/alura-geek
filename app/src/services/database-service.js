@@ -74,18 +74,22 @@ let configure = async () => {
 };
 
 let loadAll = () => {
-  const request = window.indexedDB.open("ag_products", 1);
+  return new Promise((resolve, reject) => {
+    const request = window.indexedDB.open("ag_products", 1);
 
-  request.addEventListener("success", async (evt) => {
-    const db = evt.target.result;
-    const transaction = db.transaction("products");
-    const objStore = transaction.objectStore("products");
-    const data = objStore.getAll();
+    request.addEventListener("success", (evt) => {
+      const db = evt.target.result;
+      const transaction = db.transaction("products");
+      const objStore = transaction.objectStore("products");
+      const data = objStore.getAll();
 
-    data.addEventListener("success", () => {
-      return data.result;
-    })
-  })
+      data.addEventListener("success", () => {
+        resolve(data.result);
+      });
+
+      data.addEventListener("error", () => reject(new Error("Não foi possível realizar a operação")))
+    });
+  });
 };
 
 export const databaseService = {
