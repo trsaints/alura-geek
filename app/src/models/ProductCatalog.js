@@ -1,5 +1,6 @@
 import { contextController } from "../controllers/context-controller.js";
 import { elementController } from "../controllers/element-controller.js";
+import { contextService } from "../services/context-service.js";
 import { Card } from "./Card.js";
 
 export class ProductCatalog {
@@ -28,7 +29,7 @@ export class ProductCatalog {
       button.setAttribute("data-load", "products");
       button.textContent = "Ver Todos";
       button.addEventListener("click", () =>
-        contextController.render("products")
+        contextService.set(document.body, "products")
       );
     },
     products: (button) => {
