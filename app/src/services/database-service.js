@@ -73,14 +73,14 @@ let configure = async () => {
   localStorage.setItem("preloaded", true);
 };
 
-let loadAll = () => {
+let loadAll = (record) => {
   return new Promise((resolve, reject) => {
     const request = window.indexedDB.open("ag_products", 1);
 
     request.addEventListener("success", (evt) => {
       const db = evt.target.result;
-      const transaction = db.transaction("products");
-      const objStore = transaction.objectStore("products");
+      const transaction = db.transaction(record);
+      const objStore = transaction.objectStore(record);
       const data = objStore.getAll();
 
       data.addEventListener("success", () => {

@@ -10,7 +10,7 @@ let renderCatalog = (category, target) => {
     return;
   }
 
-  databaseService.loadAll().then((data) => {
+  databaseService.loadAll("products").then((data) => {
     const context = contextService.get(document.body);
     const products = data.filter((list) => list.category === category)[0];
     elementController.render(new ProductCatalog(context, products), target);
