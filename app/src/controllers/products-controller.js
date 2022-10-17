@@ -3,9 +3,9 @@ import { contextService } from "../services/context-service.js";
 import { databaseService } from "../services/database-service.js";
 import { elementController } from "./element-controller.js";
 
-let renderProduct = () => {};
+const renderProduct = () => {};
 
-let renderCatalog = (category, target) => {
+const renderCatalog = (category, target) => {
   if (!databaseService.checkPreLoad()) {
     return;
   }
@@ -17,7 +17,7 @@ let renderCatalog = (category, target) => {
   });
 };
 
-let renderCatalogs = () => {
+const renderCatalogs = () => {
   const contentWrapper = document.querySelector("[data-content]");
   const catalogs = contentWrapper.querySelectorAll("[data-catalog]");
 

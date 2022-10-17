@@ -1,4 +1,4 @@
-let getProducts = async () => {
+const getProducts = async () => {
   const prodcuts = await fetch("./app/db/products.json");
 
   try {
@@ -8,11 +8,11 @@ let getProducts = async () => {
   }
 };
 
-let checkPreLoad = () => {
+const checkPreLoad = () => {
   return localStorage.getItem("preloaded");
 };
 
-let setStructure = (db, data) => {
+const setStructure = (db, data) => {
   const productsObjStore = db.createObjectStore("products", {
     keyPath: "category",
   });
@@ -51,8 +51,8 @@ let setStructure = (db, data) => {
   });
 };
 
-let configure = async () => {
-  let baseData = [];
+const configure = async () => {
+  const baseData = [];
 
   await getProducts().then((data) => {
     baseData = data.categories;
@@ -73,7 +73,7 @@ let configure = async () => {
   localStorage.setItem("preloaded", true);
 };
 
-let loadAll = (record) => {
+const loadAll = (record) => {
   return new Promise((resolve, reject) => {
     const request = window.indexedDB.open("ag_products", 1);
 
