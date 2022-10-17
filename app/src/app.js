@@ -4,23 +4,15 @@ import { contextService } from "./services/context-service.js";
 import { databaseService } from "./services/database-service.js";
 
 (() => {
-  const productBtn = document.querySelector('[data-load="products"]');
-  const loginBtn = document.querySelector('[data-load="login"]');
-  const searchBtn = document.querySelector('[data-load="search"]');
   const contextWrapper = document.querySelector("[data-context]");
 
-  productBtn.addEventListener("click", () => {
-    contextController.render("products");
-  });
+  const dataLoaders = document.querySelectorAll("[data-load]");
 
-  searchBtn.addEventListener("click", () => {
-    contextController.render("search");
-  });
-
-  loginBtn.addEventListener("click", () => {
-    loginBtn.remove();
-    contextController.render("login");
-  });
+  dataLoaders.forEach((loader) =>
+    loader.addEventListener("click", () => {
+      contextService.set(contextWrapper, loader.dataset.load);
+    })
+  );
 
   if (!databaseService.checkPreLoad()) {
     databaseService.configure();
@@ -29,4 +21,6 @@ import { databaseService } from "./services/database-service.js";
   if (contextService.check(contextWrapper, "index")) {
     productsController.renderCatalogs();
   }
+
+  contextController.observe(contextWrapper);
 })();
