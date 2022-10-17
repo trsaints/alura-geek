@@ -16,4 +16,8 @@ export const contextService = {
   get: (target) => {
     return target.getAttribute("data-context");
   },
+
+  set: (target, context) => {
+    target.setAttribute("data-context", context)
+  }
 };
