@@ -2,13 +2,13 @@ import { contextService } from "../services/context-service.js";
 import { elementController } from "./element-controller.js";
 import { productsController } from "./products-controller.js";
 
-let load = (page) => {
+const load = (page) => {
   const main = document.querySelector("main");
   elementController.clear(main);
   main.appendChild(page);
 };
 
-let loadPage = (page, target) => {
+const loadPage = (page, target) => {
   const parser = new DOMParser();
 
   const result = parser.parseFromString(page, "text/html");
@@ -17,7 +17,7 @@ let loadPage = (page, target) => {
   target.appendChild(resultMain);
 };
 
-let loadPlaceholder = (error, target) => {
+const loadPlaceholder = (error, target) => {
   const errorWrapper = document.createElement("h1");
   errorWrapper.textContent =
     "Ops! Algo deu errado. Tente novamente mais tarde.";
@@ -34,7 +34,7 @@ let loadPlaceholder = (error, target) => {
   target.appendChild(errorBanner);
 };
 
-let render = (context) => {
+const render = (context) => {
   const frag = document.createDocumentFragment();
 
   contextService
