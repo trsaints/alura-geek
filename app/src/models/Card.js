@@ -42,11 +42,21 @@ export class Card {
     return wrapper;
   };
 
+  #generateButton = (product) => {
+    const button = elementController.generate("button", "product__button");
+    button.setAttribute("type", "button");
+    button.dataset.productId = product.id;
+    button.textContent = "Ver Produto";
+
+    return button;
+  }
+
   #generate = (product) => {
     const frag = document.createDocumentFragment();
     const li = elementController.generate("li", "card");
     elementController.render(this.#generateBanner(product), li);
     elementController.render(this.#generateContent(product), li);
+    elementController.render(this.#generateButton(product), li);
     elementController.render(li, frag);
 
     return frag;
