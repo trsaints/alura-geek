@@ -29,7 +29,7 @@ export class ProductPanel {
     return frag;
   };
 
-  #generate = (product, category) => {
+  #generate = (product) => {
     const frag = document.createDocumentFragment();
 
     const content = {
@@ -37,15 +37,13 @@ export class ProductPanel {
       content: this.#generateContent(product),
     };
 
-    console.log(category)
-
     elementController.render(content.banner, frag);
     elementController.render(content.content, frag);
 
     return frag;
   };
 
-  constructor(product, category) {
-    return this.#generate(product, category);
+  constructor(product) {
+    return this.#generate(product);
   }
 }
