@@ -75,7 +75,9 @@ export class ProductCatalog {
 
   #generateCatalog = (context, products) => {
     const frag = document.createDocumentFragment();
-    const catalog = elementController.generate("div", "main__products");
+    const catalog = elementController.generate("div", "main__catalog");
+    catalog.dataset.catalog = products.category;
+
     const header = this.#generateHeader(context, products.category);
     const list = this.#generateList(products[products.category]);
 
