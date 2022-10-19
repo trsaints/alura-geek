@@ -94,7 +94,7 @@ const loadAll = (record) => {
   });
 };
 
-const load = (category) => {
+const loadIndex = (index) => {
   return new Promise((resolve, reject) => {
     const request = window.indexedDB.open("ag_products", 1);
 
@@ -102,7 +102,7 @@ const load = (category) => {
       const db = evt.target.result;
       const transaction = db.transaction("products");
       const objStore = transaction.objectStore("products");
-      const data = objStore.get(category);
+      const data = objStore.get(index);
 
       data.addEventListener("success", () => {
         resolve(data.result);
@@ -119,5 +119,5 @@ export const databaseService = {
   checkPreLoad,
   configure,
   loadAll,
-  load,
+  loadIndex,
 };
