@@ -85,10 +85,10 @@ const observe = (target) => {
     mutationList.forEach((mutation) => {
       const hasChangedContext =
         mutation.type === "attributes" &&
-        contextService.get(target) !== undefined;
+        contextService.get() !== undefined;
 
       if (hasChangedContext) {
-        const context = contextService.get(target);
+        const context = contextService.get();
         renderFactory[context]();
         
       }
