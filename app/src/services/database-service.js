@@ -52,7 +52,7 @@ const setStructure = (db, data) => {
 };
 
 const configure = async () => {
-  const baseData = [];
+  let baseData = [];
 
   await getProducts().then((data) => {
     baseData = data.categories;
