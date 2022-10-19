@@ -48,15 +48,29 @@ const renderFactory = {
   products: () => {
     render("products");
 
-    setTimeout(productsController.renderCatalogs, 500);
+    setTimeout(productsController.renderCatalogs, 200);
+
+    document.removeEventListener("click", productsController.setRendering);
+    document.addEventListener("click", productsController.setRendering);
   },
 
   search: () => {
     render("search");
+
+    document.removeEventListener("click", productsController.setRendering);
   },
 
   login: () => {
     render("login");
+
+    document.removeEventListener("click", productsController.setRendering);
+  },
+
+  index: () => {
+    setTimeout(productsController.renderCatalogs, 200);
+
+    document.removeEventListener("click", productsController.setRendering);
+    document.addEventListener("click", productsController.setRendering);
   },
 };
 
@@ -67,7 +81,7 @@ const observe = (target) => {
     subtree: false,
   };
 
-  const checkMutation = (mutationList, observer) => {
+  const checkMutation = (mutationList, _observer) => {
     mutationList.forEach((mutation) => {
       const hasChangedContext =
         mutation.type === "attributes" &&
@@ -76,6 +90,7 @@ const observe = (target) => {
       if (hasChangedContext) {
         const context = contextService.get(target);
         renderFactory[context]();
+        
       }
     });
   };
@@ -86,5 +101,5 @@ const observe = (target) => {
 };
 
 export const contextController = {
-  observe
+  observe,
 };
