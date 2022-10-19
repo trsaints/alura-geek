@@ -12,8 +12,8 @@ const check = (target, context) => {
   return target.getAttribute("data-context") === context;
 };
 
-const get = (target) => {
-  return target.getAttribute("data-context");
+const get = () => {
+  return document.body.getAttribute("data-context");
 };
 
 const set = (target, context) => {
