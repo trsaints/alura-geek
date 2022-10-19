@@ -1,5 +1,4 @@
 import { contextController } from "./controllers/context-controller.js";
-import { productsController } from "./controllers/products-controller.js";
 import { contextService } from "./services/context-service.js";
 import { databaseService } from "./services/database-service.js";
 
@@ -18,9 +17,7 @@ import { databaseService } from "./services/database-service.js";
     databaseService.configure();
   }
 
-  if (contextService.check(contextWrapper, "index")) {
-    productsController.renderCatalogs();
-  }
-
   contextController.observe(contextWrapper);
+
+  contextService.set(contextWrapper, "index");
 })();
