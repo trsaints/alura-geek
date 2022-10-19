@@ -3,21 +3,28 @@ import { contextService } from "./services/context-service.js";
 import { databaseService } from "./services/database-service.js";
 
 (() => {
-  const contextWrapper = document.querySelector("[data-context]");
+  const preLoadStatus = databaseService.checkPreLoad();
 
-  const dataLoaders = document.querySelectorAll("[data-load]");
+  const control = () => {
+    const contextWrapper = document.querySelector("[data-context]");
 
-  dataLoaders.forEach((loader) =>
-    loader.addEventListener("click", () => {
-      contextService.set(contextWrapper, loader.dataset.load);
-    })
-  );
+    const dataLoaders = document.querySelectorAll("[data-load]");
 
-  if (!databaseService.checkPreLoad()) {
+    dataLoaders.forEach((loader) =>
+      loader.addEventListener("click", () => {
+        contextService.set(contextWrapper, loader.dataset.load);
+      })
+    );
+
+    contextController.observe(contextWrapper);
+
+    contextService.set(contextWrapper, "index");
+  };
+
+  if (preLoadStatus === "true") {
+    control();
+  } else {
     databaseService.configure();
+    control();
   }
-
-  contextController.observe(contextWrapper);
-
-  contextService.set(contextWrapper, "index");
 })();
