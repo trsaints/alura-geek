@@ -87,7 +87,30 @@ const loadAll = (record) => {
         resolve(data.result);
       });
 
-      data.addEventListener("error", () => reject(new Error("Não foi possível realizar a operação")))
+      data.addEventListener("error", () =>
+        reject(new Error("Não foi possível realizar a operação"))
+      );
+    });
+  });
+};
+
+const load = (category) => {
+  return new Promise((resolve, reject) => {
+    const request = window.indexedDB.open("ag_products", 1);
+
+    request.addEventListener("success", (evt) => {
+      const db = evt.target.result;
+      const transaction = db.transaction("products");
+      const objStore = transaction.objectStore("products");
+      const data = objStore.get(category);
+
+      data.addEventListener("success", () => {
+        resolve(data.result);
+      });
+
+      data.addEventListener("error", () =>
+        reject(new Error("Não foi possível realizar a operação"))
+      );
     });
   });
 };
@@ -96,4 +119,5 @@ export const databaseService = {
   checkPreLoad,
   configure,
   loadAll,
+  load,
 };
