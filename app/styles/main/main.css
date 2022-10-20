@@ -1,0 +1,65 @@
+:root {
+  --c-black: hsl(260, 14%, 5%);
+  --c-black--l: hsl(260, 14%, 10%);
+  --c-black--ls: hsl(260, 14%, 15%);
+  --c-gray--ds: hsl(260, 14%, 30%);
+  --c-gray--d: hsl(260, 14%, 35%);
+  --c-gray: hsl(260, 14%, 40%);
+  --c-gray--l: hsl(260, 14%, 45%);
+  --c-gray--ls: hsl(260, 14%, 50%);
+  --c-white--ds: hsl(340, 10%, 85%);
+  --c-white--d: hsl(340, 10%, 90%);
+  --c-white: hsl(340, 10%, 95%);
+  --c-red--ds: hsl(356, 86%, 50%);
+  --c-red--d: hsl(356, 86%, 55%);
+  --c-red: hsl(356, 86%, 60%);
+  --c-red--l: hsl(356, 86%, 65%);
+  --c-red--ls: hsl(356, 86%, 70%);
+  --margin-sm: 1rem;
+  --margin-md: 2rem;
+  --margin-lg: 4rem;
+  --margin-xlg: 8rem;
+  --gap-sm: 0.5rem;
+  --gap-md: 1rem;
+  --gap-lg: 2rem;
+  --gap-xlg: 4rem;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body * {
+  font-family: 'Raleway', sans-serif;
+}
+
+.context__header,
+.context__main,
+.context__info,
+.context__footer {
+  padding: var(--margin-sm);
+}
+
+@media screen and (min-width: 768px) {
+  .context__header,
+  .context__main,
+  .context__info,
+  .context__footer {
+    padding: var(--margin-md);
+  }
+}
+@media screen and (min-width: 1140px) {
+  .context__header,
+  .context__main,
+  .context__info,
+  .context__footer {
+    padding-block: var(--margin-md);
+    padding-inline: var(--margin-lg);
+  }
+}
