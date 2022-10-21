@@ -1,0 +1,91 @@
+.contact--fieldset,
+.nav__list,
+.info__contact,
+.contact__section {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.context__info {
+  background-color: var(--c-white--d);
+  display: grid;
+  grid-template-areas: "logo" "links" "form";
+  grid-template-rows: auto;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.info__link {
+  place-self: center;
+  grid-area: logo;
+}
+
+.info__nav {
+  align-items: center;
+  grid-area: links;
+}
+
+.nav__list {
+  gap: 1rem;
+  text-align: center;
+  list-style: none;
+  font-weight: 500;
+  color: var(--c-black--ls);
+}
+
+.nav__link {
+  text-decoration: none;
+}
+
+.info__contact {
+  grid-area: form;
+}
+
+.contact--fieldset {
+  border: none;
+  gap: 1rem;
+}
+
+.contact__legend {
+  font-weight: 700;
+}
+
+.contact__section {
+  width: 100%;
+  background-color: var(--c-white--ds);
+  border-radius: .25rem;
+  padding: .5rem .75rem;
+}
+
+.contact__submit {
+  background-color: var(--c-red);
+  padding: .75rem 1rem;
+  max-width: 12rem;
+  font-weight: 600;
+  color: var(--c-white);
+}
+
+@media screen and (min-width: 768px) {
+  .context__info {
+    grid-template-areas: "logo form" "links form";
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .info__link {
+    place-self: flex-start;
+  }
+
+  .nav__list {
+    text-align: left;
+  }
+}
+
+@media screen and (min-width: 1140px) {
+  .context__info {
+    grid-template-areas: "logo links form";
+    grid-template-columns: 1fr 2fr 3fr;
+    gap: 4rem;
+  }
+}
+
+

@@ -1,0 +1,10 @@
+.context__footer {
+  background-color: var(--c-gray--ds);
+  color: var(--c-white);
+  text-align: center;
+  padding: var(--margin-md);
+}
+
+.footer__link {
+  color: var(--c-red--ls);
+}

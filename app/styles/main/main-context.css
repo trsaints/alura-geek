@@ -1,0 +1,36 @@
+.context__main--index .main__hero {
+  background: url("../../assets/images/hero_banner_medium.svg") no-repeat center /
+    cover;
+  padding: var(--margin-sm);
+}
+
+.context__main--products {
+  background-image: url("");
+}
+
+.main__hero {
+  display: flex;
+  flex-flow: column nowrap;
+  color: var(--c-white);
+  gap: 0.5rem;
+}
+
+.hero__btn {
+  background-color: var(--c-red);
+  max-width: 10rem;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  color: inherit;
+}
+
+@media screen and (min-width: 768px) {
+  .context__main--index .main__hero {
+    padding: var(--margin-md);
+  }
+}
+
+@media screen and (min-width: 1140px) {
+  .context__main--index .main__hero {
+    padding: var(--margin-lg);
+  }
+}

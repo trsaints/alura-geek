@@ -1,0 +1,36 @@
+.context__header {
+  background-color: var(--c-black);
+  display: flex;
+  justify-content: space-between;
+  gap: .5rem;
+}
+
+.header__search {
+  border-radius: 1.5rem;
+  background-color: var(--c-white);
+  display: flex;
+  align-items: stretch;
+  gap: .5rem;
+  padding: .25rem;
+  overflow: hidden;
+  font-size: smaller;
+}
+
+.header__search--input {
+  width: 100%;
+}
+.header__search--button {
+  color: var(--c-red--ds);
+}
+
+.header__search--input,
+.header__login {
+  background-color: transparent;
+}
+
+.header__login {
+  color: var(--c-red);
+  border: .125rem solid var(--c-red);
+  padding: 1rem 2rem;
+  text-align: center;
+}

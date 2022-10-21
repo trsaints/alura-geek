@@ -1,3 +1,10 @@
+@import url("../reset.css");
+@import url("./main-header.css");
+@import url("./main-footer.css");
+@import url("./main-contact.css");
+@import url("./main-context.css");
+@import url('../store/products.css');
+
 :root {
   --c-black: hsl(260, 14%, 5%);
   --c-black--l: hsl(260, 14%, 10%);
@@ -10,6 +17,7 @@
   --c-white--ds: hsl(340, 10%, 85%);
   --c-white--d: hsl(340, 10%, 90%);
   --c-white: hsl(340, 10%, 95%);
+  --c-white--ls: hsl(340, 10%, 100%);
   --c-red--ds: hsl(356, 86%, 50%);
   --c-red--d: hsl(356, 86%, 55%);
   --c-red: hsl(356, 86%, 60%);
@@ -25,41 +33,50 @@
   --gap-xlg: 4rem;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 html {
   scroll-behavior: smooth;
 }
 
 body * {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
+}
+
+body {
+  background-color: var(--c-white);
+}
+
+input,
+textarea,
+button {
+  border: none;
+  background-color: transparent;
+}
+
+a {
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 .context__header,
-.context__main,
-.context__info,
-.context__footer {
+.context__info {
   padding: var(--margin-sm);
 }
 
 @media screen and (min-width: 768px) {
   .context__header,
-  .context__main,
-  .context__info,
-  .context__footer {
+  .context__info {
     padding: var(--margin-md);
   }
 }
+
 @media screen and (min-width: 1140px) {
   .context__header,
-  .context__main,
-  .context__info,
-  .context__footer {
+  .context__info {
     padding-block: var(--margin-md);
     padding-inline: var(--margin-lg);
   }
 }
+
