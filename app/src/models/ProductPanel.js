@@ -2,7 +2,7 @@ import { elementController } from "../controllers/element-controller.js";
 
 export class ProductPanel {
   #generateBanner = (product) => {
-    const img = elementController.generate("img", "product__panel--banner");
+    const img = elementController.generate("img", "product__panel--image");
 
     img.setAttribute("src", `./app/assets/images/${product.image}`);
 
@@ -20,7 +20,7 @@ export class ProductPanel {
 
     heading.textContent = name;
     desc.textContent = description;
-    value.textContent = price;
+    value.textContent = `R$ ${price}`;
 
     elementController.render(heading, frag);
     elementController.render(desc, frag);
@@ -32,13 +32,18 @@ export class ProductPanel {
   #generate = (product) => {
     const frag = document.createDocumentFragment();
 
-    const content = {
+    const banner = elementController.generate("figure", "product__panel--banner");
+    const content = elementController.generate("article", "product__panel--content");
+
+    const contents = {
       banner: this.#generateBanner(product),
       content: this.#generateContent(product),
     };
 
-    elementController.render(content.banner, frag);
-    elementController.render(content.content, frag);
+    elementController.render(contents.banner, banner);
+    elementController.render(contents.content, content);
+    elementController.render(banner, frag);
+    elementController.render(content, frag);
 
     return frag;
   };
