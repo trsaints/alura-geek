@@ -55,7 +55,7 @@
           placeholder="O que deseja encontrar?"
         />
 
-        <button data-load="search" type="button">
+        <button class="header__search--button" data-load="search" type="button">
           <i class="fas fa-search"></i>
           Buscar
         </button>
@@ -66,7 +66,7 @@
       </button>
     </header>
 
-    <main class="context__main">
+    <main class="context__main--index">
       <header class="main__hero">
         <h1 class="hero__title">Produtos <span lang="en">Geek</span></h1>
         <p class="hero__desc">
@@ -78,16 +78,11 @@
         </button>
       </header>
 
-      <div class="main__content" data-content>
-      </div>
+      <div class="main__content" data-content></div>
     </main>
 
     <aside class="context__info">
-      <a
-        href="./index.html"
-        class="info__link"
-        title="Voltar ao Início"
-      >
+      <a href="./index.html" class="info__link" title="Voltar ao Início">
         <img
           src="./app/assets/images/alura_geek_logo_dark.svg"
           alt=""
@@ -122,7 +117,7 @@
         </ul>
       </nav>
 
-      <form action="index.html" class="context__contact">
+      <form action="index.html" class="info__contact">
         <fieldset class="contact--fieldset">
           <legend class="contact__legend">Fale conosco</legend>
 
@@ -134,9 +129,9 @@
             >Mensagem
             <textarea name="message" class="section__textarea"></textarea>
           </label>
-        </fieldset>
 
-        <input class="contact__submit" type="submit" value="Enviar mensagem" />
+          <input class="contact__submit" type="submit" value="Enviar mensagem" />
+        </fieldset>
       </form>
     </aside>
 
