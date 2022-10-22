@@ -4,6 +4,8 @@
 @import url("./main-contact.css");
 @import url("./main-context.css");
 @import url('../store/products.css');
+@import url('../login/login.css');
+@import url('../editor/editor.css');
 
 :root {
   --c-black: hsl(260, 14%, 5%);
@@ -43,6 +45,7 @@ body * {
 
 body {
   background-color: var(--c-white);
+  color: var(--c-black);
 }
 
 input,
@@ -50,6 +53,15 @@ textarea,
 button {
   border: none;
   background-color: transparent;
+}
+
+input, 
+img {
+  max-width: 100%;
+}
+
+textarea {
+  resize: none;
 }
 
 a {
@@ -79,4 +91,3 @@ a:hover {
     padding-inline: var(--margin-lg);
   }
 }
-

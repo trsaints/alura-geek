@@ -1,0 +1,67 @@
+.editor,
+.editor__fieldset,
+.editor__form {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1rem;
+}
+
+.editor {
+  padding: var(--margin-sm);
+  align-items: center;
+}
+
+.editor__form,
+.editor__title {
+  max-width: 20.5rem;
+  width: 100%;
+}
+
+.editor__title {
+  text-align: left;
+}
+
+.editor__fieldset {
+  border: none;
+}
+
+.editor__legend {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.editor__field {
+  background-color: var(--c-white--ls);
+  color: var(--c-gray);
+  padding: 0.5rem 0.75rem .8125rem .75rem;
+  border-radius: .125rem;
+  border-bottom: .0625rem solid var(--c-gray--ls);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.editor__input {
+  width: 100%;
+}
+
+.editor__submit {
+  background-color: var(--c-red);
+  color: var(--c-white--ls);
+  padding-block: 1rem;
+  width: 100%;
+  font-weight: 600;
+}
+
+@media screen and (min-width: 768px) {
+  .editor__form,
+  .editor__title {
+    max-width: 34.9375rem;
+  }
+}
+
+@media screen and (min-width: 1140px) {
+  .editor__title {
+    font-size: 2rem;
+  }
+}

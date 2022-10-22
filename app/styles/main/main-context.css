@@ -1,11 +1,29 @@
 .context__main--index .main__hero {
-  background: url("../../assets/images/hero_banner_medium.svg") no-repeat center /
-    cover;
-  padding: var(--margin-sm);
+  background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.4),
+        rgba(0, 0, 0, 0.8)
+      )
+      100%,
+    url("../../assets/images/hero_banner_medium.svg") no-repeat center / cover;
 }
 
-.context__main--products {
-  background-image: url("");
+.context__main--index .main__hero,
+.context__main--products .main__hero {
+  padding: var(--margin-sm);
+  padding-top: 4rem;
+}
+
+.context__main--products .main__hero {
+  background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.4),
+        rgba(0, 0, 0, 0.8)
+      )
+      100%,
+    url("../../assets/images/banner-products.svg") no-repeat center / cover;
 }
 
 .main__hero {
@@ -13,6 +31,14 @@
   flex-flow: column nowrap;
   color: var(--c-white);
   gap: 0.5rem;
+}
+
+.hero__title {
+  font-size: 1.5rem;
+}
+
+.hero__desc {
+  font-weight: 600;
 }
 
 .hero__btn {
@@ -24,13 +50,29 @@
 }
 
 @media screen and (min-width: 768px) {
-  .context__main--index .main__hero {
+  .context__main--index .main__hero,
+  .context__main--products .main__hero {
     padding: var(--margin-md);
+    padding-top: 4rem;
+  }
+
+  .hero__title {
+    font-size: 2.5rem;
+  }
+
+  .hero__desc {
+    font-size: 1.25rem;
   }
 }
 
 @media screen and (min-width: 1140px) {
-  .context__main--index .main__hero {
+  .context__main--index .main__hero,
+  .context__main--products .main__hero {
     padding: var(--margin-lg);
+    padding-top: 6rem;
+  }
+
+  .hero__title {
+    font-size: 3rem;
   }
 }
