@@ -1,19 +1,26 @@
-<div data-main="context">
+<main data-main="context">
   <form class="login">
-    <fieldset>
-      <legend class="login__title">Faça Login</legend>
+    <fieldset class="login__fieldset">
+      <legend class="login__title">Iniciar Sessão</legend>
 
-      <div class="login__field">
+      <div class="login__field" data-login="field">
         <label class="login__label" for="user">Usuário:</label>
-        <input id="user" class="login__input" type="text" />
+        <input id="user" class="login__input" type="text" data-login="user" />
+        <p class="login__warn" data-login="warning">Usuário inválido! </p>
       </div>
 
-      <div class="login__field">
+      <div class="login__field" data-login="field">
         <label class="login__label" for="password">Senha:</label>
-        <input id="password" class="login__input" type="password" />
+        <input
+          id="password"
+          class="login__input"
+          type="password"
+          data-login="password"
+        />
+        <p class="login__warn" data-login="warning">Senha inválida!</p>
       </div>
     </fieldset>
 
     <input class="login__button" type="submit" value="Entrar" />
   </form>
-</div>
+</main>

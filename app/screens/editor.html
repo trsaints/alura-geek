@@ -1,9 +1,9 @@
-<div data-main="context">
+<main data-main="context">
   <section class="editor">
     <h1 class="editor__title">Adicionar produto</h1>
 
     <form class="editor__form">
-      <fieldset>
+      <fieldset class="editor__fieldset" >
         <legend class="editor__legend">Detalhes do produto</legend>
 
         <div class="editor__field">
@@ -33,9 +33,14 @@
             type="text"
           ></textarea>
         </div>
+
+        <div class="editor__field">
+          <label for="image" class="editor__label">URL da imagem</label>
+          <input id="image" class="editor__input" type="file" accept=".jpeg, .jpg, .png, .svg, .webp" />
+        </div>
       </fieldset>
 
-      <input type="submit" value="Adicionar produto" />
+      <input class="editor__submit" type="submit" value="Adicionar produto" />
     </form>
   </section>
-</div>
+</main>
