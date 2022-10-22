@@ -4,8 +4,8 @@ import { productsController } from "./products-controller.js";
 
 const load = (page) => {
   const main = document.querySelector("main");
-  elementController.clear(main);
-  main.appendChild(page);
+  main.remove();
+  document.body.insertBefore(page, document.body.childNodes[2]);
 };
 
 const loadPage = (page, target) => {
