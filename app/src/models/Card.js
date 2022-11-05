@@ -33,7 +33,7 @@ export class Card {
       price: product.price,
     };
 
-    price.textContent = content.price;
+    price.textContent = `R$ ${content.price}`;
     desc.textContent = content.desc;
 
     elementController.render(desc, wrapper);

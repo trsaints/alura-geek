@@ -10,7 +10,7 @@ export class ProductCatalog {
 
   #generateList = (products) => {
     const frag = document.createDocumentFragment();
-    const ul = elementController.generate("ul", "products__list");
+    const ul = elementController.generate("ul", "products__list"); 
 
     products.forEach((product) => {
       this.#renderCard(product, ul);
@@ -33,7 +33,7 @@ export class ProductCatalog {
     },
     products: (button) => {
       button.setAttribute("data-toggle", "list");
-      button.textContent = "Mostrar";
+      button.textContent = "Ocultar";
       button.addEventListener("click", () =>
         this.#hideList(button.parentNode.parentNode)
       );
