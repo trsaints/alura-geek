@@ -1,5 +1,5 @@
 import { contextService } from "../services/context-service.js";
-import { elementController } from "./element-controller.js";
+import { loginController } from "./login-controller.js";
 import { productsController } from "./products-controller.js";
 
 const load = (page) => {
@@ -55,21 +55,24 @@ const renderFactory = {
   },
 
   search: () => {
-    render("search");
-
     document.removeEventListener("click", productsController.setRendering);
+    render("search");
   },
 
   login: () => {
+    document.removeEventListener("click", productsController.setRendering);
     render("login");
 
-    document.removeEventListener("click", productsController.setRendering);
+    setTimeout(() => {
+      const form = document.querySelector("[data-login='form']");
+      loginController.load(form);
+    }, 200);
   },
 
   index: () => {
+    document.removeEventListener("click", productsController.setRendering);
     setTimeout(productsController.renderCatalogs, 200);
 
-    document.removeEventListener("click", productsController.setRendering);
     document.addEventListener("click", productsController.setRendering);
   },
 };
@@ -84,13 +87,11 @@ const observe = (target) => {
   const checkMutation = (mutationList, _observer) => {
     mutationList.forEach((mutation) => {
       const hasChangedContext =
-        mutation.type === "attributes" &&
-        contextService.get() !== undefined;
+        mutation.type === "attributes" && contextService.get() !== undefined;
 
       if (hasChangedContext) {
         const context = contextService.get();
         renderFactory[context]();
-        
       }
     });
   };
