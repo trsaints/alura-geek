@@ -1,12 +1,18 @@
 <main data-main="context">
-  <form class="login">
+  <form data-login="form" class="login">
     <fieldset class="login__fieldset">
-      <legend class="login__title">Iniciar Sessão</legend>
+      <legend class="login__title" data-login="title">Iniciar Sessão</legend>
 
       <div class="login__field" data-login="field">
         <label class="login__label" for="user">Usuário:</label>
-        <input id="user" class="login__input" type="text" data-login="user" />
-        <p class="login__warn" data-login="warning">Usuário inválido! </p>
+        <input
+          id="user"
+          class="login__input"
+          type="text"
+          data-login="user"
+          required
+        />
+        <p class="login__warn" data-login="warning"></p>
       </div>
 
       <div class="login__field" data-login="field">
@@ -16,11 +22,17 @@
           class="login__input"
           type="password"
           data-login="password"
+          required
         />
-        <p class="login__warn" data-login="warning">Senha inválida!</p>
+        <p class="login__warn" data-login="warning"></p>
       </div>
     </fieldset>
 
-    <input class="login__button" type="submit" value="Entrar" />
+    <input
+      class="login__button"
+      type="submit"
+      value="Entrar"
+      data-login="submit"
+    />
   </form>
 </main>
