@@ -17,8 +17,6 @@ const setStructure = (db, data) => {
     keyPath: "category",
   });
 
-  db.createObjectStore("images", { keyPath: "image" });
-
   data.forEach((list) => {
     productsObjStore.createIndex(list.category, list.category, {
       unique: true,
@@ -30,21 +28,8 @@ const setStructure = (db, data) => {
       .transaction("products", "readwrite")
       .objectStore("products");
 
-    const imageObjectStore = db
-      .transaction("images", "readwrite")
-      .objectStore("images");
-
     data.forEach((list) => {
       categoryObjStore.add(list);
-
-      const category = list.category;
-      const products = list[category];
-
-      products.forEach((product) => {
-        imageObjectStore.add({
-          image: product.image,
-        });
-      });
     });
 
     console.log("Banco de dados configurado com sucesso");
@@ -115,7 +100,7 @@ const loadIndex = (index) => {
   });
 };
 
-export const databaseService = {
+export const productsService = {
   checkPreLoad,
   configure,
   loadAll,
