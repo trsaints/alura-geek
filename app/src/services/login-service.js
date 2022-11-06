@@ -3,7 +3,7 @@ const checkEntry = () => {
 };
 
 const setStructure = (db) => {
-  db.createObjectStore("accounts", { keyPath: "UID", autoIncrement: true });
+  db.createObjectStore("accounts", { keyPath: "user", autoIncrement: false });
 };
 
 const createAccount = (account) => {
@@ -14,17 +14,12 @@ const createAccount = (account) => {
     const transaction = db.transaction(["accounts"], "readwrite");
 
     const accStore = transaction.objectStore("accounts");
-
     const request = accStore.add(account);
 
     request.addEventListener("success", (evt) => {
       console.log("Conta registrada com sucesso");
     });
   });
-};
-
-const getAccount = (acc, user, password) => {
-  return acc.user === user && acc.password === password;
 };
 
 const login = (user, password) => {
@@ -34,33 +29,40 @@ const login = (user, password) => {
     request.addEventListener("success", (evt) => {
       const { result } = evt.target;
       const objStore = result.transaction("accounts").objectStore("accounts");
-      const storeData = objStore.getAll();
+      const storeData = objStore.get(user);
 
       storeData.addEventListener("success", (evt) => {
-        const accounts = storeData.result;
-        const account = accounts.filter((acc) =>
-          getAccount(acc, user, password)
-        );
+        const account = auth(storeData, password);
 
-        const result = {
-          valid: false,
-          root: false,
-        };
-
-        if (account[0] !== undefined) {
-          if (account[0].UID === 1) {
-            result.root = true;
-          }
-
-          result.valid = true;
-
-          resolve(result);
+        if (account.valid) {
+          resolve(account);
         } else {
-          reject(new Error("Conta inexistente"));
+          reject(new Error("Usuário ou senha inválidos"));
         }
       });
     });
   });
+};
+
+const auth = (store, password) => {
+  const account = store.result;
+
+  const result = {
+    valid: false,
+    root: false,
+  };
+
+  if (account !== undefined) {
+    if (account.user === "root") {
+      result.root = true;
+    }
+
+    if (account.password === password) {
+      result.valid = true;
+    }
+  }
+
+  return result;
 };
 
 const configure = () => {

@@ -5,7 +5,7 @@ const load = async (context) => {
     return ctx.text();
   }
 
-  throw new Error(`Não foi possível alterar o contexto: ${ctx.status}`);
+  throw new Error(`Não foi possível carregar contexto: ${ctx.status}`);
 };
 
 const check = (target, context) => {

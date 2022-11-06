@@ -46,11 +46,11 @@ const render = (context) => {
 
 const renderFactory = {
   products: () => {
+    document.removeEventListener("click", productsController.setRendering);
     render("products");
 
     setTimeout(productsController.renderCatalogs, 200);
 
-    document.removeEventListener("click", productsController.setRendering);
     document.addEventListener("click", productsController.setRendering);
   },
 
@@ -75,6 +75,12 @@ const renderFactory = {
 
     document.addEventListener("click", productsController.setRendering);
   },
+
+  editor: () => {
+    document.removeEventListener("click", productsController.setRendering);
+
+    render("editor");
+  }
 };
 
 const observe = (target) => {
