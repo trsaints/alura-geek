@@ -1,9 +1,9 @@
 import { contextController } from "./controllers/context-controller.js";
 import { contextService } from "./services/context-service.js";
-import { databaseService } from "./services/database-service.js";
+import { productsService } from "./services/products-service.js";
 
 (() => {
-  const preLoadStatus = databaseService.checkPreLoad();
+  const preLoadStatus = productsService.checkPreLoad();
 
   const control = () => {
     const contextWrapper = document.querySelector("[data-context]");
@@ -24,7 +24,7 @@ import { databaseService } from "./services/database-service.js";
   if (preLoadStatus === "true") {
     control();
   } else {
-    databaseService.configure();
+    productsService.configure();
     control();
   }
 })();
