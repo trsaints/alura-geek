@@ -1,11 +1,11 @@
 import { ProductCatalog } from "../models/ProductCatalog.js";
 import { ProductPanel } from "../models/ProductPanel.js";
 import { contextService } from "../services/context-service.js";
-import { databaseService } from "../services/database-service.js";
+import { productsService } from "../services/products-service.js";
 import { elementController } from "./element-controller.js";
 
 const renderPanel = (keyPath, id, target) => {
-  databaseService.loadIndex(keyPath).then((products) => {
+  productsService.loadIndex(keyPath).then((products) => {
     const mainProduct = products[keyPath].filter(
       (product) => product.id === id
     );
@@ -42,7 +42,7 @@ const setRendering = (evt) => {
 const renderCatalogs = () => {
   const contentWrapper = document.querySelector("[data-content]");
 
-  databaseService.loadAll("products").then((catalogs) => {
+  productsService.loadAll("products").then((catalogs) => {
     const context = contextService.get();
 
     catalogs.forEach((catalog) => {
