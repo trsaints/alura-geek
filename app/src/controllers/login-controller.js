@@ -1,6 +1,5 @@
-import { Account } from "../models/Account.js";
+import { contextService } from "../services/context-service.js";
 import { loginService } from "../services/login-service.js";
-import { contextController } from "./context-controller.js";
 
 const validations = ["patternMismatch", "valueMissing", "customError"];
 
@@ -41,54 +40,52 @@ const warnValidity = (input, message) => {
   input.reportValidity();
 };
 
+const login = (user, password) => {
+  loginService
+    .login(user.value, password.value)
+    .then((success) => {
+      displayValidity(user, "");
+      displayValidity(password, "");
+
+      if (success.root) {
+        contextService.set(document.body, "editor");
+      }
+
+      console.log("Autenticado com sucesso");
+    })
+    .catch((error) => {
+      displayValidity(user, "Usuário inválido!");
+      displayValidity(password, "Senha inválida!");
+
+      console.log(error);
+    });
+};
+
+const register = (user, password) => {};
+
+const handlerOptions = {
+  login: (user, password) => login(user, password),
+
+  register: (user, password) => register(user, password),
+};
+
 const setHandler = (form, type) => {
   const userIn = form.querySelector("[data-login='user']");
   const passwordIn = form.querySelector("[data-login='password']");
 
-  const options = {
-    login: () =>
-      form.addEventListener("submit", (evt) => {
-        evt.preventDefault();
+  form.addEventListener("submit", (evt) => {
+    evt.preventDefault();
 
-        loginService
-          .login(userIn.value, passwordIn.value)
-          .then((success) => {
-            displayValidity(userIn, "");
-            displayValidity(passwordIn, "");
-
-            if (success.root) {
-              contextController.render("editor");
-            }
-
-            console.log("Autenticado com sucesso");
-            console.table(success);
-          })
-          .catch((error) => {
-            displayValidity(userIn, "Usuário inválido!");
-            displayValidity(passwordIn, "Senha inválida!");
-            console.log(error);
-          });
-      }),
-
-    register: () => {
-      form.addEventListener("submit", (evt) => {
-        evt.preventDefault();
-      });
-    },
-
-    configure: () => {
-      loginService.configure();
-    },
-  };
-
-  options[type]();
+    handlerOptions[type](userIn, passwordIn);
+  });
 };
 
 const load = (form) => {
   if (loginService.checkEntry()) {
     setHandler(form, "login");
   } else {
-    setHandler(form, "configure");
+    loginService.configure();
+    setHandler(form, "login");
   }
 };
 
