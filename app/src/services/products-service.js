@@ -1,4 +1,4 @@
-const getProducts = async () => {
+const preload = async () => {
   const prodcuts = await fetch("./app/db/products.json");
 
   try {
@@ -37,18 +37,14 @@ const setStructure = (db, data) => {
 };
 
 const configure = async () => {
-  let baseData = [];
-
-  await getProducts().then((data) => {
-    baseData = data.categories;
-  });
+  const baseData = await preload();
 
   const request = window.indexedDB.open("ag_products", 1);
 
   request.addEventListener("upgradeneeded", (evt) => {
     const db = evt.target.result;
 
-    setStructure(db, baseData);
+    setStructure(db, baseData.categories);
   });
 
   request.addEventListener("error", () => {
