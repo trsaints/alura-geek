@@ -1,9 +1,10 @@
 import { contextController } from "./controllers/context-controller.js";
 import { contextService } from "./services/context-service.js";
+import { imagesService } from "./services/images-service.js";
 import { productsService } from "./services/products-service.js";
 
-(() => {
-  const preLoadStatus = productsService.checkPreLoad();
+(async () => {
+  const preLoadStatus = productsService.checkPreLoad() === "true";
 
   const control = () => {
     const contextWrapper = document.querySelector("[data-context]");
@@ -21,10 +22,11 @@ import { productsService } from "./services/products-service.js";
     contextService.set(contextWrapper, "index");
   };
 
-  if (preLoadStatus === "true") {
+  if (preLoadStatus) {
     control();
   } else {
-    productsService.configure();
+    await productsService.configure();
+    await imagesService.configure();
     control();
   }
 })();
