@@ -1,6 +1,14 @@
 import { elementController } from "../controllers/element-controller.js";
+import { imagesService } from "../services/images-service.js";
 
 export class Card {
+  #setURL = (file, target) => {
+    imagesService.load(file).then((ref) => {
+      const href = URL.createObjectURL(ref.file);
+      target.setAttribute("src", href);
+    });
+  };
+
   #generateBanner = (product) => {
     const fig = elementController.generate("figure", "card__figure");
     const caption = elementController.generate(
@@ -9,13 +17,11 @@ export class Card {
     );
     const img = elementController.generate("img", "card__figure--image");
 
-    const content = {
-      title: product.name,
-      image: product.image,
-    };
+    const { name, image } = product;
 
-    caption.textContent = content.title;
-    img.setAttribute("src", `./app/assets/images/${content.image}`);
+    this.#setURL(image, img);
+
+    caption.textContent = name;
 
     elementController.render(caption, fig);
     elementController.render(img, fig);
@@ -49,7 +55,7 @@ export class Card {
     button.textContent = "Ver Produto";
 
     return button;
-  }
+  };
 
   #generate = (product) => {
     const frag = document.createDocumentFragment();
