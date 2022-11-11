@@ -42,9 +42,9 @@ const configure = async () => {
   const request = window.indexedDB.open("ag_products", 1);
 
   request.addEventListener("upgradeneeded", (evt) => {
-    const db = evt.target.result;
+    const { result } = evt.target;
 
-    setStructure(db, baseData.categories);
+    setStructure(result, baseData.categories);
   });
 
   request.addEventListener("error", () => {
@@ -59,8 +59,8 @@ const loadAll = (record) => {
     const request = window.indexedDB.open("ag_products", 1);
 
     request.addEventListener("success", (evt) => {
-      const db = evt.target.result;
-      const transaction = db.transaction(record);
+      const { result } = evt.target;
+      const transaction = result.transaction(record);
       const objStore = transaction.objectStore(record);
       const data = objStore.getAll();
 
@@ -80,8 +80,8 @@ const loadIndex = (index) => {
     const request = window.indexedDB.open("ag_products", 1);
 
     request.addEventListener("success", (evt) => {
-      const db = evt.target.result;
-      const transaction = db.transaction("products");
+      const { result } = evt.target;
+      const transaction = result.transaction("products");
       const objStore = transaction.objectStore("products");
       const data = objStore.get(index);
 

@@ -1,22 +1,22 @@
 import { productsService } from "./products-service.js";
 
 const preloadBlob = async (name) => {
-  const blob = await fetch(`./app/assets/images/${name}`);
+  const file = await fetch(`./app/assets/images/${name}`);
 
-  if (blob.ok) {
+  if (file.ok) {
     return {
       name: name,
-      file: await blob.blob(),
+      file: await file.blob(),
     };
   }
 };
 
 const preloadNames = async () => {
   const names = await productsService.loadAll("products");
-  const products = names.map((list) => list[list.category]);
+  const categories = names.map((list) => list[list.category]);
   const images = [];
 
-  products.map((list) => list.map((product) => images.push(product.image)));
+  categories.map((product) => product.map(({ image }) => images.push(image)));
 
   return images;
 };
@@ -34,8 +34,8 @@ const add = async (blob) => {
   const request = window.indexedDB.open("ag_images", 1);
 
   request.addEventListener("success", (e) => {
-    const db = e.target.result;
-    const objStore = db
+    const { result } = e.target;
+    const objStore = result
       .transaction("images", "readwrite")
       .objectStore("images");
 
@@ -64,8 +64,8 @@ const load = async (name) => {
     const request = window.indexedDB.open("ag_images", 1);
 
     request.addEventListener("success", (evt) => {
-      const db = evt.target.result;
-      const objStore = db.transaction("images").objectStore("images");
+      const { result } = evt.target;
+      const objStore = result.transaction("images").objectStore("images");
       const data = objStore.get(name);
 
       data.addEventListener("success", () => {
@@ -85,9 +85,9 @@ const configure = async () => {
   const request = window.indexedDB.open("ag_images", 1);
 
   request.addEventListener("upgradeneeded", (e) => {
-    const db = e.target.result;
+    const { result } = e.target;
 
-    setStructure(db, blobs);
+    setStructure(result, blobs);
   });
 
   request.addEventListener("error", () => {
