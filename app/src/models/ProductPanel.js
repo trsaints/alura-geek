@@ -16,7 +16,7 @@ export class ProductPanel {
     const desc = elementController.generate("p", "product__panel--description");
     const value = elementController.generate("span", "product__panel--price");
 
-    const {name, description, price} = product;
+    const { name, description, price } = product;
 
     heading.textContent = name;
     desc.textContent = description;
@@ -32,8 +32,14 @@ export class ProductPanel {
   #generate = (product) => {
     const frag = document.createDocumentFragment();
 
-    const banner = elementController.generate("figure", "product__panel--banner");
-    const content = elementController.generate("article", "product__panel--content");
+    const banner = elementController.generate(
+      "figure",
+      "product__panel--banner"
+    );
+    const content = elementController.generate(
+      "article",
+      "product__panel--content"
+    );
 
     const contents = {
       banner: this.#generateBanner(product),

@@ -10,8 +10,8 @@ const createAccount = (account) => {
   const dbRequest = window.indexedDB.open("ag_user", 1);
 
   dbRequest.addEventListener("success", (evt) => {
-    const db = evt.target.result;
-    const transaction = db.transaction(["accounts"], "readwrite");
+    const { result } = evt.target;
+    const transaction = result.transaction(["accounts"], "readwrite");
 
     const accStore = transaction.objectStore("accounts");
     const request = accStore.add(account);

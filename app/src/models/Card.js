@@ -2,9 +2,9 @@ import { elementController } from "../controllers/element-controller.js";
 import { imagesService } from "../services/images-service.js";
 
 export class Card {
-  #setURL = (file, target) => {
-    imagesService.load(file).then((ref) => {
-      const href = URL.createObjectURL(ref.file);
+  #setURL = (image, target) => {
+    imagesService.load(image).then(({ file }) => {
+      const href = URL.createObjectURL(file);
       target.setAttribute("src", href);
     });
   };
@@ -31,19 +31,16 @@ export class Card {
 
   #generateContent = (product) => {
     const wrapper = elementController.generate("div", "card__content");
-    const desc = elementController.generate("p", "card__content--desc");
-    const price = elementController.generate("span", "card__content--price");
+    const para = elementController.generate("p", "card__content--desc");
+    const value = elementController.generate("span", "card__content--price");
 
-    const content = {
-      desc: product.desc,
-      price: product.price,
-    };
+    const { desc, price } = product;
 
-    price.textContent = `R$ ${content.price}`;
-    desc.textContent = content.desc;
+    value.textContent = `R$ ${price}`;
+    para.textContent = desc;
 
-    elementController.render(desc, wrapper);
-    elementController.render(price, wrapper);
+    elementController.render(para, wrapper);
+    elementController.render(value, wrapper);
 
     return wrapper;
   };
