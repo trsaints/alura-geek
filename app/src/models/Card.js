@@ -1,14 +1,7 @@
 import { elementController } from "../controllers/element-controller.js";
-import { imagesService } from "../services/images-service.js";
+import { imagesController } from "../controllers/images-controller.js";
 
 export class Card {
-  #setURL = (image, target) => {
-    imagesService.load(image).then(({ file }) => {
-      const href = URL.createObjectURL(file);
-      target.setAttribute("src", href);
-    });
-  };
-
   #generateBanner = (product) => {
     const fig = elementController.generate("figure", "card__figure");
     const caption = elementController.generate(
@@ -19,7 +12,7 @@ export class Card {
 
     const { name, image } = product;
 
-    this.#setURL(image, img);
+    imagesController.setURL(image, img);
 
     caption.textContent = name;
 
