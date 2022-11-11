@@ -1,10 +1,13 @@
 import { elementController } from "../controllers/element-controller.js";
+import { imagesController } from "../controllers/images-controller.js";
 
 export class ProductPanel {
   #generateBanner = (product) => {
     const img = elementController.generate("img", "product__panel--image");
 
-    img.setAttribute("src", `./app/assets/images/${product.image}`);
+    const { image } = product;
+
+    imagesController.setURL(image, img);
 
     return img;
   };
