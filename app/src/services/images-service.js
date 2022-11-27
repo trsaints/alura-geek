@@ -4,10 +4,7 @@ const preloadBlob = async (name) => {
   const file = await fetch(`./app/assets/images/${name}`);
 
   if (file.ok) {
-    return {
-      name: name,
-      file: await file.blob(),
-    };
+    return file.blob();
   }
 };
 
@@ -23,8 +20,9 @@ const preloadNames = async () => {
 
 const preload = async () => {
   const names = await preloadNames();
-  const blobs = names.map((name) => {
-    return preloadBlob(name);
+  const blobs = names.map(async (name) => {
+    const blob = await preloadBlob(name);
+    return new File([blob], name);
   });
 
   return Promise.all(blobs).then((values) => Promise.resolve(values));
@@ -98,4 +96,5 @@ const configure = async () => {
 export const imagesService = {
   configure,
   load,
+  add,
 };

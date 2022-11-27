@@ -18,7 +18,7 @@ const setStructure = (db, data) => {
     autoIncrement: true,
   });
 
-  productsObjStore.transaction.addEventListener("complete", (evt) => {
+  productsObjStore.transaction.addEventListener("complete", (_evt) => {
     const categoryObjStore = db
       .transaction("products", "readwrite")
       .objectStore("products");
@@ -77,9 +77,30 @@ const loadAll = (record) => {
 
 const loadCategory = async (category) => {
   const data = await loadAll("products");
-  const list = data.filter(product => product.category === category)
+  const list = data.filter((product) => product.category === category);
 
   return list;
+};
+
+const add = async (product) => {
+  const request = window.indexedDB.open("ag_products", 1);
+
+  request.addEventListener("success", (e) => {
+    const { result } = e.target;
+    const transaction = result.transaction("products", "readwrite");
+    const objStore = transaction.objectStore("products");
+
+    const addReq = objStore.add(product);
+
+    addReq.addEventListener("success", () =>
+      console.log("Produto adicionado com sucesso!")
+    );
+
+    addReq.addEventListener(
+      "error",
+      () => new Error("Não foi possível realizar a operação")
+    );
+  });
 };
 
 export const productsService = {
@@ -87,4 +108,5 @@ export const productsService = {
   configure,
   loadAll,
   loadCategory,
+  add,
 };
