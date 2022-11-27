@@ -1,4 +1,5 @@
 import { contextService } from "../services/context-service.js";
+import { editorController } from "./editor-controller.js";
 import { loginController } from "./login-controller.js";
 import { productsController } from "./products-controller.js";
 
@@ -80,7 +81,8 @@ const renderFactory = {
     document.removeEventListener("click", productsController.setRendering);
 
     render("editor");
-  }
+    setTimeout(editorController.load, 200);
+  },
 };
 
 const observe = (target) => {
