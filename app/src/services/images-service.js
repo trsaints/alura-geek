@@ -13,10 +13,10 @@ const preloadBlob = async (name) => {
 
 const preloadNames = async () => {
   const names = await productsService.loadAll("products");
-  const categories = names.map((list) => list[list.category]);
+  const categories = names.map((list) => list);
   const images = [];
 
-  categories.map((product) => product.map(({ image }) => images.push(image)));
+  categories.map(({ image }) => images.push(image));
 
   return images;
 };

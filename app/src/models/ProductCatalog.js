@@ -73,14 +73,15 @@ export class ProductCatalog {
     return frag;
   };
 
-  #generateCatalog = (context, products) => {
+  #generateCatalog = (products, category) => {
+    const context = contextService.get();
+
     const frag = document.createDocumentFragment();
     const catalog = elementController.generate("div", "main__catalog");
-    const { category } = products;
     catalog.dataset.catalog = category;
 
     const header = this.#generateHeader(context, category);
-    const list = this.#generateList(products[category]);
+    const list = this.#generateList(products);
 
     elementController.render(header, catalog);
     elementController.render(list, catalog);
@@ -89,7 +90,7 @@ export class ProductCatalog {
     return frag;
   };
 
-  constructor(context, products) {
-    return this.#generateCatalog(context, products);
+  constructor(products, category) {
+    return this.#generateCatalog(products, category);
   }
 }

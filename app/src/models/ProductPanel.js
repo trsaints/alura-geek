@@ -4,7 +4,6 @@ import { imagesController } from "../controllers/images-controller.js";
 export class ProductPanel {
   #generateBanner = (product) => {
     const img = elementController.generate("img", "product__panel--image");
-
     const { image } = product;
 
     imagesController.setURL(image, img);

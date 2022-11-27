@@ -1,20 +1,16 @@
 import { ProductCatalog } from "../models/ProductCatalog.js";
 import { ProductPanel } from "../models/ProductPanel.js";
-import { contextService } from "../services/context-service.js";
 import { productsService } from "../services/products-service.js";
 import { elementController } from "./element-controller.js";
 
-const renderPanel = (keyPath, id, target) => {
-  productsService.loadIndex(keyPath).then((products) => {
-    const mainProduct = products[keyPath].filter(
-      (product) => product.id === id
-    );
+const renderPanel = (category, id, target) => {
+  productsService.loadCategory(category).then((products) => {
+    const mainProduct = products.filter((product) => product.id === Number(id));
 
     const panel = elementController.generate("div", "product__panel");
-    const context = contextService.get();
 
     elementController.render(new ProductPanel(mainProduct[0]), panel);
-    elementController.render(new ProductCatalog(context, products), panel);
+    elementController.render(new ProductCatalog(products, category), panel);
     elementController.render(panel, target);
   });
 };
@@ -42,15 +38,15 @@ const setRendering = (evt) => {
 const renderCatalogs = () => {
   const contentWrapper = document.querySelector("[data-content]");
 
-  productsService.loadAll("products").then((catalogs) => {
-    const context = contextService.get();
+  const categories = ["actionFigures", "consoles", "canvases", "keyrings"];
 
-    catalogs.forEach((catalog) => {
-      elementController.render(
-        new ProductCatalog(context, catalog),
-        contentWrapper
-      );
-    });
+  categories.forEach(async (category) => {
+    const list = await productsService.loadCategory(category);
+
+    elementController.render(
+      new ProductCatalog(list, category),
+      contentWrapper
+    );
   });
 };
 
