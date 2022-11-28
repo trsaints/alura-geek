@@ -10,7 +10,7 @@ export class ProductCatalog {
 
   #generateList = (products) => {
     const frag = document.createDocumentFragment();
-    const ul = elementController.generate("ul", "products__list"); 
+    const ul = elementController.generate("ul", "products__list");
 
     products.forEach((product) => {
       this.#renderCard(product, ul);
@@ -20,8 +20,6 @@ export class ProductCatalog {
 
     return frag;
   };
-
-  #hideList = (list) => {};
 
   #setOption = {
     index: (button) => {
@@ -34,9 +32,16 @@ export class ProductCatalog {
     products: (button) => {
       button.setAttribute("data-toggle", "list");
       button.textContent = "Ocultar";
-      button.addEventListener("click", () =>
-        this.#hideList(button.parentNode.parentNode)
-      );
+      button.addEventListener("click", () => {
+        const target = button.closest('[data-catalog]').querySelector('.products__list')
+        elementController.toggle(target);
+
+        if (target.classList.contains("hidden")) {
+          button.textContent = "Mostrar";
+        } else {
+          button.textContent = "Ocultar";
+        }
+      });
     },
   };
 
