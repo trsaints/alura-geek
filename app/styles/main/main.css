@@ -91,3 +91,9 @@ a:hover {
     padding-inline: var(--margin-lg);
   }
 }
+
+.hidden {
+  visibility: hidden;
+  overflow: hidden;
+  height: 0;
+}
