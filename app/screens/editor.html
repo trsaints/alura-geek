@@ -8,12 +8,12 @@
 
         <div class="editor__field">
           <label for="product" class="editor__label">Nome</label>
-          <input id="product" class="editor__input" type="text" />
+          <input id="product" class="editor__input" type="text" required />
         </div>
 
         <div class="editor__field">
           <label for="price" class="editor__label">Preço</label>
-          <input id="price" class="editor__input" type="text" />
+          <input id="price" class="editor__input" type="text" required />
         </div>
 
         <div class="editor__field">
@@ -36,12 +36,13 @@
             id="description"
             class="editor__input"
             type="text"
+            required
           ></textarea>
         </div>
 
         <div class="editor__field">
           <label for="image" class="editor__label">URL da imagem</label>
-          <input id="image" class="editor__input" type="file" accept=".jpeg, .jpg, .png, .svg, .webp" />
+          <input id="image" class="editor__input" type="file" accept=".jpeg, .jpg, .png, .svg, .webp" required />
         </div>
       </fieldset>
 
