@@ -144,24 +144,24 @@
     grid-template-columns: repeat(auto-fit, minmax(min(176px, 100%), 1fr));
   }
 
-  .product__panel {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .product__panel--close {
     margin: 1rem 0.5rem 1rem 4rem;
   }
 
   .product__panel--banner {
-    padding: 1rem 0.5rem 1rem 4rem;
+    padding: 1rem 1rem 1rem 4rem;
   }
 
   .product__panel--content {
-    padding: 1rem 4rem 1rem 0.5rem;
+    padding: 1rem 4rem 1rem 1rem;
     place-self: center;
   }
 
   .product__panel--title {
     font-size: 2rem;
+  }
+
+  .product__panel--price {
+    font-size: 1.125rem;
   }
 }
