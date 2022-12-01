@@ -1,0 +1,46 @@
+.status__panel,
+.status__panel--banner {
+  display: flex;
+  flex-direction: column;
+}
+
+.status__panel--banner {
+  gap: .5rem;
+}
+
+.status__img {
+  order: 1;
+  max-width: 25rem;
+}
+
+.status__caption {
+  order: 2;
+}
+
+.status__panel {
+  gap: 1rem;
+}
+
+.status__caption,
+.status__panel--link {
+  text-align: center;
+}
+
+.status__panel--link {
+  font-size: 1.125rem;
+  font-weight: bold;
+}
+
+.status__panel--link:hover {
+  text-decoration: none;
+}
+
+@media screen and (min-width: 512px) {
+  .status__panel {
+    gap: 1.25rem;
+  }
+
+  .status__panel--banner {
+    gap: 1rem;
+  }
+}
