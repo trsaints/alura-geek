@@ -8,10 +8,21 @@ const renderPanel = (category, id, target) => {
     const mainProduct = products.filter((product) => product.id === Number(id));
 
     const panel = elementController.generate("div", "product__panel");
+    panel.setAttribute("id", "product-panel");
 
     elementController.render(new ProductPanel(mainProduct[0]), panel);
     elementController.render(new ProductCatalog(products, category), panel);
     elementController.render(panel, target);
+
+    const backButton = document.querySelector('[data-panel="back"]');
+    const catalogsWrapper = document.querySelector("[data-content]");
+
+    backButton.addEventListener("click", (e) => {
+      const productPanel = e.target.parentNode;
+      productPanel.remove();
+
+      elementController.show(catalogsWrapper);
+    });
   });
 };
 
@@ -25,6 +36,7 @@ const setRendering = (evt) => {
       .closest("[data-catalog]")
       .getAttribute("data-catalog");
     const main = document.querySelector("main");
+    const catalogsWrapper = document.querySelector("[data-content]");
     const panel = document.querySelector(".product__panel");
 
     if (panel) {
@@ -32,6 +44,10 @@ const setRendering = (evt) => {
     }
 
     renderPanel(productCategory, productId, main);
+    elementController.hide(catalogsWrapper);
+    setTimeout(() => {
+      window.location.href = "#product-panel";
+    }, 100);
   }
 };
 

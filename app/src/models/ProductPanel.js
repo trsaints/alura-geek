@@ -2,6 +2,18 @@ import { elementController } from "../controllers/element-controller.js";
 import { imagesController } from "../controllers/images-controller.js";
 
 export class ProductPanel {
+  #generateButtons = () => {
+    const backButton = elementController.generate(
+      "button",
+      "product__panel--close"
+    );
+    backButton.setAttribute("type", "button");
+    backButton.setAttribute("data-panel", "back");
+    backButton.textContent = "Voltar";
+
+    return backButton;
+  };
+
   #generateBanner = (product) => {
     const img = elementController.generate("img", "product__panel--image");
     const { image } = product;
@@ -46,10 +58,12 @@ export class ProductPanel {
     const contents = {
       banner: this.#generateBanner(product),
       content: this.#generateContent(product),
+      backButton: this.#generateButtons(),
     };
 
     elementController.render(contents.banner, banner);
     elementController.render(contents.content, content);
+    elementController.render(contents.backButton, frag);
     elementController.render(banner, frag);
     elementController.render(content, frag);
 
