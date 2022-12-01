@@ -2,11 +2,11 @@ import { elementController } from "../controllers/element-controller.js";
 
 export class StatusPanel {
   #generateBanner = (status, type) => {
-    const fig = elementController.generate("figure", "editor__status");
-    const img = elementController.generate("img", "editor__img");
+    const fig = elementController.generate("figure", "status__panel--banner");
+    const img = elementController.generate("img", "status__img");
     const figCaption = elementController.generate(
       "figcaption",
-      "editor__caption"
+      "status__caption"
     );
 
     const result = this.#loadStatus(status, type);
@@ -24,7 +24,7 @@ export class StatusPanel {
     const frag = document.createDocumentFragment();
 
     const banner = this.#generateBanner(status, type);
-    const homeLink = elementController.generate("a", "editor__status--link");
+    const homeLink = elementController.generate("a", "status__panel--link");
     homeLink.setAttribute("href", "./index.html");
     homeLink.textContent = "Voltar à página inicial";
 
