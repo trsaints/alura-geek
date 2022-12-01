@@ -6,6 +6,7 @@
 @import url('../store/products.css');
 @import url('../login/login.css');
 @import url('../editor/editor.css');
+@import url('../editor/editor-status.css');
 
 :root {
   --c-black: hsl(260, 14%, 5%);
@@ -41,6 +42,8 @@ html {
 
 body * {
   font-family: "Raleway", sans-serif;
+  letter-spacing: .0625rem;
+
 }
 
 body {
