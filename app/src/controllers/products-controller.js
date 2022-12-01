@@ -18,7 +18,9 @@ const renderPanel = (category, id, target) => {
     const catalogsWrapper = document.querySelector("[data-content]");
 
     backButton.addEventListener("click", (e) => {
-      elementController.hide(e.target.parentNode);
+      const productPanel = e.target.parentNode;
+      productPanel.remove();
+
       elementController.show(catalogsWrapper);
     });
   });
