@@ -1,1 +1,30 @@
-<main data-main="context"></main>
+<main data-main="context" class="context__main--search">
+  <header class="main__hero">
+    <h1 class="hero__title">Busque seu produto</h1>
+
+    <p class="hero__desc">Encontre o que for melhor para você.</p>
+  </header>
+
+  <div data-content class="search__results">
+    <p data-search="count" class="search__count"></p>
+
+    <div data-search="results"></div>
+
+    <div class="search__placeholder">
+      <figure class="placeholder--img">
+        <img src="./app/assets/images/undraw_web_search_re_efla.svg" alt="" />
+
+        <figcaption class="placeholder--caption">
+          Não encontrou o que procurava?
+          <br>
+          <a href="#search">Tente novamente</a>.
+        </figcaption>
+      </figure>
+
+      <p class="placeholder--option">
+        Ou
+        <a href="./index.html">Volte para a página principal</a>
+      </p>
+    </div>
+  </div>
+</main>
