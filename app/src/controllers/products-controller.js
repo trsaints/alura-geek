@@ -1,5 +1,6 @@
 import { ProductCatalog } from "../models/ProductCatalog.js";
 import { ProductPanel } from "../models/ProductPanel.js";
+import { contextService } from "../services/context-service.js";
 import { productsService } from "../services/products-service.js";
 import { elementController } from "./element-controller.js";
 
@@ -11,17 +12,17 @@ const renderPanel = (category, id, target) => {
     panel.setAttribute("id", "product-panel");
 
     elementController.render(new ProductPanel(mainProduct[0]), panel);
-    elementController.render(new ProductCatalog(products, category), panel);
     elementController.render(panel, target);
+    renderCatalog(products, panel);
 
     const backButton = document.querySelector('[data-panel="back"]');
-    const catalogsWrapper = document.querySelector("[data-content]");
+    const wrapper = document.querySelector("[data-content]");
 
     backButton.addEventListener("click", (e) => {
       const productPanel = e.target.parentNode;
       productPanel.remove();
 
-      elementController.show(catalogsWrapper);
+      elementController.show(wrapper);
     });
   });
 };
@@ -47,7 +48,23 @@ const setRendering = (evt) => {
     elementController.hide(catalogsWrapper);
     setTimeout(() => {
       window.location.href = "#product-panel";
-    }, 100);
+    }, 200);
+  }
+};
+
+const renderCatalog = (products, target) => {
+  if (products[0] !== undefined) {
+    const category = products[0].category;
+
+    const options = {
+      index: products.slice(0, 6),
+      search: products.slice(0, 8),
+      products: products
+    };
+
+    const context = contextService.get();
+
+    elementController.render(new ProductCatalog(options[context], category), target);
   }
 };
 
@@ -59,14 +76,12 @@ const renderCatalogs = () => {
   categories.forEach(async (category) => {
     const list = await productsService.loadCategory(category);
 
-    elementController.render(
-      new ProductCatalog(list, category),
-      contentWrapper
-    );
+    renderCatalog(list, contentWrapper);
   });
 };
 
 export const productsController = {
   renderCatalogs,
+  renderCatalog,
   setRendering,
 };
