@@ -6,7 +6,8 @@
         rgba(0, 0, 0, 0.8)
       )
       100%,
-    url("../../assets/images/hero_banner_medium.svg") no-repeat center / cover;
+    url("../../assets/images/geeky-shots-hQ4BQ3wdHsQ-unsplash.jpg") no-repeat
+      center / cover;
 }
 
 [class*="context__main"] .main__hero {
@@ -22,7 +23,8 @@
         rgba(0, 0, 0, 0.8)
       )
       100%,
-    url("../../assets/images/banner-products.svg") no-repeat center / cover;
+    url("../../assets/images/erik-mclean-8SeJUmfahu0-unsplash.jpg") no-repeat
+      center / cover;
 }
 
 .context__main--search .main__hero {
