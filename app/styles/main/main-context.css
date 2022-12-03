@@ -9,8 +9,7 @@
     url("../../assets/images/hero_banner_medium.svg") no-repeat center / cover;
 }
 
-.context__main--index .main__hero,
-.context__main--products .main__hero {
+[class*="context__main"] .main__hero {
   padding: var(--margin-sm);
   padding-top: 4rem;
 }
@@ -24,6 +23,18 @@
       )
       100%,
     url("../../assets/images/banner-products.svg") no-repeat center / cover;
+}
+
+.context__main--search .main__hero {
+  background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.4),
+        rgba(0, 0, 0, 0.8)
+      )
+      100%,
+    url("../../assets/images/camila-fernandez-fYm4-WeD_fg-unsplash.jpg")
+      no-repeat center / cover;
 }
 
 .main__hero {
@@ -50,8 +61,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .context__main--index .main__hero,
-  .context__main--products .main__hero {
+  [class*="context__main"] .main__hero {
     padding: var(--margin-md);
     padding-top: 4rem;
   }
@@ -66,8 +76,7 @@
 }
 
 @media screen and (min-width: 1140px) {
-  .context__main--index .main__hero,
-  .context__main--products .main__hero {
+  [class*="context__main"] .main__hero {
     padding: var(--margin-lg);
     padding-top: 6rem;
   }
