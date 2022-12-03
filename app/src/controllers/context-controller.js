@@ -2,6 +2,7 @@ import { contextService } from "../services/context-service.js";
 import { editorController } from "./editor-controller.js";
 import { loginController } from "./login-controller.js";
 import { productsController } from "./products-controller.js";
+import { searchController } from "./search-controller.js";
 
 const load = (page) => {
   const main = document.querySelector("main");
@@ -57,7 +58,20 @@ const renderFactory = {
 
   search: () => {
     document.removeEventListener("click", productsController.setRendering);
-    render("search");
+
+    const searchForm = document.querySelector('[data-form="search"]');
+    const searchBar = searchForm.elements["search"];
+
+    if (searchBar.validity.valueMissing) {
+      searchBar.focus();
+    } else {
+      render("search");
+
+      setTimeout(async () => {
+        document.addEventListener("click", productsController.setRendering);
+        await searchController.render(searchBar.value);
+      }, 200);
+    }
   },
 
   login: () => {
