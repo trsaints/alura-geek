@@ -1,0 +1,31 @@
+.search__count,
+.search__placeholder {
+  padding: var(--margin-sm);
+}
+
+.search__placeholder {
+  display: grid;
+  place-items: center;
+  gap: 1rem;
+}
+
+.search__placeholder .placeholder--img {
+  max-width: 25rem;
+  display: grid;
+  gap: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .search__count,
+  .search__placeholder {
+    padding: var(--margin-md);
+  }
+}
+
+@media screen and (min-width: 1140px) {
+  .search__count,
+  .search__placeholder {
+    padding-inline: var(--margin-lg);
+    padding-block: var(--margin-md);
+  }
+}
