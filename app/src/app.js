@@ -11,6 +11,8 @@ import { productsService } from "./services/products-service.js";
 
     const dataLoaders = document.querySelectorAll("[data-load]");
 
+    const searchForm = document.querySelector('[data-form="search"]')
+
     dataLoaders.forEach((loader) =>
       loader.addEventListener("click", () => {
         contextService.set(contextWrapper, loader.dataset.load);
@@ -20,6 +22,8 @@ import { productsService } from "./services/products-service.js";
     contextController.observe(contextWrapper);
 
     contextService.set(contextWrapper, "index");
+
+    searchForm.addEventListener('submit', (e) => e.preventDefault())
   };
 
   if (preLoadStatus) {
