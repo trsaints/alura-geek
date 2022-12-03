@@ -10,12 +10,18 @@ export class Card {
     );
     const img = elementController.generate("img", "card__figure--image");
 
-    const { name, image } = product;
+    const nameSpan = elementController.generate("span", "sr-only")
+    nameSpan.textContent = 'Nome: '
 
+    const { name, image } = product;
+    
+    const nameTag = document.createTextNode(name)
+
+    img.setAttribute("alt", `Imagem de ${name}`);
     imagesController.setURL(image, img);
 
-    caption.textContent = name;
-
+    elementController.render(nameSpan, caption)
+    elementController.render(nameTag, caption)
     elementController.render(caption, fig);
     elementController.render(img, fig);
 
@@ -23,19 +29,18 @@ export class Card {
   };
 
   #generateContent = (product) => {
-    const wrapper = elementController.generate("div", "card__content");
-    const para = elementController.generate("p", "card__content--desc");
-    const value = elementController.generate("span", "card__content--price");
+    const value = elementController.generate("p", "card__content--price");
 
-    const { desc, price } = product;
+    const { price } = product;
 
-    value.textContent = `R$ ${price}`;
-    para.textContent = desc;
+    const screenreaderSpan = elementController.generate("span", "sr-only");
 
-    elementController.render(para, wrapper);
-    elementController.render(value, wrapper);
+    const valueTag = document.createTextNode(`R$${price}`);
+    screenreaderSpan.textContent = "Preço: ";
+    elementController.render(screenreaderSpan, value);
+    elementController.render(valueTag, value);
 
-    return wrapper;
+    return value;
   };
 
   #generateButton = (product) => {

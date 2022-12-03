@@ -46,6 +46,7 @@
       </div>
 
       <form data-form="search" novalidate class="header__search">
+        <label for="search" class="sr-only">Nome do produto</label>
         <input
           data-search
           id="search"
@@ -57,7 +58,7 @@
         />
 
         <button class="header__search--button" data-load="search" type="submit">
-          <i class="fas fa-search"></i>
+          <i class="fas fa-search" aria-hidden="true"></i>
           <span class="sr-only"> Buscar </span>
         </button>
       </form>
