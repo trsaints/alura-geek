@@ -38,7 +38,7 @@
 }
 
 .header__search--button {
-  color: var(--c-red--ds);
+  color: var(--c-red);
   font-size: 120%;
 }
 

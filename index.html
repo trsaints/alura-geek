@@ -45,7 +45,7 @@
         <img src="./app/assets/images/alura_geek_logo.svg" alt="" />
       </div>
 
-      <div class="header__search">
+      <form data-form="search" novalidate class="header__search">
         <input
           data-search
           id="search"
@@ -53,13 +53,14 @@
           type="search"
           name="search"
           placeholder="O que deseja encontrar?"
+          required
         />
 
-        <button class="header__search--button" data-load="search" type="button">
+        <button class="header__search--button" data-load="search" type="submit">
           <i class="fas fa-search"></i>
           <span class="sr-only"> Buscar </span>
         </button>
-      </div>
+      </form>
 
       <button data-load="login" class="header__login" type="button">
         Login

@@ -29,6 +29,7 @@ export class ProductCatalog {
         contextService.set(document.body, "products")
       );
     },
+
     products: (button) => {
       button.setAttribute("data-toggle", "list");
       button.textContent = "Ocultar";
@@ -43,6 +44,10 @@ export class ProductCatalog {
         }
       });
     },
+
+    search: (button) => {
+      this.#setOption.index(button)
+    }
   };
 
   #generateOption = (context) => {
@@ -56,7 +61,7 @@ export class ProductCatalog {
     return option;
   };
 
-  #generateHeader = (context, category) => {
+  #generateHeader = (context, heading) => {
     const frag = document.createDocumentFragment();
     const header = elementController.generate("header", "products__header");
     const title = elementController.generate("h2", "products__header--title");
@@ -66,10 +71,10 @@ export class ProductCatalog {
       canvases: "Quadros",
       keyrings: "Chaveiros",
       actionFigures: "Action Figures",
-      consoles: "Consoles",
+      consoles: "Consoles"
     };
 
-    title.textContent = categories[category];
+    title.textContent = categories[heading];
 
     elementController.render(title, header);
     elementController.render(option, header);
