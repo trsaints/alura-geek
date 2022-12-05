@@ -3,35 +3,52 @@
     <h1 class="editor__title">Adicionar produto</h1>
 
     <form class="editor__form" data-form="editor">
-      <fieldset class="editor__fieldset" >
+      <fieldset class="editor__fieldset">
         <legend class="editor__legend">Detalhes do produto</legend>
 
         <div class="editor__field">
-          <label for="product" class="editor__label">Nome</label>
+          <label for="product" class="editor__label"
+            >Nome <i class="fa-solid fa-address-card" aria-hidden="true"></i
+          ></label>
           <input id="product" class="editor__input" type="text" required />
         </div>
 
         <div class="editor__field">
-          <label for="price" class="editor__label">Preço</label>
+          <label for="price" class="editor__label"
+            >Preço <i class="fa-solid fa-coins" aria-hidden="true"></i
+          ></label>
           <input id="price" class="editor__input" type="text" required />
         </div>
 
         <div class="editor__field">
-          <label for="category" class="editor__label">Categoria</label>
+          <label for="category" class="editor__label"
+            >Categoria <i class="fa-solid fa-tag" aria-hidden="true"></i
+          ></label>
           <select
             data-select="category"
             id="category"
             class="editor__select"
           >
-          <option value="actionFigures">Action Figures</option>
-          <option value="canvases">Quadros</option>
-          <option value="consoles">Consoles</option>
-          <option value="keyrings">Chaveiros</option>
-        </select>
+            <option class="editor__select--option" value="actionFigures">
+              Action Figures
+            </option>
+            <option class="editor__select--option" value="canvases">
+              Quadros
+            </option>
+            <option class="editor__select--option" value="consoles">
+              Consoles
+            </option>
+            <option class="editor__select--option" value="keyrings">
+              Chaveiros
+            </option>
+          </select>
         </div>
 
         <div class="editor__field">
-          <label for="description" class="editor__label">Descrição</label>
+          <label for="description" class="editor__label"
+            >Descrição
+            <i class="fa-solid fa-circle-info" aria-hidden="true"></i
+          ></label>
           <textarea
             id="description"
             class="editor__input"
@@ -41,12 +58,24 @@
         </div>
 
         <div class="editor__field">
-          <label for="image" class="editor__label">URL da imagem</label>
-          <input id="image" class="editor__input" type="file" accept=".jpeg, .jpg, .png, .svg, .webp" required />
+          <label for="image" class="editor__label"
+            >URL da imagem
+            <i class="fa-solid fa-camera" aria-hidden="true"></i
+          ></label>
+          <input
+            id="image"
+            class="editor__input"
+            type="file"
+            accept=".jpeg, .jpg, .png, .svg, .webp"
+            required
+          />
         </div>
       </fieldset>
 
-      <input class="editor__submit" type="submit" value="Adicionar produto" />
+      <button type="submit" class="editor__submit">
+        Adicionar produto
+        <i class="fa-solid fa-square-plus" aria-hidden="true"></i>
+      </button>
     </form>
   </section>
 </main>
