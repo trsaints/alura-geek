@@ -1,4 +1,5 @@
 import { elementController } from "../controllers/element-controller.js";
+import { iconController } from "../controllers/icon-controller.js";
 import { contextService } from "../services/context-service.js";
 import { Card } from "./Card.js";
 
@@ -21,10 +22,41 @@ export class ProductCatalog {
     return frag;
   };
 
+  #changeIcon = (button) => {
+    const target = button
+      .closest("[data-catalog]")
+      .querySelector(".products__list");
+
+    let statusText = "Ocultar ";
+
+    const buttonIcon = iconController.generate("eye");
+
+    if (target.classList.contains("hidden")) {
+      statusText = "Mostrar ";
+      buttonIcon.classList.remove("fa-eye-slash");
+      buttonIcon.classList.add("fa-eye");
+    } else {
+      statusText = "Ocultar ";
+      buttonIcon.classList.remove("fa-eye");
+      buttonIcon.classList.add("fa-eye-slash");
+    }
+
+    button.textContent = statusText;
+    elementController.render(buttonIcon, button);
+  };
+
   #setOption = {
     index: (button) => {
       button.setAttribute("data-load", "products");
-      button.textContent = "Ver Todos";
+      button.setAttribute("type", "button");
+
+      const rightArrow = iconController.generate("arrow-right");
+
+      const buttonText = document.createTextNode("Ver Todos ");
+
+      button.appendChild(buttonText);
+      button.appendChild(rightArrow);
+
       button.addEventListener("click", () =>
         contextService.set(document.body, "products")
       );
@@ -32,22 +64,24 @@ export class ProductCatalog {
 
     products: (button) => {
       button.setAttribute("data-toggle", "list");
-      button.textContent = "Ocultar";
+      button.textContent = "Ocultar ";
+
+      const buttonIcon = iconController.generate("eye-slash");
+      elementController.render(buttonIcon, button);
+
       button.addEventListener("click", () => {
-        const target = button.closest('[data-catalog]').querySelector('.products__list')
+        const target = button
+          .closest("[data-catalog]")
+          .querySelector(".products__list");
         elementController.toggle(target);
 
-        if (target.classList.contains("hidden")) {
-          button.textContent = "Mostrar";
-        } else {
-          button.textContent = "Ocultar";
-        }
+        this.#changeIcon(button);
       });
     },
 
     search: (button) => {
-      this.#setOption.index(button)
-    }
+      this.#setOption.index(button);
+    },
   };
 
   #generateOption = (context) => {
@@ -71,7 +105,7 @@ export class ProductCatalog {
       canvases: "Quadros",
       keyrings: "Chaveiros",
       actionFigures: "Action Figures",
-      consoles: "Consoles"
+      consoles: "Consoles",
     };
 
     title.textContent = categories[heading];

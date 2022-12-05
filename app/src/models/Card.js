@@ -1,5 +1,6 @@
 import { elementController } from "../controllers/element-controller.js";
 import { imagesController } from "../controllers/images-controller.js";
+import { iconController } from "../controllers/icon-controller.js";
 
 export class Card {
   #generateBanner = (product) => {
@@ -10,18 +11,18 @@ export class Card {
     );
     const img = elementController.generate("img", "card__figure--image");
 
-    const nameSpan = elementController.generate("span", "sr-only")
-    nameSpan.textContent = 'Nome: '
+    const nameSpan = elementController.generate("span", "sr-only");
+    nameSpan.textContent = "Nome: ";
 
     const { name, image } = product;
-    
-    const nameTag = document.createTextNode(name)
+
+    const nameTag = document.createTextNode(name);
 
     img.setAttribute("alt", `Imagem de ${name}`);
     imagesController.setURL(image, img);
 
-    elementController.render(nameSpan, caption)
-    elementController.render(nameTag, caption)
+    elementController.render(nameSpan, caption);
+    elementController.render(nameTag, caption);
     elementController.render(caption, fig);
     elementController.render(img, fig);
 
@@ -44,20 +45,36 @@ export class Card {
   };
 
   #generateButton = (product) => {
-    const button = elementController.generate("button", "product__button");
+    const button = elementController.generate("button", "card__button");
     button.setAttribute("type", "button");
     button.dataset.productId = product.id;
-    button.textContent = "Ver Produto";
+    const buttonText = document.createTextNode("Ver Produto ");
+    const srSpan = elementController.generate("span", "sr-only");
+    const buttonIcon = iconController.generate("up-right-from-square");
+
+    srSpan.appendChild(buttonText);
+    button.appendChild(srSpan);
+    button.appendChild(buttonIcon);
 
     return button;
   };
 
+  #generateOption = (product) => {
+    const wrapper = elementController.generate("div", "card__option");
+    const button = this.#generateButton(product);
+    const price = this.#generateContent(product);
+
+    wrapper.appendChild(price);
+    wrapper.appendChild(button);
+
+    return wrapper;
+  };
+
   #generate = (product) => {
     const frag = document.createDocumentFragment();
-    const li = elementController.generate("li", "card");
+    const li = elementController.generate("li", "products__card");
     elementController.render(this.#generateBanner(product), li);
-    elementController.render(this.#generateContent(product), li);
-    elementController.render(this.#generateButton(product), li);
+    elementController.render(this.#generateOption(product), li);
     elementController.render(li, frag);
 
     return frag;
