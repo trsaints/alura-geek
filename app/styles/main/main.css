@@ -10,23 +10,29 @@
 @import url('../search/search.css');
 
 :root {
+  --c-black--ds: hsl(260, 14%, 1%);
+  --c-black--d: hsl(260, 14%, 3%);
   --c-black: hsl(260, 14%, 5%);
-  --c-black--l: hsl(260, 14%, 10%);
-  --c-black--ls: hsl(260, 14%, 15%);
-  --c-gray--ds: hsl(260, 14%, 30%);
-  --c-gray--d: hsl(260, 14%, 35%);
-  --c-gray: hsl(260, 14%, 40%);
-  --c-gray--l: hsl(260, 14%, 45%);
-  --c-gray--ls: hsl(260, 14%, 50%);
-  --c-white--ds: hsl(340, 10%, 85%);
-  --c-white--d: hsl(340, 10%, 90%);
-  --c-white: hsl(340, 10%, 95%);
+  --c-black--l: hsl(260, 14%, 7%);
+  --c-black--ls: hsl(260, 14%, 9%);
+  --c-carbon: hsl(260, 9%, 15%);
+  --c-carbon--l: hsl(260, 9%, 20%);
+  --c-carbon--ls: hsl(260, 9%, 25%);
+  --c-gray--ds: hsl(260, 5%, 30%);
+  --c-gray--d: hsl(260, 5%, 40%);
+  --c-gray: hsl(259, 5%, 50%);
+  --c-gray--l: hsl(260, 5%, 60%);
+  --c-gray--ls: hsl(260, 5%, 70%);
+  --c-white--ds: hsl(340, 10%, 80%);
+  --c-white--d: hsl(340, 10%, 85%);
+  --c-white: hsl(340, 10%, 90%);
+  --c-white--l: hsl(340, 10%, 95%);
   --c-white--ls: hsl(340, 10%, 100%);
-  --c-red--ds: hsl(356, 86%, 50%);
-  --c-red--d: hsl(356, 86%, 55%);
-  --c-red: hsl(356, 86%, 60%);
-  --c-red--l: hsl(356, 86%, 65%);
-  --c-red--ls: hsl(356, 86%, 70%);
+  --c-red--ds: hsl(356, 80%, 40%);
+  --c-red--d: hsl(356, 80%, 45%);
+  --c-red: hsl(356,80%, 50%);
+  --c-red--l: hsl(356, 80%, 55%);
+  --c-red--ls: hsl(356, 80%, 60%);
   --margin-sm: 1rem;
   --margin-md: 2rem;
   --margin-lg: 4rem;
@@ -48,15 +54,26 @@ body * {
 }
 
 body {
-  background-color: var(--c-white);
-  color: var(--c-black);
+  background-color: var(--c-black--ls);
+  color: var(--c-white);
 }
 
 input,
 textarea,
-button {
+button,
+select {
+  appearance: none;
   border: none;
   background-color: transparent;
+}
+
+button, label, select {
+  cursor: pointer;
+}
+
+::selection {
+  background-color: var(--c-red--ls);
+  color: var(--c-white);
 }
 
 input, 
@@ -107,4 +124,35 @@ a:hover {
   visibility: hidden;
   overflow: hidden;
   height: 0;
+}
+
+.fa-solid {
+  pointer-events: none;
+}
+
+.hl-text {
+  color: var(--c-red--ls);
+}
+
+input:focus, a:focus, button:focus, textarea:focus, select:focus {
+  outline: none;
+}
+
+*::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--c-gray--ds);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--c-red--ls);
+  border-radius: .5rem;
+}
+
+@media screen and (min-width: 512px) {
+  *::-webkit-scrollbar {
+    width: 0.5rem;
+  }
 }
