@@ -64,19 +64,21 @@
       </form>
 
       <button data-load="login" class="header__login" type="button">
-        Login
+        Login <i class="fa-solid fa-right-to-bracket" aria-hidden="true"></i>
       </button>
     </header>
 
     <main class="context__main--index">
       <header class="main__hero">
-        <h1 class="hero__title">Produtos <span lang="en">Geek</span></h1>
+        <h1 class="hero__title">
+          Produtos <span class="hl-text" lang="en">Geek</span>
+        </h1>
         <p class="hero__desc">
           Para aqueles que amam as séries, jogos, filmes e quadrinhos que
           marcaram gerações.
         </p>
         <button class="hero__btn" type="button" data-load="products">
-          Ver Todos
+          Ver Todos <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
         </button>
       </header>
 
@@ -123,20 +125,23 @@
         <fieldset class="contact--fieldset">
           <legend class="contact__legend">Fale conosco</legend>
 
-          <label class="contact__section"
-            >Nome <input type="text" class="section__input"
-          /></label>
+          <label class="contact__section">
+            <span clas="contact__section--label"
+              >Nome <i class="fa-solid fa-user" aria-hidden="true"></i
+            ></span>
+            <input type="text" class="section__input" />
+          </label>
 
-          <label class="contact__section"
-            >Mensagem
+          <label class="contact__section">
+            <span class="contact__section--label">
+              Mensagem <i class="fa-solid fa-message" aria-hidden="true"></i>
+            </span>
             <textarea name="message" class="section__textarea"></textarea>
           </label>
 
-          <input
-            class="contact__submit"
-            type="submit"
-            value="Enviar mensagem"
-          />
+          <button type="submit" class="contact__submit">
+            Enviar <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+          </button>
         </fieldset>
       </form>
     </aside>
@@ -145,6 +150,7 @@
       <p class="footer__description">
         Desenvolvido por
         <a
+          rel="noopenner noreferrer"
           target="_blank"
           href="https://github.com/trsaints/alura-geek/"
           class="footer__link"
