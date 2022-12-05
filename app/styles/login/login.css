@@ -1,66 +1,102 @@
-.login__fieldset,
-.login {
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  gap: 1rem;
-}
-
 .login {
   padding: var(--margin-sm);
   padding-block: 4.75rem;
+  background: linear-gradient(
+        to right,
+        hsl(260, 9%, 15%),
+        hsla(260, 9%, 15%, 0.7),
+        hsla(260, 9%, 15%, 0.5)
+      )
+      100%,
+    url("../../assets/images/lorenzo-herrera-p0j-mE6mGo4-unsplash.jpg")
+      no-repeat center / cover;
+}
+
+.login,
+.login__fieldset {
+  flex-flow: column nowrap;
+  gap: 1rem;
+}
+
+.login,
+.login__fieldset,
+.login__label {
+  display: flex;
+  align-items: center;
+}
+
+.login__fieldset,
+.login__title,
+.login__field,
+.login__input,
+.login__button {
+  width: 100%;
 }
 
 .login__fieldset {
   border: none;
-  max-width: 17.1875rem;
-  width: 100%;
+  max-width: 20rem;
+}
+
+.login__title {
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
 .login__field {
   display: grid;
   grid-template-areas: "label input" "warn warn";
-  grid-template-rows: auto;
-  width: 100%;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 3fr 2fr;
+  overflow: hidden;
 }
 
 .login__label,
 .login__input {
-  background-color: var(--c-white--ls);
-  color: var(--c-gray);
-  padding: 0.5rem 0.75rem 0.8125rem 0.75rem;
-  border-bottom: 0.0625rem solid var(--c-gray--ls);
+  padding: 0.75rem 1rem;
+  border-bottom: 0.125rem solid var(--c-red--ls);
+  vertical-align: middle;
 }
 
 .login__label {
+  color: var(--c-red--ls);
   grid-area: label;
+  background-color: var(--c-carbon--ls);
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  justify-content: space-between;
+}
+
+.login__label,
+.login__warn {
+  font-weight: 600;
 }
 
 .login__input {
-  width: 100%;
   grid-area: input;
+  background-color: var(--c-gray);
+  color: var(--c-black--ds);
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
 }
 
 .login__warn {
   grid-area: warn;
-  font-weight: 600;
-  margin-top: .25rem;
+  margin-top: 0.25rem;
+  min-height: 1ch;
 }
 
-.login__title {
-  text-align: center;
+.login__title,
+.login__button {
   font-weight: 700;
-  margin-bottom: 1rem;
-  width: 100%;
 }
 
 .login__button {
   padding: 1rem 1.5rem;
-  background-color: var(--c-red--d);
-  font-weight: 700;
+  background-color: var(--c-red--l);
   color: var(--c-white--ls);
-  max-width: 6.8125rem;
-  cursor: pointer;
+  max-width: 7.8125rem;
+  border-radius: 0.25rem;
 }
 
 @media screen and (min-width: 768px) {
@@ -74,13 +110,8 @@
     padding: var(--margin-lg);
   }
 
-  .login__fieldset {
-    max-width: 26.4375rem;
-    width: 100%;
-  }
-
+  .login__fieldset,
   .login__button {
     max-width: 26.4375rem;
-    width: 100%;
   }
 }

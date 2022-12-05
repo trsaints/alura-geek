@@ -1,18 +1,28 @@
 .editor,
+.editor__form,
 .editor__fieldset,
-.editor__form {
+.editor__field {
   display: flex;
   flex-flow: column nowrap;
+}
+
+.editor,
+.editor__form,
+.editor__fieldset {
   gap: 1rem;
 }
 
 .editor {
   padding: var(--margin-sm);
+  padding-bottom: var(--margin-lg);
   align-items: center;
 }
 
 .editor__form,
-.editor__title {
+.editor__title,
+.editor__field,
+.editor__select,
+.editor__submit {
   width: 100%;
 }
 
@@ -30,27 +40,52 @@
 }
 
 .editor__field {
-  background-color: var(--c-white--ls);
-  color: var(--c-gray);
-  padding: 0.5rem 0.75rem .8125rem .75rem;
-  border-radius: .125rem;
-  border-bottom: .0625rem solid var(--c-gray--ls);
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+  background-color: var(--c-carbon--ls);
+  padding: 0.5rem 0.75rem 0.8125rem 0.75rem;
+  border-bottom: 0.125rem solid var(--c-gray--ls);
 }
 
-.editor__input {
-  width: 100%;
+.editor__label,
+.editor__submit {
+  font-weight: 600;
+}
+
+.editor__label {
+  font-size: 1.1rem;
+  color: var(--c-red--ls);
+}
+
+.editor__input,
+.editor__select {
+  color: var(--c-white);
+}
+
+.editor__field,
+.editor__submit,
+.editor__select {
+  border-radius: 0.25rem;
+}
+
+.editor__select {
+  background-image: linear-gradient(
+    to bottom,
+    var(--c-carbon),
+    var(--c-carbon--l)
+  );
+  border: 0.0625rem solid var(--c-carbon--l);
+  text-align: center;
+  padding: 0.25rem;
+}
+
+.editor__select option {
+  color: black;
 }
 
 .editor__submit {
-  background-color: var(--c-red);
+  background-color: var(--c-red--l);
   color: var(--c-white--ls);
   text-transform: uppercase;
   padding-block: 1rem;
-  width: 100%;
-  font-weight: 600;
 }
 
 @media screen and (min-width: 768px) {

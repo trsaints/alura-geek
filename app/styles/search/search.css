@@ -3,16 +3,20 @@
   padding: var(--margin-sm);
 }
 
-.search__placeholder {
+.search__placeholder,
+.search__placeholder .placeholder--img {
   display: grid;
-  place-items: center;
   gap: 1rem;
+}
+
+.search__placeholder {
+  place-items: center;
+  text-align: center;
+  font-weight: 600;
 }
 
 .search__placeholder .placeholder--img {
   max-width: 25rem;
-  display: grid;
-  gap: 1rem;
 }
 
 @media screen and (min-width: 768px) {
