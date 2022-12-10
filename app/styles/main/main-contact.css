@@ -40,6 +40,15 @@
   text-decoration: none;
 }
 
+.info__logo,
+.contact__section {
+  width: 100%;
+}
+
+.info__logo {
+  min-width: 10rem;
+}
+
 .info__contact {
   grid-area: form;
 }
@@ -53,20 +62,22 @@
 }
 
 .contact__section {
-  width: 100%;
   background-color: var(--c-white--ds);
-  border-radius: 0.25rem;
   padding: 0.5rem 0.75rem;
   color: var(--c-black);
 }
 
+.contact__section,
 .contact__submit {
-  background-color: var(--c-red--l);
-  padding: 0.75rem 1rem;
   border-radius: 0.25rem;
+}
+
+.contact__submit {
+  background-color: var(--c-red--d);
+  padding: 0.75rem 1rem;
   max-width: 12rem;
   font-weight: 600;
-  color: var(--c-white);
+  color: var(--c-white--ls);
 }
 
 @media screen and (min-width: 768px) {

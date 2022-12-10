@@ -1,6 +1,6 @@
 .search__count,
 .search__placeholder {
-  padding: var(--margin-sm);
+  padding-inline: 1.5rem;
 }
 
 .search__placeholder,
@@ -19,17 +19,24 @@
   max-width: 25rem;
 }
 
+.search__results {
+  padding-block: 2rem;
+}
+
 @media screen and (min-width: 768px) {
   .search__count,
   .search__placeholder {
-    padding: var(--margin-md);
+    padding-inline: 2.5rem;
+  }
+
+  .search__results {
+    padding-block: 3rem;
   }
 }
 
 @media screen and (min-width: 1140px) {
   .search__count,
   .search__placeholder {
-    padding-inline: var(--margin-lg);
-    padding-block: var(--margin-md);
+    padding-inline: 4.5rem;
   }
 }

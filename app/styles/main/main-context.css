@@ -10,7 +10,7 @@
 }
 
 [class*="context__main"] .main__hero {
-  padding: var(--margin-sm);
+  padding: 1.5rem;
   padding-top: 4rem;
 }
 
@@ -60,9 +60,13 @@
   border-radius: 2rem;
 }
 
+.main__content {
+  padding-block: 2rem;
+}
+
 @media screen and (min-width: 768px) {
   [class*="context__main"] .main__hero {
-    padding: var(--margin-md);
+    padding: 2.5rem;
     padding-top: 4rem;
   }
 
@@ -73,12 +77,15 @@
   .hero__desc {
     font-size: 1.25rem;
   }
+
+  .main__content {
+    padding-block: 3rem;
+  }
 }
 
 @media screen and (min-width: 1140px) {
   [class*="context__main"] .main__hero {
-    padding: var(--margin-lg);
-    padding-top: 6rem;
+    padding: 6rem 4.5rem 4.5rem;
   }
 
   .hero__title {

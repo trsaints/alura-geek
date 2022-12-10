@@ -49,17 +49,16 @@
   grid-template-columns: 1fr 2fr;
   grid-template-rows: 3fr 2fr;
   overflow: hidden;
+  color: var(--c-white);
 }
 
 .login__label,
 .login__input {
   padding: 0.75rem 1rem;
-  border-bottom: 0.125rem solid var(--c-red--ls);
   vertical-align: middle;
 }
 
 .login__label {
-  color: var(--c-red--ls);
   grid-area: label;
   background-color: var(--c-carbon--ls);
   border-top-left-radius: 0.25rem;
