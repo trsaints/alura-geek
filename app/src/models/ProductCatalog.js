@@ -56,10 +56,6 @@ export class ProductCatalog {
 
       button.appendChild(buttonText);
       button.appendChild(rightArrow);
-
-      button.addEventListener("click", () =>
-        contextService.set(document.body, "products")
-      );
     },
 
     products: (button) => {
@@ -108,7 +104,12 @@ export class ProductCatalog {
       consoles: "Consoles",
     };
 
-    title.textContent = categories[heading];
+    const titleText = document.createTextNode(categories[heading])
+    const titleSpan = elementController.generate("span", 'sr-only');
+    titleSpan.textContent = 'Categoria: '
+
+    elementController.render(titleSpan, title)
+    elementController.render(titleText, title)
 
     elementController.render(title, header);
     elementController.render(option, header);
