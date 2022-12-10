@@ -9,21 +9,18 @@ import { productsService } from "./services/products-service.js";
   const control = () => {
     const contextWrapper = document.querySelector("[data-context]");
 
-    const dataLoaders = document.querySelectorAll("[data-load]");
-
-    const searchForm = document.querySelector('[data-form="search"]')
-
-    dataLoaders.forEach((loader) =>
-      loader.addEventListener("click", () => {
-        contextService.set(contextWrapper, loader.dataset.load);
-      })
-    );
-
     contextController.observe(contextWrapper);
-
     contextService.set(contextWrapper, "index");
 
-    searchForm.addEventListener('submit', (e) => e.preventDefault())
+    const searchForm = document.querySelector('[data-form="search"]');
+    searchForm.addEventListener("submit", (e) => e.preventDefault());
+
+    document.addEventListener("click", (e) => {
+      const { target } = e;
+      const dataLoader = target.closest("[data-load]");
+
+      if (dataLoader) contextService.set(contextWrapper, dataLoader.getAttribute('data-load'));
+    });
   };
 
   if (preLoadStatus) {
