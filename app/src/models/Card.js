@@ -49,11 +49,9 @@ export class Card {
     button.setAttribute("type", "button");
     button.dataset.productId = product.id;
     const buttonText = document.createTextNode("Ver Produto ");
-    const srSpan = elementController.generate("span", "sr-only");
     const buttonIcon = iconController.generate("up-right-from-square");
 
-    srSpan.appendChild(buttonText);
-    button.appendChild(srSpan);
+    button.appendChild(buttonText);
     button.appendChild(buttonIcon);
 
     return button;
