@@ -16,13 +16,15 @@ const renderPanel = (category, id, target) => {
     renderCatalog(products, panel);
 
     const backButton = document.querySelector('[data-panel="back"]');
-    const wrapper = document.querySelector("[data-content]");
+    const contentWrappers = document.querySelectorAll("[data-content]");
 
     backButton.addEventListener("click", (e) => {
       const productPanel = e.target.parentNode;
       productPanel.remove();
 
-      elementController.show(wrapper);
+      contentWrappers.forEach((wrapper) => elementController.show(wrapper));
+
+      setTimeout(() => (window.location.href = `#${category}`), 100);
     });
   });
 };
@@ -37,7 +39,7 @@ const setRendering = (evt) => {
       .closest("[data-catalog]")
       .getAttribute("data-catalog");
     const main = document.querySelector("main");
-    const catalogsWrapper = document.querySelector("[data-content]");
+    const mainContents = document.querySelectorAll("[data-content]");
     const panel = document.querySelector(".product__panel");
 
     if (panel) {
@@ -45,7 +47,7 @@ const setRendering = (evt) => {
     }
 
     renderPanel(productCategory, productId, main);
-    elementController.hide(catalogsWrapper);
+    mainContents.forEach((content) => elementController.hide(content));
     setTimeout(() => {
       window.location.href = "#product-panel";
     }, 200);
@@ -59,17 +61,20 @@ const renderCatalog = (products, target) => {
     const options = {
       index: products.slice(0, 6),
       search: products.slice(0, 8),
-      products: products
+      products: products,
     };
 
     const context = contextService.get();
 
-    elementController.render(new ProductCatalog(options[context], category), target);
+    elementController.render(
+      new ProductCatalog(options[context], category),
+      target
+    );
   }
 };
 
 const renderCatalogs = () => {
-  const contentWrapper = document.querySelector("[data-content]");
+  const contentWrapper = document.querySelector("[data-content='catalog']");
 
   const categories = ["actionFigures", "consoles", "canvases", "keyrings"];
 
