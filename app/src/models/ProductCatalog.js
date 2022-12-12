@@ -60,6 +60,7 @@ export class ProductCatalog {
 
     products: (button) => {
       button.setAttribute("data-toggle", "list");
+      button.setAttribute("type", "button");
       button.textContent = "Ocultar ";
 
       const buttonIcon = iconController.generate("eye-slash");
@@ -95,6 +96,8 @@ export class ProductCatalog {
     const frag = document.createDocumentFragment();
     const header = elementController.generate("header", "products__header");
     const title = elementController.generate("h2", "products__header--title");
+    title.setAttribute("id", heading);
+
     const option = this.#generateOption(context);
 
     const categories = {
@@ -104,12 +107,12 @@ export class ProductCatalog {
       consoles: "Consoles",
     };
 
-    const titleText = document.createTextNode(categories[heading])
-    const titleSpan = elementController.generate("span", 'sr-only');
-    titleSpan.textContent = 'Categoria: '
+    const titleText = document.createTextNode(categories[heading]);
+    const titleSpan = elementController.generate("span", "sr-only");
+    titleSpan.textContent = "Categoria: ";
 
-    elementController.render(titleSpan, title)
-    elementController.render(titleText, title)
+    elementController.render(titleSpan, title);
+    elementController.render(titleText, title);
 
     elementController.render(title, header);
     elementController.render(option, header);
