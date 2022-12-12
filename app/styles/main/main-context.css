@@ -9,8 +9,12 @@
       center / cover;
 }
 
-[class*="context__main"] .main__hero {
+[class*="context__main"] .main__hero,
+.main__nav {
   padding: 1.5rem;
+}
+
+[class*="context__main"] .main__hero {
   padding-top: 4rem;
 }
 
@@ -52,12 +56,102 @@
   font-weight: 600;
 }
 
+.hero__btn,
+.main__nav--scrollup {
+  color: inherit;
+}
+
 .hero__btn {
   background-image: linear-gradient(to bottom, var(--c-red), var(--c-black--ls));
   max-width: 10rem;
   padding: 0.75rem 1rem;
-  color: inherit;
   border-radius: 2rem;
+}
+
+.main__nav--title {
+  margin-bottom: 3rem;
+}
+
+.main__nav--links,
+.nav__link--figure {
+  display: grid;
+}
+
+.main__nav--links {
+  grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr));
+  gap: 1rem;
+  list-style: none;
+}
+
+.main__nav--item {
+  border-radius: .5rem;
+  overflow: hidden;
+  flex: 1;
+}
+
+.nav__link--figure {
+  isolation: isolate;
+  position: relative;
+  min-height: 5rem;
+}
+
+.nav__link--figure img,
+.nav__link--figure figcaption, 
+.nav__link--figure::after {
+  position: absolute;
+}
+
+.nav__link--figure img,
+.nav__link--figure::after {
+  height: 100%;
+  width: 100%;
+}
+
+.nav__link--figure img {
+  object-fit: cover;
+  z-index: 1;
+}
+
+.nav__link--figure,
+.main__nav--scrollup {
+  text-align: center;
+}
+
+.nav__link--figure figcaption {
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--c-white--ds);
+  width: 100%;
+  word-wrap: break-word;
+  place-self: center;
+  z-index: 3;
+}
+
+.nav__link--figure::after,
+.main__nav--scrollup {
+  display: block;
+}
+
+.nav__link--figure::after {
+  content: "";
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.9));
+  z-index: 2;
+  pointer-events: none;
+}
+
+.main__nav--scrollup {
+  padding: 10px;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: var(--c-red);
+  position: fixed;
+  bottom: .5rem;
+  right: .5rem;
+}
+
+.main__nav--scrollup .fa-solid {
+  transform: scale(1.5);
 }
 
 .main__content {
@@ -78,6 +172,14 @@
     font-size: 1.25rem;
   }
 
+  .main__nav {
+    padding: 2rem 2.5rem;
+  }
+
+  .nav__link--figure {
+    min-height: 15rem;
+  }
+
   .main__content {
     padding-block: 3rem;
   }
@@ -94,6 +196,16 @@
 
   .hero__title,
   .hero__desc {
-    max-width: calc(50vw - var(--margin-lg) / 2);
+    max-width: calc((100vw - 9rem) / 2);
   }
+
+  .main__nav {
+    padding: 3rem 4.5rem;
+  }
+
+
+  .nav__link--figure {
+    min-height: 20rem;
+  }
+
 }
