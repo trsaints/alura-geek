@@ -13,16 +13,16 @@
 }
 
 .editor {
-  padding-block: var(--margin-lg);
+  padding-block: 64px;
 }
 
 .editor__title {
   text-align: left;
-  padding-left: 1.5rem;
+  padding-left: 24px;
 }
 
 .editor__form {
-  padding: 1.5rem;
+  padding: 24px;
 }
 
 .editor__form,
@@ -33,22 +33,22 @@
 
 .editor__fieldset {
   border: none;
-  max-width: calc(100vw - 3rem);
+  max-width: calc(100vw - 48px);
 }
 
 .editor__legend {
-  font-size: 1.125rem;
-  margin-bottom: 1rem;
+  font-size: 1.15rem;
+  margin-bottom: 16px;
 }
 
 .editor__field {
   background-color: var(--c-carbon--ls);
-  padding: 0.5rem 0.75rem 0.8125rem 0.75rem;
-  border-bottom: 0.125rem solid var(--c-gray--ls);
+  padding: 8px 12px 13px 12px;
+  border-bottom: 2px solid var(--c-gray--ls);
 }
 
 .editor__field:last-child input {
-  max-width: calc(100vw - 4.5rem);
+  max-width: calc(100vw - 72px);
 }
 
 .editor__label,
@@ -69,7 +69,7 @@
 .editor__field,
 .editor__submit,
 .editor__select {
-  border-radius: 0.25rem;
+  border-radius: 4px;
 }
 
 .editor__select {
@@ -78,9 +78,9 @@
     var(--c-carbon),
     var(--c-carbon--l)
   );
-  border: 0.0625rem solid var(--c-carbon--l);
+  border: 1px solid var(--c-carbon--l);
   text-align: center;
-  padding: 0.25rem;
+  padding: 4px;
 }
 
 .editor__select option {
@@ -91,20 +91,20 @@
   background-color: var(--c-red--l);
   color: var(--c-white--ls);
   text-transform: uppercase;
-  padding: 1rem;
+  padding: 16px;
 }
 
 @media screen and (min-width: 768px) {
   .editor__title {
-    padding-left: 2.5rem;
+    padding-left: 40px;
   }
 
   .editor__form {
-    padding: 2rem 2.5rem;
+    padding: 32px 40px;
   }
 
   .editor__fieldset {
-    max-width: calc(100vw - 5rem);
+    max-width: calc(100vw - 80px);
   }
 
   .editor__legend {
@@ -112,7 +112,7 @@
   }
 
   .editor__field:last-child input {
-    max-width: calc(100vw - 6.5rem);
+    max-width: calc(100vw - 104px);
   }
 }
 
@@ -124,7 +124,7 @@
   }
 
   .editor__form {
-    padding: 2.5rem 4.5rem;
+    padding: 40px 72px;
   }
 
   .editor__fieldset,
@@ -134,6 +134,6 @@
   }
 
   .editor__field:last-child input {
-    max-width: calc(50vw - 1.5rem);
+    max-width: calc(50vw - 24px);
   }
 }

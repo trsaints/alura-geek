@@ -2,7 +2,7 @@
   background-color: var(--c-black--l);
   color: var(--c-white);
   text-align: center;
-  padding: var(--margin-md);
+  padding: 32px;
 }
 
 .footer__link {
@@ -12,7 +12,7 @@
 
 @media screen and (min-width: 1140px) {
   .context__footer {
-    padding-inline: var(--margin-lg);
-    padding-block: var(--margin-md);
+    padding-inline: 64px;
+    padding-block: 32px;
   }
 }

@@ -16,22 +16,22 @@
 }
 
 .main__catalog {
-  padding: 1rem;
+  padding: 16px;
 }
 
 .main__catalog,
 .products__list,
 .products__card {
-  gap: 1rem;
+  gap: 16px;
 }
 
 .product__panel--content {
-  padding: var(--margin-sm) 1.5rem;
+  padding: 16px 24px;
 }
 
 .products__header,
 .card__button {
-  padding: 0.5rem;
+  padding: 8px;
 }
 
 .products__header {
@@ -51,7 +51,7 @@
     var(--c-carbon),
     var(--c-carbon--l)
   );
-  border: 0.0625rem solid var(--c-carbon--l);
+  border: 1px solid var(--c-carbon--l);
 }
 
 .products__header,
@@ -59,7 +59,7 @@
 .products__card,
 .card__figure--image,
 .card__button {
-  border-radius: 0.5rem;
+  border-radius: 8px;
 }
 
 .products__header--title,
@@ -77,12 +77,12 @@
 
 .products__header--option,
 .card__button {
-  box-shadow: 0 0 0.0625rem 0.0625rem var(--c-black);
+  box-shadow: 0 0 1px 1px var(--c-black);
 }
 
 .products__header--option,
 .product__panel--tag {
-  padding: 0.25rem 0.5rem;
+  padding: 4px 8px;
 }
 
 .card__button,
@@ -115,7 +115,7 @@
 }
 
 .products__card {
-  padding: 0.625rem;
+  padding: 10px;
   font-size: 0.9rem;
 }
 
@@ -129,7 +129,7 @@
 
 .card__figure--image {
   order: 1;
-  max-height: 9.25rem;
+  max-height: 148px;
   align-self: center;
 }
 
@@ -142,7 +142,7 @@
 .card__option,
 .card__figure,
 .product__panel--content {
-  gap: 0.5rem;
+  gap: 8px;
 }
 
 .card__figure--image,
@@ -173,7 +173,7 @@
 .product__panel--close {
   grid-area: option;
   text-align: left;
-  padding: 1.5rem;
+  padding: 24px;
 }
 
 .product__panel--content {
@@ -189,14 +189,14 @@
 }
 
 .product__panel--tag {
-  border: 0.0625rem solid var(--c-red--ls);
-  border-radius: 1.5rem;
+  border: 1px solid var(--c-red--ls);
+  border-radius: 24px;
   font-size: 0.75rem;
 }
 
 @media screen and (min-width: 768px) {
   .main__catalog {
-    padding: 2rem;
+    padding: 32px;
   }
 
   .products__list {
@@ -214,21 +214,21 @@
   }
 
   .product__panel--close {
-    padding: 1rem 2.5rem;
+    padding: 16px 40px;
   }
 
   .product__panel--banner {
-    padding: 1rem 0.5rem 1rem 2.5rem;
+    padding: 16px 8px 16px 40px;
   }
 
   .product__panel--content {
-    padding: 1rem 2.5rem 1rem 0.5rem;
+    padding: 16px 40px 16px 8px;
   }
 }
 
 @media screen and (min-width: 1140px) {
   .main__catalog {
-    padding: 3rem 4rem;
+    padding: 48px 64px;
   }
 
   .products__list {
@@ -239,20 +239,20 @@
   }
 
   .product__panel--close {
-    padding-left: 4.5rem;
+    padding-left: 72px;
   }
 
   .product__panel--banner {
-    padding: 1rem 1rem 1rem 4.5rem;
+    padding: 16px 16px 16px 72px;
   }
 
   .product__panel--content {
-    padding: 1rem 4.5rem 1rem 1rem;
+    padding: 16px 72px 16px 16px;
     align-self: center;
   }
 
   .product__panel--price {
-    font-size: 1.3125rem;
+    font-size: 1.3rem;
   }
 
   .product__panel--title {

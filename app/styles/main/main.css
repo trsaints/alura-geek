@@ -33,14 +33,6 @@
   --c-red: hsl(356, 80%, 50%);
   --c-red--l: hsl(356, 80%, 55%);
   --c-red--ls: hsl(356, 80%, 60%);
-  --margin-sm: 1rem;
-  --margin-md: 2rem;
-  --margin-lg: 4rem;
-  --margin-xlg: 8rem;
-  --gap-sm: 0.5rem;
-  --gap-md: 1rem;
-  --gap-lg: 2rem;
-  --gap-xlg: 4rem;
 }
 
 html {
@@ -49,7 +41,7 @@ html {
 
 body * {
   font-family: "Raleway", sans-serif;
-  letter-spacing: 0.0625rem;
+  letter-spacing: 1px;
 }
 
 body {
@@ -96,21 +88,20 @@ a:hover {
 
 .context__header,
 .context__info {
-  padding: var(--margin-sm) 1.5rem;
+  padding: 16px 24px;
 }
 
 @media screen and (min-width: 768px) {
   .context__header,
   .context__info {
-    padding: 2rem 2.5rem;
+    padding: 32px 40px;
   }
 }
 
 @media screen and (min-width: 1140px) {
   .context__header,
   .context__info {
-    padding-block: 2.5rem;
-    padding-inline: 4.5rem;
+    padding: 40px 72px;
   }
 }
 
@@ -137,7 +128,7 @@ select:focus {
 }
 
 *::-webkit-scrollbar {
-  width: 0.25rem;
+  width: 4px;
 }
 
 *::-webkit-scrollbar-track {
@@ -146,11 +137,11 @@ select:focus {
 
 *::-webkit-scrollbar-thumb {
   background-color: var(--c-red--ls);
-  border-radius: 0.5rem;
+  border-radius: 8px;
 }
 
 @media screen and (min-width: 512px) {
   *::-webkit-scrollbar {
-    width: 0.5rem;
+    width: 8px;
   }
 }

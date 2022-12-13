@@ -1,12 +1,12 @@
 .search__count,
 .search__placeholder {
-  padding-inline: 1.5rem;
+  padding-inline: 24px;
 }
 
 .search__placeholder,
 .search__placeholder .placeholder--img {
   display: grid;
-  gap: 1rem;
+  gap: 16px;
 }
 
 .search__placeholder {
@@ -16,27 +16,27 @@
 }
 
 .search__placeholder .placeholder--img {
-  max-width: 25rem;
+  max-width: 400px;
 }
 
 .search__results {
-  padding-block: 2rem;
+  padding-block: 32px;
 }
 
 @media screen and (min-width: 768px) {
   .search__count,
   .search__placeholder {
-    padding-inline: 2.5rem;
+    padding-inline: 40px;
   }
 
   .search__results {
-    padding-block: 3rem;
+    padding-block: 48px;
   }
 }
 
 @media screen and (min-width: 1140px) {
   .search__count,
   .search__placeholder {
-    padding-inline: 4.5rem;
+    padding-inline: 72px;
   }
 }

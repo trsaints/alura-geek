@@ -17,7 +17,7 @@
 .context__info,
 .contact--fieldset,
 .nav__list {
-  gap: 1rem;
+  gap: 16px;
 }
 
 .info__link {
@@ -46,7 +46,7 @@
 }
 
 .info__logo {
-  min-width: 10rem;
+  min-width: 160px;
 }
 
 .info__contact {
@@ -63,19 +63,19 @@
 
 .contact__section {
   background-color: var(--c-white--ds);
-  padding: 0.5rem 0.75rem;
+  padding: 8px 12px;
   color: var(--c-black);
 }
 
 .contact__section,
 .contact__submit {
-  border-radius: 0.25rem;
+  border-radius: 4px;
 }
 
 .contact__submit {
   background-color: var(--c-red--d);
-  padding: 0.75rem 1rem;
-  max-width: 12rem;
+  padding: 12px 16px;
+  max-width: 192px;
   font-weight: 600;
   color: var(--c-white--ls);
 }
@@ -99,6 +99,6 @@
   .context__info {
     grid-template-areas: "logo links form";
     grid-template-columns: 1fr 2fr 3fr;
-    gap: 4rem;
+    gap: 64px;
   }
 }
