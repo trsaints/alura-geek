@@ -15,7 +15,7 @@ const clear = (target) => {
   }
 };
 
-const getClass = (element, selector) => {
+const checkClass = (element, selector) => {
   return element.classList.contains(selector);
 };
 
@@ -24,14 +24,16 @@ const toggle = (element) => {
 };
 
 const hide = (element) => {
-  if (!getClass(element, "hidden")) {
+  if (!checkClass(element, "hidden")) {
     element.classList.add("hidden");
+    element.setAttribute('aria-hidden', true)
   }
 };
 
 const show = (element) => {
-  if (getClass(element, "hidden")) {
+  if (checkClass(element, "hidden")) {
     element.classList.remove("hidden");
+    element.removeAttribute('aria-hidden')
   }
 };
 
@@ -41,5 +43,5 @@ export const elementController = {
   clear,
   toggle,
   show,
-  hide
+  hide,
 };
