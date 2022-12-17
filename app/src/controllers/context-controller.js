@@ -53,7 +53,7 @@ const renderFactory = {
 
     setTimeout(productsController.renderCatalogs, 200);
 
-    window.location.href = "#"
+    window.location.href = "#";
 
     document.addEventListener("click", productsController.setRendering);
   },
@@ -98,6 +98,8 @@ const renderFactory = {
 
     render("editor");
     setTimeout(editorController.load, 200);
+
+    document.addEventListener("click", productsController.setRendering);
   },
 };
 

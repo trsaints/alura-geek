@@ -1,81 +1,129 @@
-<main data-main="context">
-  <section class="editor">
-    <h1 class="editor__title">Adicionar produto</h1>
+<main class="context__main--editor" data-main="context">
+  <header class="main__hero">
+    <h1 class="hero__title">Gerencie sua loja</h1>
+    <p class="hero__desc">Crie, edite e exclua produtos do seu catálogo</p>
+  </header>
 
-    <form class="editor__form" data-form="editor">
-      <fieldset class="editor__fieldset">
-        <legend class="editor__legend">Detalhes do produto</legend>
 
-        <div class="editor__field">
-          <label for="product" class="editor__label"
-            >Nome <i class="fa-solid fa-address-card" aria-hidden="true"></i
-          ></label>
-          <input id="product" class="editor__input" type="text" required />
-        </div>
+  <section class="editor__menu" data-editor="menu">
+    <h1 class="editor__menu--title">Menu</h1>
 
-        <div class="editor__field">
-          <label for="price" class="editor__label"
-            >Preço <i class="fa-solid fa-coins" aria-hidden="true"></i
-          ></label>
-          <input id="price" class="editor__input" type="text" required />
-        </div>
-
-        <div class="editor__field">
-          <label for="category" class="editor__label"
-            >Categoria <i class="fa-solid fa-tag" aria-hidden="true"></i
-          ></label>
-          <select
-            data-select="category"
-            id="category"
-            class="editor__select"
+    <nav class="editor__menu--nav">
+      <ul class="menu__options">
+        <li class="menu__option">
+          <button
+            type="button"
+            class="editor__option--button"
+            data-option="create"
           >
-            <option class="editor__select--option" value="actionFigures">
-              Action Figures
-            </option>
-            <option class="editor__select--option" value="canvases">
-              Quadros
-            </option>
-            <option class="editor__select--option" value="consoles">
-              Consoles
-            </option>
-            <option class="editor__select--option" value="keyrings">
-              Chaveiros
-            </option>
-          </select>
-        </div>
+            Adicionar Produto
+            <i class="fa-solid fa-square-plus" aria-hidden="true"></i>
+          </button>
+        </li>
 
-        <div class="editor__field">
-          <label for="description" class="editor__label"
-            >Descrição
-            <i class="fa-solid fa-circle-info" aria-hidden="true"></i
-          ></label>
-          <textarea
-            id="description"
-            class="editor__input"
-            type="text"
-            required
-          ></textarea>
-        </div>
-
-        <div class="editor__field">
-          <label for="image" class="editor__label"
-            >URL da imagem
-            <i class="fa-solid fa-camera" aria-hidden="true"></i
-          ></label>
-          <input
-            id="image"
-            class="editor__input"
-            type="file"
-            accept=".jpeg, .jpg, .png, .svg, .webp"
-            required
-          />
-        </div>
-      </fieldset>
-
-      <button type="submit" class="editor__submit">
-        Adicionar produto
-        <i class="fa-solid fa-square-plus" aria-hidden="true"></i>
-      </button>
-    </form>
+        <li class="menu__option">
+          <button
+            type="button"
+            class="editor__option--button"
+            data-option="list"
+          >
+            Listar Produtos
+            <i class="fa-solid fa-square-plus" aria-hidden="true"></i>
+          </button>
+        </li>
+      </ul>
+    </nav>
   </section>
+
+  <div class="editor__content">
+    <section class="editor hidden" data-editor="form" aria-hidden="true">
+      <h2 class="editor__title">Adicionar produto</h2>
+
+      <form class="editor__form" data-form="editor">
+        <fieldset class="editor__fieldset">
+          <legend class="editor__legend">Detalhes do produto</legend>
+
+          <div class="editor__field">
+            <label for="product" class="editor__label"
+              >Nome <i class="fa-solid fa-address-card" aria-hidden="true"></i
+            ></label>
+
+            <input id="product" class="editor__input" type="text" required />
+          </div>
+
+          <div class="editor__field">
+            <label for="price" class="editor__label"
+              >Preço <i class="fa-solid fa-coins" aria-hidden="true"></i
+            ></label>
+
+            <input id="price" class="editor__input" type="text" required />
+          </div>
+
+          <div class="editor__field">
+            <label for="category" class="editor__label"
+              >Categoria <i class="fa-solid fa-tag" aria-hidden="true"></i
+            ></label>
+
+            <select data-select="category" id="category" class="editor__select">
+              <option class="editor__select--option" value="actionFigures">
+                Action Figures
+              </option>
+
+              <option class="editor__select--option" value="canvases">
+                Quadros
+              </option>
+
+              <option class="editor__select--option" value="consoles">
+                Consoles
+              </option>
+
+              <option class="editor__select--option" value="keyrings">
+                Chaveiros
+              </option>
+            </select>
+          </div>
+
+          <div class="editor__field">
+            <label for="description" class="editor__label"
+              >Descrição
+              <i class="fa-solid fa-circle-info" aria-hidden="true"></i
+            ></label>
+
+            <textarea
+              id="description"
+              class="editor__input"
+              type="text"
+              required
+            ></textarea>
+          </div>
+
+          <div class="editor__field">
+            <label for="image" class="editor__label"
+              >URL da imagem
+              <i class="fa-solid fa-camera" aria-hidden="true"></i
+            ></label>
+
+            <input
+              id="image"
+              class="editor__input"
+              type="file"
+              accept=".jpeg, .jpg, .png, .svg, .webp"
+              required
+            />
+          </div>
+        </fieldset>
+
+        <button type="submit" class="editor__submit">
+          Adicionar produto
+          <i class="fa-solid fa-square-plus" aria-hidden="true"></i>
+        </button>
+      </form>
+    </section>
+
+    <div
+      class="main__content hidden"
+      data-content="catalog"
+      aria-hidden="true"
+    ></div>
+  </div>
 </main>

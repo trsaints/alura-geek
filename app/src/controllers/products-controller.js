@@ -62,6 +62,7 @@ const renderCatalog = (products, target) => {
       index: products.slice(0, 6),
       search: products.slice(0, 8),
       products: products,
+      editor: products
     };
 
     const context = contextService.get();

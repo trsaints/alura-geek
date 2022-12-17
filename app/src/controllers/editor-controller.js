@@ -2,31 +2,47 @@ import { StatusPanel } from "../models/StatusPanel.js";
 import { imagesService } from "../services/images-service.js";
 import { productsService } from "../services/products-service.js";
 import { elementController } from "./element-controller.js";
+import { productsController } from "./products-controller.js";
 
 const load = () => {
+  const buttons = document.querySelectorAll("[data-option]");
+  const editorForm = document.querySelector('[data-editor="form"]');
+  const editorCatalog = document.querySelector('[data-content="catalog"]');
   const form = document.querySelector('[data-form="editor"]');
 
-  form.addEventListener("submit", options.add);
+  const menuOptions = {
+    create: () => {
+      elementController.show(editorForm);
+      elementController.clear(editorCatalog);
+
+      form.addEventListener("submit", add);
+    },
+
+    list: () => {
+      elementController.clear(editorCatalog);
+      elementController.show(editorCatalog);
+
+      productsController.renderCatalogs();
+
+      elementController.hide(editorForm);
+      form.removeEventListener("submit", add);
+    },
+  };
+
+  buttons.forEach((button) => {
+    const { option } = button.dataset;
+
+    button.addEventListener("click", menuOptions[option]);
+  });
 };
 
-const options = {
-  add: (e) => {
-    e.preventDefault();
+const add = async () => {
+  const form = document.querySelector('[data-form="editor"]');
+  const editorMenu = document.querySelector('[data-editor="menu"]');
+  const formWrapper = document.querySelector('[data-editor="form"]');
+  const editor = document.querySelector('[data-main="context"]');
 
-    const form = document.querySelector('[data-form="editor"]');
-    
-    add(form).then((status) => {
-      const panel = elementController.generate("div", "status__panel");
-      const dataMain = document.querySelector('.editor');
-      elementController.render(status, panel);
-      form.remove();
-      elementController.render(panel, dataMain);
-    });
-  },
-};
-
-const add = async (form) => {
-  const elements = form.elements;
+  const { elements } = form;
   const image = elements["image"].files[0];
 
   const product = {
@@ -41,10 +57,24 @@ const add = async (form) => {
     await productsService.add(product);
     await imagesService.add(image);
   } catch (error) {
-    return new StatusPanel("fail", "add");
+    form.remove();
+    formWrapper.remove();
+    editorMenu.remove();
+    editor.appendChild(new StatusPanel("fail", "add"));
+    return;
   }
 
-  return new StatusPanel("success", "add");
+  form.remove();
+  formWrapper.remove();
+  editorMenu.remove();
+  editor.appendChild(new StatusPanel("success", "add"));
+};
+
+const edit = async (id) => {};
+
+const remove = async (id) => {
+  try {
+  } catch (error) {}
 };
 
 export const editorController = {
