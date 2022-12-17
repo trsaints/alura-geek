@@ -1,12 +1,49 @@
+.context__main--editor {
+  display: grid;
+  grid-template-areas: "header" "nav" "options";
+  grid-template-rows: auto auto;
+  gap: 16px;
+}
+
+.context__main--editor .main__hero {
+  grid-area: header;
+}
+
+.editor__menu {
+  grid-area: nav;
+  align-items: center;
+}
+
+.menu__option {
+  flex: 1;
+}
+
+.editor__option--button {
+  background-color: var(--c-carbon);
+  color: var(--c-white--ls);
+  padding: 8px 16px;
+  border-radius: 4px;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.editor__content {
+  grid-area: options;
+}
+
 .editor,
 .editor__form,
 .editor__fieldset,
-.editor__field {
+.editor__field,
+.editor__menu,
+.menu__options {
   display: flex;
   flex-flow: column nowrap;
 }
 
 .editor,
+.editor__menu,
+.menu__options,
 .editor__form,
 .editor__fieldset {
   gap: 1rem;
@@ -21,8 +58,13 @@
   padding-left: 24px;
 }
 
+.editor__menu,
 .editor__form {
   padding: 24px;
+}
+
+.menu__options {
+  list-style: none;
 }
 
 .editor__form,
@@ -99,6 +141,15 @@
     padding-left: 40px;
   }
 
+  .editor__menu {
+    padding: 40px;
+  }
+
+  .menu__options {
+    flex-direction: row;
+    gap: 24px;
+  }
+
   .editor__form {
     padding: 32px 40px;
   }
@@ -121,6 +172,10 @@
     font-size: 2rem;
     text-align: center;
     padding-left: 0;
+  }
+
+  .editor__menu {
+    padding: 72px;
   }
 
   .editor__form {
