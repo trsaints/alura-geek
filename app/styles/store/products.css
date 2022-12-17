@@ -16,7 +16,7 @@
 }
 
 .main__catalog {
-  padding: 16px;
+  padding: 24px;
 }
 
 .main__catalog,
@@ -64,7 +64,7 @@
 
 .products__header--title,
 .product__panel--title {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
 }
 
 .products__header--option {
@@ -110,13 +110,12 @@
 }
 
 .products__list {
-  grid-template-columns: repeat(auto-fit, minmax(min(156px, 100%), 9.75rem));
+  grid-template-columns: repeat(auto-fit, minmax(min(148px, 100%), 1fr));
   list-style: none;
 }
 
 .products__card {
   padding: 10px;
-  font-size: 0.9rem;
 }
 
 .card__figure--caption {
@@ -129,7 +128,7 @@
 
 .card__figure--image {
   order: 1;
-  max-height: 148px;
+  max-height: 300px;
   align-self: center;
 }
 
@@ -160,9 +159,20 @@
   line-height: 0;
 }
 
+.card__actions {
+  display: flex;
+  gap: 16px;
+}
+
 .product__panel {
   grid-template-areas: "option" "banner" "main" "related";
   grid-template-rows: auto;
+  margin-block: 24px;
+  max-width: 100vw;
+}
+
+.product__panel > * {
+  max-width: inherit;
 }
 
 .product__panel--close,
@@ -196,21 +206,22 @@
 
 @media screen and (min-width: 768px) {
   .main__catalog {
-    padding: 32px;
+    padding: 40px;
   }
 
   .products__list {
-    grid-template-columns: repeat(auto-fit, minmax(min(164px, 100%), 10.25rem));
+    grid-template-columns: repeat(auto-fit, minmax(min(160px, 100%), 160px));
   }
 
-  .products__card {
-    font-size: 1rem;
+  .card__figure--image {
+    max-height: 200px;
   }
 
   .product__panel {
     grid-template-areas: "option option" "banner main" "related related";
     grid-template-columns: 1.5fr 2fr;
     grid-template-rows: repeat(3, auto);
+    margin-block: 40px;
   }
 
   .product__panel--close {
@@ -228,14 +239,18 @@
 
 @media screen and (min-width: 1140px) {
   .main__catalog {
-    padding: 48px 64px;
+    padding: 48px 72px;
   }
 
   .products__list {
     grid-template-columns: repeat(
       auto-fit,
-      minmax(min(176px, 100%), 11.8125rem)
+      minmax(min(186px, 100%), 186px)
     );
+  }
+
+  .card__figure--image {
+    max-height: 200px;
   }
 
   .product__panel--close {
