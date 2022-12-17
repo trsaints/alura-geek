@@ -5,7 +5,7 @@ import { Card } from "./Card.js";
 
 export class ProductCatalog {
   #renderCard = (product, target) => {
-    const card = new Card(product);
+    const card = new Card(product, contextService.get());
     elementController.render(card, target);
   };
 
@@ -76,9 +76,9 @@ export class ProductCatalog {
       });
     },
 
-    search: (button) => {
-      this.#setOption.index(button);
-    },
+    search: (button) => this.#setOption.index(button),
+
+    editor: (button) => this.#setOption.products(button)
   };
 
   #generateOption = (context) => {

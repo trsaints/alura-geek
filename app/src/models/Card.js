@@ -29,7 +29,7 @@ export class Card {
     return fig;
   };
 
-  #generateContent = (product) => {
+  #generateInfo = (product) => {
     const value = elementController.generate("p", "card__content--price");
 
     const { price } = product;
@@ -44,41 +44,96 @@ export class Card {
     return value;
   };
 
-  #generateButton = (product) => {
+  #setOption = (product, context) => {
+    const { id } = product;
+
+    const options = {
+      index: () => this.#generateButton("view"),
+      search: () => options.index(),
+      products: () => options.index(),
+      editor: () => {
+        const editButton = this.#generateButton("edit");
+        const deleteButton = this.#generateButton("remove");
+        const actionsWrapper = elementController.generate(
+          "div",
+          "card__actions"
+        );
+
+        editButton.setAttribute("data-editor-action", "edit");
+        deleteButton.setAttribute("data-editor-action", "delete");
+
+        actionsWrapper.appendChild(editButton);
+        actionsWrapper.appendChild(deleteButton);
+
+        return actionsWrapper;
+      },
+    };
+
+    const result = options[context]();
+    result.setAttribute("data-product-id", id);
+    return result;
+  };
+
+  #generateButton = (action) => {
+    const contentValues = {
+      view: {
+        text: "Ver Produto ",
+        icon: "arrow-up-right-from-square",
+      },
+      edit: {
+        text: "Editar Produto ",
+        icon: "pencil",
+      },
+      remove: {
+        text: "Excluir Produto ",
+        icon: "trash-can",
+      },
+    };
+
     const button = elementController.generate("button", "card__button");
     button.setAttribute("type", "button");
-    button.dataset.productId = product.id;
-    const buttonText = document.createTextNode("Ver Produto ");
-    const buttonIcon = iconController.generate("up-right-from-square");
 
-    button.appendChild(buttonText);
+    const option = contentValues[action];
+    const isEditorAction = action === 'edit' || action === 'remove'
+
+    const buttonText = document.createTextNode(option.text);
+    const buttonIcon = iconController.generate(option.icon);
+
+    if (isEditorAction) {
+      const srSpan = elementController.generate('span', 'sr-only')
+      srSpan.appendChild(buttonText)
+      button.appendChild(srSpan);
+    } else {
+      button.appendChild(buttonText)
+    }
+
     button.appendChild(buttonIcon);
 
     return button;
   };
 
-  #generateOption = (product) => {
+  #generateContent = (product, context) => {
     const wrapper = elementController.generate("div", "card__option");
-    const button = this.#generateButton(product);
-    const price = this.#generateContent(product);
+    const actions = this.#setOption(product, context);
+    const price = this.#generateInfo(product);
 
     wrapper.appendChild(price);
-    wrapper.appendChild(button);
+    wrapper.appendChild(actions);
 
     return wrapper;
   };
 
-  #generate = (product) => {
+  #generate = (product, context) => {
     const frag = document.createDocumentFragment();
     const li = elementController.generate("li", "products__card");
     elementController.render(this.#generateBanner(product), li);
-    elementController.render(this.#generateOption(product), li);
+    elementController.render(this.#generateContent(product, context), li);
     elementController.render(li, frag);
 
     return frag;
   };
 
-  constructor(product) {
-    return this.#generate(product);
+  constructor(product, context) {
+    return this.#generate(product, context);
   }
 }
