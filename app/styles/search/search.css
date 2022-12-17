@@ -1,31 +1,42 @@
 .search__count,
 .search__placeholder {
-  padding: var(--margin-sm);
+  padding-inline: 24px;
+}
+
+.search__placeholder,
+.search__placeholder .placeholder--img {
+  display: grid;
+  gap: 16px;
 }
 
 .search__placeholder {
-  display: grid;
   place-items: center;
-  gap: 1rem;
+  text-align: center;
+  font-weight: 600;
 }
 
 .search__placeholder .placeholder--img {
-  max-width: 25rem;
-  display: grid;
-  gap: 1rem;
+  max-width: 400px;
+}
+
+.search__results {
+  padding-block: 32px;
 }
 
 @media screen and (min-width: 768px) {
   .search__count,
   .search__placeholder {
-    padding: var(--margin-md);
+    padding-inline: 40px;
+  }
+
+  .search__results {
+    padding-block: 48px;
   }
 }
 
 @media screen and (min-width: 1140px) {
   .search__count,
   .search__placeholder {
-    padding-inline: var(--margin-lg);
-    padding-block: var(--margin-md);
+    padding-inline: 72px;
   }
 }

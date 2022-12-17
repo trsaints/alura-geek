@@ -1,4 +1,5 @@
 import { elementController } from "../controllers/element-controller.js";
+import { iconController } from "../controllers/icon-controller.js";
 import { imagesController } from "../controllers/images-controller.js";
 
 export class ProductPanel {
@@ -7,9 +8,13 @@ export class ProductPanel {
       "button",
       "product__panel--close"
     );
+    const buttonText = document.createTextNode(" Voltar");
+    const buttonIcon = iconController.generate("arrow-left");
     backButton.setAttribute("type", "button");
     backButton.setAttribute("data-panel", "back");
-    backButton.textContent = "Voltar";
+
+    elementController.render(buttonIcon, backButton);
+    elementController.render(buttonText, backButton);
 
     return backButton;
   };
@@ -29,14 +34,29 @@ export class ProductPanel {
     const heading = elementController.generate("h3", "product__panel--title");
     const desc = elementController.generate("p", "product__panel--description");
     const value = elementController.generate("span", "product__panel--price");
+    const tag = elementController.generate("span", "product__panel--tag");
+    const tagIcon = iconController.generate("tag");
 
-    const { name, description, price } = product;
+    const { name, description, price, category } = product;
+
+    const categories = {
+      actionFigures: "Action Figures ",
+      keyrings: "Chaveiros ",
+      canvases: "Quadros ",
+      consoles: "Consoles ",
+    };
+
+    const tagText = document.createTextNode(categories[category]);
+
+    elementController.render(tagText, tag);
+    elementController.render(tagIcon, tag);
 
     heading.textContent = name;
     desc.textContent = description;
     value.textContent = `R$ ${price}`;
 
     elementController.render(heading, frag);
+    elementController.render(tag, frag);
     elementController.render(desc, frag);
     elementController.render(value, frag);
 

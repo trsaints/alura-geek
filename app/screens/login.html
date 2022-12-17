@@ -1,10 +1,14 @@
 <main data-main="context">
   <form data-login="form" class="login">
     <fieldset class="login__fieldset">
-      <legend class="login__title" data-login="title">Iniciar Sessão</legend>
+      <legend class="login__title" data-login="title">
+        Iniciar Sessão
+      </legend>
 
       <div class="login__field" data-login="field">
-        <label class="login__label" for="user">Usuário:</label>
+        <label class="login__label" for="user"
+          >Usuário <i class="fa-solid fa-user" aria-hidden="true"></i
+        ></label>
         <input
           id="user"
           class="login__input"
@@ -16,7 +20,9 @@
       </div>
 
       <div class="login__field" data-login="field">
-        <label class="login__label" for="password">Senha:</label>
+        <label class="login__label" for="password"
+          >Senha <i class="fa-solid fa-lock" aria-hidden="true"></i
+        ></label>
         <input
           id="password"
           class="login__input"
@@ -28,11 +34,9 @@
       </div>
     </fieldset>
 
-    <input
-      class="login__button"
-      type="submit"
-      value="Entrar"
-      data-login="submit"
-    />
+    <button class="login__button" type="submit">
+      Entrar
+      <i class="fa-solid fa-right-to-bracket" aria-hidden="true"></i>
+    </button>
   </form>
 </main>

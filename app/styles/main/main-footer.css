@@ -1,10 +1,18 @@
 .context__footer {
-  background-color: var(--c-gray--ds);
+  background-color: var(--c-black--l);
   color: var(--c-white);
   text-align: center;
-  padding: var(--margin-md);
+  padding: 32px;
 }
 
 .footer__link {
   color: var(--c-red--ls);
+  font-weight: 600;
+}
+
+@media screen and (min-width: 1140px) {
+  .context__footer {
+    padding-inline: 64px;
+    padding-block: 32px;
+  }
 }

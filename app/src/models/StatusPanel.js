@@ -21,17 +21,17 @@ export class StatusPanel {
   };
 
   #generate = (status, type) => {
-    const frag = document.createDocumentFragment();
+    const panel = elementController.generate('div', 'status__panel');
 
     const banner = this.#generateBanner(status, type);
     const homeLink = elementController.generate("a", "status__panel--link");
     homeLink.setAttribute("href", "./index.html");
     homeLink.textContent = "Voltar à página inicial";
 
-    elementController.render(banner, frag)
-    elementController.render(homeLink, frag)
+    elementController.render(banner, panel)
+    elementController.render(homeLink, panel)
 
-    return frag;
+    return panel;
   };
 
   #loadStatus = (status, type) => {

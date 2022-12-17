@@ -4,13 +4,17 @@
   flex-direction: column;
 }
 
+.status__panel {
+  padding: 24px;
+}
+
 .status__panel--banner {
-  gap: .5rem;
+  gap: 8px;
+  align-items: center;
 }
 
 .status__img {
   order: 1;
-  max-width: 25rem;
 }
 
 .status__caption {
@@ -18,7 +22,7 @@
 }
 
 .status__panel {
-  gap: 1rem;
+  gap: 16px;
 }
 
 .status__caption,
@@ -27,7 +31,7 @@
 }
 
 .status__panel--link {
-  font-size: 1.125rem;
+  font-size: 1.15rem;
   font-weight: bold;
 }
 
@@ -37,10 +41,26 @@
 
 @media screen and (min-width: 512px) {
   .status__panel {
-    gap: 1.25rem;
+    gap: 20px;
   }
 
   .status__panel--banner {
-    gap: 1rem;
+    gap: 16px;
+  }
+
+  .status__img {
+    max-width: 400px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .status__panel {
+    padding: 40px;
+  } 
+}
+
+@media screen and (min-width: 1140px) {
+  .status__panel {
+    padding: 72px;
   }
 }
