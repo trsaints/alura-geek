@@ -1,26 +1,24 @@
-import { ProductCatalog } from "../models/ProductCatalog.js";
-import { ProductPanel } from "../models/ProductPanel.js";
+import { ProductCatalog } from "../components/ProductCatalog.js";
+import { ProductPanel } from "../components/ProductPanel.js";
 import { contextService } from "../services/context-service.js";
 import { productsService } from "../services/products-service.js";
 import { elementController } from "./element-controller.js";
 
-const renderPanel = (category, id, target) => {
+const renderPanel = (category, ID, target) => {
   productsService.loadCategory(category).then((products) => {
-    const mainProduct = products.filter((product) => product.id === Number(id));
+    const mainProduct = products.filter(({ id }) => id === Number(ID));
 
-    const panel = elementController.generate("div", "product__panel");
-    panel.setAttribute("id", "product-panel");
+    const panel = new ProductPanel(mainProduct[0]);
 
-    elementController.render(new ProductPanel(mainProduct[0]), panel);
-    elementController.render(panel, target);
+    target.appendChild(panel);
     renderCatalog(products, panel);
 
     const backButton = document.querySelector('[data-panel="back"]');
     const contentWrappers = document.querySelectorAll("[data-content]");
 
     backButton.addEventListener("click", (e) => {
-      const productPanel = e.target.parentNode;
-      productPanel.remove();
+      const { parentNode } = e.target;
+      parentNode.remove();
 
       contentWrappers.forEach((wrapper) => elementController.show(wrapper));
 
@@ -30,11 +28,12 @@ const renderPanel = (category, id, target) => {
 };
 
 const setRendering = (evt) => {
-  const target = evt.target;
+  const { target } = evt;
   const isProductLoader = target.dataset.productId !== undefined;
 
   if (isProductLoader) {
-    const productId = target.dataset.productId;
+    const { productId } = target.dataset;
+
     const productCategory = target
       .closest("[data-catalog]")
       .getAttribute("data-catalog");
@@ -56,21 +55,18 @@ const setRendering = (evt) => {
 
 const renderCatalog = (products, target) => {
   if (products[0] !== undefined) {
-    const category = products[0].category;
+    const { category } = products[0];
 
     const options = {
       index: products.slice(0, 6),
       search: products.slice(0, 8),
       products: products,
-      editor: products
+      editor: products,
     };
 
     const context = contextService.get();
 
-    elementController.render(
-      new ProductCatalog(options[context], category),
-      target
-    );
+    target.appendChild(new ProductCatalog(options[context], category));
   }
 };
 

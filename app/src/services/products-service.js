@@ -1,16 +1,14 @@
 const preload = async () => {
-  const prodcuts = await fetch("./app/db/products.json");
+  const response = await fetch("./app/db/products.json");
 
   try {
-    return prodcuts.json();
+    if (response.ok) return response.json();
   } catch (error) {
     console.error(error);
   }
 };
 
-const checkPreLoad = () => {
-  return localStorage.getItem("preloaded");
-};
+const checkPreLoad = () => localStorage.getItem("preloaded");
 
 const setStructure = (db, data) => {
   const productsObjStore = db.createObjectStore("products", {
@@ -47,9 +45,10 @@ const configure = async () => {
     setStructure(result, baseData.categories);
   });
 
-  request.addEventListener("error", () => {
-    throw new Error("Não foi possível configurar o banco de dados");
-  });
+  request.addEventListener(
+    "error",
+    () => new Error("Não foi possível configurar o banco de dados")
+  );
 
   localStorage.setItem("preloaded", true);
 };
@@ -64,9 +63,7 @@ const loadAll = (record) => {
       const objStore = transaction.objectStore(record);
       const data = objStore.getAll();
 
-      data.addEventListener("success", () => {
-        resolve(data.result);
-      });
+      data.addEventListener("success", () => resolve(data.result));
 
       data.addEventListener("error", () =>
         reject(new Error("Não foi possível realizar a operação"))

@@ -1,4 +1,4 @@
-import { StatusPanel } from "../models/StatusPanel.js";
+import { StatusPanel } from "../components/StatusPanel.js";
 import { imagesService } from "../services/images-service.js";
 import { productsService } from "../services/products-service.js";
 import { elementController } from "./element-controller.js";

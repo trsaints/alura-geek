@@ -3,8 +3,10 @@ import { productsService } from "./products-service.js";
 const preloadBlob = async (name) => {
   const file = await fetch(`./app/assets/images/${name}`);
 
-  if (file.ok) {
-    return file.blob();
+  try {
+    if (file.ok) return file.blob();
+  } catch (error) {
+    throw new Error(`Não foi possível pré-carregar imagem: ${error}`);
   }
 };
 
@@ -49,9 +51,7 @@ const setStructure = (db, blobs) => {
       .transaction("images", "readwrite")
       .objectStore("images");
 
-    blobs.forEach((blob) => {
-      objStore.add(blob);
-    });
+    blobs.forEach((blob) => objStore.add(blob));
 
     console.log("Banco de imagens configurado com sucesso");
   });
@@ -66,9 +66,7 @@ const load = async (name) => {
       const objStore = result.transaction("images").objectStore("images");
       const data = objStore.get(name);
 
-      data.addEventListener("success", () => {
-        resolve(data.result);
-      });
+      data.addEventListener("success", () => resolve(data.result));
 
       data.addEventListener("error", () =>
         reject(new Error("Não foi possível realizar a operação"))
@@ -88,9 +86,10 @@ const configure = async () => {
     setStructure(result, blobs);
   });
 
-  request.addEventListener("error", () => {
-    throw new Error("Não foi possível configurar o banco de imagens");
-  });
+  request.addEventListener(
+    "error",
+    () => new Error("Não foi possível configurar o banco de imagens")
+  );
 };
 
 export const imagesService = {

@@ -1,17 +1,14 @@
-import { elementController } from "../controllers/element-controller.js";
 import { imagesController } from "../controllers/images-controller.js";
-import { iconController } from "../controllers/icon-controller.js";
+import { ClassElement } from "./ClassElement.js";
+import { Icon } from "./Icon.js";
 
-export class Card {
+export class Card extends ClassElement {
   #generateBanner = (product) => {
-    const fig = elementController.generate("figure", "card__figure");
-    const caption = elementController.generate(
-      "figcaption",
-      "card__figure--caption"
-    );
-    const img = elementController.generate("img", "card__figure--image");
+    const fig = new ClassElement("figure", "card__figure");
+    const caption = new ClassElement("figcaption", "card__figure--caption");
+    const img = new ClassElement("img", "card__figure--image");
 
-    const nameSpan = elementController.generate("span", "sr-only");
+    const nameSpan = new ClassElement("span", "sr-only");
     nameSpan.textContent = "Nome: ";
 
     const { name, image } = product;
@@ -21,27 +18,28 @@ export class Card {
     img.setAttribute("alt", `Imagem de ${name}`);
     imagesController.setURL(image, img);
 
-    elementController.render(nameSpan, caption);
-    elementController.render(nameTag, caption);
-    elementController.render(caption, fig);
-    elementController.render(img, fig);
+    caption.appendChild(nameSpan);
+    caption.appendChild(nameTag);
+    fig.appendChild(caption);
+    fig.appendChild(img);
 
     return fig;
   };
 
   #generateInfo = (product) => {
-    const value = elementController.generate("p", "card__content--price");
+    const contentPrice = new ClassElement("p", "card__content--price");
 
     const { price } = product;
 
-    const screenreaderSpan = elementController.generate("span", "sr-only");
+    const screenreaderSpan = new ClassElement("span", "sr-only");
 
     const valueTag = document.createTextNode(`R$${price}`);
     screenreaderSpan.textContent = "Preço: ";
-    elementController.render(screenreaderSpan, value);
-    elementController.render(valueTag, value);
 
-    return value;
+    contentPrice.appendChild(screenreaderSpan);
+    contentPrice.appendChild(valueTag);
+
+    return contentPrice;
   };
 
   #setOption = (product, context) => {
@@ -54,10 +52,7 @@ export class Card {
       editor: () => {
         const editButton = this.#generateButton("edit");
         const deleteButton = this.#generateButton("remove");
-        const actionsWrapper = elementController.generate(
-          "div",
-          "card__actions"
-        );
+        const actionsWrapper = new ClassElement("div", "card__actions");
 
         editButton.setAttribute("data-editor-action", "edit");
         deleteButton.setAttribute("data-editor-action", "delete");
@@ -90,21 +85,21 @@ export class Card {
       },
     };
 
-    const button = elementController.generate("button", "card__button");
+    const button = new ClassElement("button", "card__button");
     button.setAttribute("type", "button");
 
-    const option = contentValues[action];
-    const isEditorAction = action === 'edit' || action === 'remove'
+    const { text, icon } = contentValues[action];
+    const isEditorAction = action === "edit" || action === "remove";
 
-    const buttonText = document.createTextNode(option.text);
-    const buttonIcon = iconController.generate(option.icon);
+    const buttonText = document.createTextNode(text);
+    const buttonIcon = new Icon(icon);
 
     if (isEditorAction) {
-      const srSpan = elementController.generate('span', 'sr-only')
-      srSpan.appendChild(buttonText)
+      const srSpan = new ClassElement("span", "sr-only");
+      srSpan.appendChild(buttonText);
       button.appendChild(srSpan);
     } else {
-      button.appendChild(buttonText)
+      button.appendChild(buttonText);
     }
 
     button.appendChild(buttonIcon);
@@ -113,7 +108,7 @@ export class Card {
   };
 
   #generateContent = (product, context) => {
-    const wrapper = elementController.generate("div", "card__option");
+    const wrapper = new ClassElement("div", "card__option");
     const actions = this.#setOption(product, context);
     const price = this.#generateInfo(product);
 
@@ -123,17 +118,12 @@ export class Card {
     return wrapper;
   };
 
-  #generate = (product, context) => {
-    const frag = document.createDocumentFragment();
-    const li = elementController.generate("li", "products__card");
-    elementController.render(this.#generateBanner(product), li);
-    elementController.render(this.#generateContent(product, context), li);
-    elementController.render(li, frag);
-
-    return frag;
-  };
-
   constructor(product, context) {
-    return this.#generate(product, context);
+    const card = super("li", "products__card");
+
+    card.appendChild(this.#generateBanner(product));
+    card.appendChild(this.#generateContent(product, context));
+
+    return card;
   }
 }

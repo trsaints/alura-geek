@@ -1,10 +1,7 @@
-const checkEntry = () => {
-  return localStorage.getItem("has_account_db_created");
-};
+const checkEntry = () => localStorage.getItem("has_account_db_created");
 
-const setStructure = (db) => {
+const setStructure = (db) =>
   db.createObjectStore("accounts", { keyPath: "user", autoIncrement: false });
-};
 
 const createAccount = (account) => {
   const dbRequest = window.indexedDB.open("ag_user", 1);
@@ -16,9 +13,9 @@ const createAccount = (account) => {
     const accStore = transaction.objectStore("accounts");
     const request = accStore.add(account);
 
-    request.addEventListener("success", (evt) => {
-      console.log("Conta registrada com sucesso");
-    });
+    request.addEventListener("success", (_e) =>
+      console.log("Conta registrada com sucesso")
+    );
   });
 };
 
@@ -31,7 +28,7 @@ const login = (user, password) => {
       const objStore = result.transaction("accounts").objectStore("accounts");
       const storeData = objStore.get(user);
 
-      storeData.addEventListener("success", (evt) => {
+      storeData.addEventListener("success", (_evt) => {
         const account = auth(storeData, password);
 
         if (account.valid) {
@@ -69,9 +66,9 @@ const configure = () => {
   const request = window.indexedDB.open("ag_user", 1);
 
   request.addEventListener("upgradeneeded", (evt) => {
-    const db = evt.target.result;
+    const { result } = evt.target;
 
-    setStructure(db);
+    setStructure(result);
 
     loginService.createAccount({
       user: "root",

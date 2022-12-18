@@ -11,8 +11,8 @@ const search = async (keywords, list) => {
 
 const getCount = async (keywords) => {
   const refList = await productsService.loadAll("products");
-  const result = await search(keywords, refList);
-  return result.length;
+  const { length } = await search(keywords, refList);
+  return length;
 };
 
 export const searchingService = {
