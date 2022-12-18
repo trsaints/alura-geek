@@ -7,32 +7,38 @@
           "name": "Playstation 5",
           "price": "4449.99",
           "image": "playstation_5_produto-700x700.webp",
-          "description": "PlayStation5: O console PS5 oferece novas possibilidades de jogabilidade que você nunca imaginou. Reproduza jogos para PS5 e PS4 em Blu-ray Disc. Além disso, você também pode baixar jogos digitais para PS5 e PS4 pela PlayStation Store. Experimente o carregamento extremamente rápido do SSD de ultra-velocidade, uma imersão mais profunda com suporte à resposta tátil, gatilhos adaptáveis e áudio 3D. Além de uma geração totalmente nova de jogos incríveis PlayStation."        },
+          "description": "PlayStation5: O console PS5 oferece novas possibilidades de jogabilidade que você nunca imaginou. Reproduza jogos para PS5 e PS4 em Blu-ray Disc. Além disso, você também pode baixar jogos digitais para PS5 e PS4 pela PlayStation Store. Experimente o carregamento extremamente rápido do SSD de ultra-velocidade, uma imersão mais profunda com suporte à resposta tátil, gatilhos adaptáveis e áudio 3D. Além de uma geração totalmente nova de jogos incríveis PlayStation."
+        },
         {
           "name": "Xbox Series S",
           "price": "2034.44",
           "image": "xbox_series_s.webp",
-          "description": "Xbox series s, nosso xbox menor e mais elegante de todos os tempos; com taxas de quadros mais altas, tempos de carregamento mais rápidos e mundos mais ricos e dinâmicos, o xbox series s oferece desempenho e velocidade de última geração em um formato compacto e totalmente digital."        },
+          "description": "Xbox series s, nosso xbox menor e mais elegante de todos os tempos; com taxas de quadros mais altas, tempos de carregamento mais rápidos e mundos mais ricos e dinâmicos, o xbox series s oferece desempenho e velocidade de última geração em um formato compacto e totalmente digital."
+        },
         {
           "name": "Nintendo Switch",
           "price": "2349.90",
           "image": "nintendo_switch.jpg",
-          "description": "Adquira o console de videogames que lhe possibilita jogar seus jogos favoritos, onde você quiser e da maneira que preferir; inclui o console Nintendo switch e a base do Nintendo switch pretos e os controles joy‑con esquerdo e direito em cinza; também inclui tudo o que você precisa para começar."        },
+          "description": "Adquira o console de videogames que lhe possibilita jogar seus jogos favoritos, onde você quiser e da maneira que preferir; inclui o console Nintendo switch e a base do Nintendo switch pretos e os controles joy‑con esquerdo e direito em cinza; também inclui tudo o que você precisa para começar."
+        },
         {
           "name": "Steam Deck",
           "price": "3599.99",
           "image": "steam-deck.jpg",
-          "description": "Um computador portátil feito para jogar. O Steam Deck oferece os jogos e os recursos do Steam que você adora em um formato conveniente para levar consigo aonde quiser."        },
+          "description": "Um computador portátil feito para jogar. O Steam Deck oferece os jogos e os recursos do Steam que você adora em um formato conveniente para levar consigo aonde quiser."
+        },
         {
           "name": "Xbox Series X",
           "price": "4499.99",
           "image": "xbox_series_x.jpg",
-          "description": "Apresentamos o xbox series x, nosso console mais rápido e poderoso de todos os tempos; jogue milhares de títulos de quatro gerações de consoles- todos os jogos têm melhor aparência e são melhor executados no xbox series x; no coração do series x está a xbox velocity architecture, que combina um ssd personalizado e software integrado para diminuir significativamente os tempos de carregamento dentro e fora do jogo; troque simultaneamente entre vários jogos em um instante com o quick resume; explore novos mundos e desfrute da ação como nunca antes com 12 teraflops incomparáveis de poder de processamento gráfico."        },
+          "description": "Apresentamos o xbox series x, nosso console mais rápido e poderoso de todos os tempos; jogue milhares de títulos de quatro gerações de consoles- todos os jogos têm melhor aparência e são melhor executados no xbox series x; no coração do series x está a xbox velocity architecture, que combina um ssd personalizado e software integrado para diminuir significativamente os tempos de carregamento dentro e fora do jogo; troque simultaneamente entre vários jogos em um instante com o quick resume; explore novos mundos e desfrute da ação como nunca antes com 12 teraflops incomparáveis de poder de processamento gráfico."
+        },
         {
           "name": "Playstation 4 Slim",
           "price": "2899.99",
           "image": "playstation-4-slim.jpg",
-          "description": "O PS4 Slim possui um design menor, economia de energia e um novo Dual Shock 4 O sistema PlayStation 4 é o melhor lugar para jogar com dinâmica, jogos conectados, velocidade e gráficos poderosos, personalização inteligente, capacidades sociais profundamente integradas e funções inovadoras de tela secundária. Traz esta edição especial para os fâs do cabaleiro da noite. O sistema do PS4 foca nos jogadores, garantindo que os melhores jogos e a experiência mais imersiva seja possível na plataforma. O PS4 é centrado em um poderoso chip personalizado que contém oito núcleos x86-64 e um tecnológico processador gráfico 1.84 TFLOPS com um sistema unificado de memória GDDR5 ultra rápido de 8 GB, facilitando a criação de jogos e aumentando a riqueza de conteúdo possível na plataforma."        }
+          "description": "O PS4 Slim possui um design menor, economia de energia e um novo Dual Shock 4 O sistema PlayStation 4 é o melhor lugar para jogar com dinâmica, jogos conectados, velocidade e gráficos poderosos, personalização inteligente, capacidades sociais profundamente integradas e funções inovadoras de tela secundária. Traz esta edição especial para os fâs do cabaleiro da noite. O sistema do PS4 foca nos jogadores, garantindo que os melhores jogos e a experiência mais imersiva seja possível na plataforma. O PS4 é centrado em um poderoso chip personalizado que contém oito núcleos x86-64 e um tecnológico processador gráfico 1.84 TFLOPS com um sistema unificado de memória GDDR5 ultra rápido de 8 GB, facilitando a criação de jogos e aumentando a riqueza de conteúdo possível na plataforma."
+        }
       ]
     },
     {
@@ -42,43 +48,50 @@
           "name": "Baby Yoda ─ The Mandalorian",
           "price": "699.99",
           "image": "estatua-baby-yoda.jpeg",
-          "description": "The Child está conquistando o mundo, e agora crianças e fãs podem levar uma para casa! Adicione muita diversão a qualquer coleção de Star Wars com esta figura de Star Wars The Child. Imagine que todos os caçadores de recompensas da galáxia estão perseguindo The Child (porque, vamos ser sinceros, eles estão) e proteja essa criatura adorável de todos eles! Com design inspirado na série live-action e vários pontos de articulação para uma grande diversão, crianças e fãs de todas as idades vão adorar imaginar momentos favoritos da galáxia Star Wars!"        },
+          "description": "The Child está conquistando o mundo, e agora crianças e fãs podem levar uma para casa! Adicione muita diversão a qualquer coleção de Star Wars com esta figura de Star Wars The Child. Imagine que todos os caçadores de recompensas da galáxia estão perseguindo The Child (porque, vamos ser sinceros, eles estão) e proteja essa criatura adorável de todos eles! Com design inspirado na série live-action e vários pontos de articulação para uma grande diversão, crianças e fãs de todas as idades vão adorar imaginar momentos favoritos da galáxia Star Wars!"
+        },
         {
           "name": "Thanos ─ Avengers: Endgame",
           "price": "399.99",
           "image": "estatua-thanos-avengers-infinity-war.webp",
-          "description": "Thanos é um personagem fictício, um supervilão inspirado em Thanatos, ele aparece nas histórias em quadrinhos publicadas pela Marvel Comics. O personagem é descrito geralmente como um Titã louco, já que, apesar de ser poderoso, ele era rejeitado pelos outros por causa de sua aparência. O personagem apareceu pela primeira vez em Iron Man 55 (fevereiro de 1973) e foi criado pelo escritor-artista Jim Starlin, que admitiu ter se inspirado em Em Thanatos, o deus grego da morte na criação do Titã Louco. Estreando ainda na Era de Prata, a personagem tem sido destaque em mais de quatro décadas de continuidade do Universo Marvel e em uma série de histórias em quadrinhos auto-intitulada."        },
+          "description": "Thanos é um personagem fictício, um supervilão inspirado em Thanatos, ele aparece nas histórias em quadrinhos publicadas pela Marvel Comics. O personagem é descrito geralmente como um Titã louco, já que, apesar de ser poderoso, ele era rejeitado pelos outros por causa de sua aparência. O personagem apareceu pela primeira vez em Iron Man 55 (fevereiro de 1973) e foi criado pelo escritor-artista Jim Starlin, que admitiu ter se inspirado em Em Thanatos, o deus grego da morte na criação do Titã Louco. Estreando ainda na Era de Prata, a personagem tem sido destaque em mais de quatro décadas de continuidade do Universo Marvel e em uma série de histórias em quadrinhos auto-intitulada."
+        },
         {
           "name": "Ellie ─ The Last of Us II",
           "price": "499.99",
           "image": "estatua-ellie-the-last-of-us-ii.webp",
-          "description": "Do videogame The Last of Us Parte II, Dark Horse apresenta a figura de Ellie com Bow. Com 21 centímetros de altura, esta impressionante figura de Ellie foi esculpida pelos artistas da Naughty Dog e prototipada e pintada pelo Gentle Giant Studios, oferecendo detalhes meticulosos e autenticidade."        },
+          "description": "Do videogame The Last of Us Parte II, Dark Horse apresenta a figura de Ellie com Bow. Com 21 centímetros de altura, esta impressionante figura de Ellie foi esculpida pelos artistas da Naughty Dog e prototipada e pintada pelo Gentle Giant Studios, oferecendo detalhes meticulosos e autenticidade."
+        },
         {
           "name": "Goku ─ Dragon Ball Super",
           "price": "252.99",
           "image": "estatua-goku-dragon-ball-super.webp",
-          "description": ""
+          "description": "Da série de anime Dragon Ball Super, chega uma versão especial DXF da coleção 'Super Warriors', com a forma mais incrível de Goku que a série já viu! No último momento de uma desesperada tentativa heróica de salvar seu universo, quando tudo parecia perdido, o espírito supremo de batalha e sobrevivência despertou em nosso herói para revelar um nível de poder que até os deuses temem. Veja o Ultra Instinto Superior Goku! Com o seu ataque de explosão Kamehameha, esta figura será definitivamente o item 'obrigatório' para todos os fãs de Dragon Ball. Esta figura é a primeira a ser lançada com o novo poder do Goku."
         },
         {
           "name": "Boruto ─ Boruto: Naruto Next Generations",
           "price": "289.99",
           "image": "estatua-boruto-boruto-next-generations.webp",
-          "description": "Expanda sua coleção Naruto com esta figura Uzumaki Naruto da popular série Boruto: Naruto Next Generations! Ele tem cerca de 21 centímetros de altura e foi fielmente recriado."        },
+          "description": "Expanda sua coleção Naruto com esta figura Uzumaki Naruto da popular série Boruto: Naruto Next Generations! Ele tem cerca de 21 centímetros de altura e foi fielmente recriado."
+        },
         {
           "name": "Kratos ─ God of War",
           "price": "293.99",
           "image": "estatua-kratos-god-of-war.png",
-          "description": "Muitos anos se passaram desde que Kratos se vingou contra os deuses do Olimpo. Tendo sobrevivido ao seu último encontro com o pai, Zeus, Kratos vive agora com o seu jovem filho no mundo dos deuses nórdicos, a terra selvagem habitada por muitos monstros e guerreiros ferozes. A fim de ensinar seu filho a sobreviver em tal mundo, Kratos deve dominar a raiva que o impulsionou por muitos anos e abraçar seu recém-descoberto papel de pai e mentor."        },
+          "description": "Muitos anos se passaram desde que Kratos se vingou contra os deuses do Olimpo. Tendo sobrevivido ao seu último encontro com o pai, Zeus, Kratos vive agora com o seu jovem filho no mundo dos deuses nórdicos, a terra selvagem habitada por muitos monstros e guerreiros ferozes. A fim de ensinar seu filho a sobreviver em tal mundo, Kratos deve dominar a raiva que o impulsionou por muitos anos e abraçar seu recém-descoberto papel de pai e mentor."
+        },
         {
           "name": "Capitão Pátria ─ The Boys",
           "price": "349.99",
           "image": "action-figure-homelander-the-boys.jpg",
-          "description": "The Boys é uma criação de história em quadrinhos da dupla Garth Ennis e Darick Robertson. Ennis é um gigante no mundo dos quadrinhos, já tendo passagens e criações incríveis e irreverentes como Preacher, Hitman e Justiceiro. E toda essa irreverência e quebra de padrões ficou a mostra para todo o mundo quando a Amazon decidiu transformar os quadrinhos em série de TV, marcada pelo comportamento abusivo, absurdo, egoísta e criminoso de seus supostos super-heróis. Já tem duas temporadas lançadas e com uma terceira a dias de ser lançada(que promete chocar mais ainda a todos), se você está procurando uma série de super-heróis que fuja do convencional e que desafie os limites da sua capacidade de ser moralmente chocado, The Boys é pra você. Este é a figura articulada do Homelander, o alucinado e problemático Capitão Pátria, da coleção Ultimate da NECA. Ele tem 17 cm de altura."        },
+          "description": "The Boys é uma criação de história em quadrinhos da dupla Garth Ennis e Darick Robertson. Ennis é um gigante no mundo dos quadrinhos, já tendo passagens e criações incríveis e irreverentes como Preacher, Hitman e Justiceiro. E toda essa irreverência e quebra de padrões ficou a mostra para todo o mundo quando a Amazon decidiu transformar os quadrinhos em série de TV, marcada pelo comportamento abusivo, absurdo, egoísta e criminoso de seus supostos super-heróis. Já tem duas temporadas lançadas e com uma terceira a dias de ser lançada(que promete chocar mais ainda a todos), se você está procurando uma série de super-heróis que fuja do convencional e que desafie os limites da sua capacidade de ser moralmente chocado, The Boys é pra você. Este é a figura articulada do Homelander, o alucinado e problemático Capitão Pátria, da coleção Ultimate da NECA. Ele tem 17 cm de altura."
+        },
         {
           "name": "Tomioka ─ Demon Slayer",
           "price": "296.99",
           "image": "estatua-tomioka-demon-slayer.jpg",
-          "description": "Uma coleção essencial para todos os fãs de anime. Adequado para quarto, sala de estar, casa, escritório, carro, sofá, livraria, hotel, clube, festa e todos os lugares que você gosta. Também pode ser usado como presente de aniversário ou Natal."        }
+          "description": "Uma coleção essencial para todos os fãs de anime. Adequado para quarto, sala de estar, casa, escritório, carro, sofá, livraria, hotel, clube, festa e todos os lugares que você gosta. Também pode ser usado como presente de aniversário ou Natal."
+        }
       ]
     },
     {
@@ -88,42 +101,50 @@
           "name": "The Joker",
           "price": "7.99",
           "image": "chaveiro-the-joker.webp",
-          "description": "Chaveiro emborrachado Coringa! Para dar de presente ou colecionar Material emborrachado argola de metal! Tamanho 6cm aproximadamente. Qualquer dúvida estamos a disposição."        },
+          "description": "Chaveiro emborrachado Coringa! Para dar de presente ou colecionar Material emborrachado argola de metal! Tamanho 6cm aproximadamente. Qualquer dúvida estamos a disposição."
+        },
         {
           "name": "Street Figher V",
           "price": "8.99",
           "image": "chaveiro-street-fighter-v-mdf.webp",
-          "description": "O Chaveiro Emborrachado Street Fighter é um ótimo presente criativo para os fãs de um dos jogos mais populares do mundo. Você mais geek até na hora de carregar suas chaves!"        },
+          "description": "O Chaveiro Emborrachado Street Fighter é um ótimo presente criativo para os fãs de um dos jogos mais populares do mundo. Você mais geek até na hora de carregar suas chaves!"
+        },
         {
           "name": "Chaveiro Relíquias da Morte ─ Harry Potter",
           "price": "8.49",
           "image": "chaveiro-harry-potter-reliquias-da-morte.jpeg",
-          "description": "Chaveiro Relíquias da Morte Harry Potter Emborrachado Tenha esse acessório da saga do bruxinho mais famoso do mundo. Ideal para usar em bolsas, mochilas e chaves."        },
+          "description": "Chaveiro Relíquias da Morte Harry Potter Emborrachado Tenha esse acessório da saga do bruxinho mais famoso do mundo. Ideal para usar em bolsas, mochilas e chaves."
+        },
         {
           "name": "Super Nintendo",
           "price": "12.49",
           "image": "chaveiro-super-nintendo.jpeg",
-          "description": "O Chaveiro Geek Emborrachado Super Nintendo é um ótimo presente criativo para os fãs de games retrô. Você mais geek até na hora de carregar suas chaves!"        },
+          "description": "O Chaveiro Geek Emborrachado Super Nintendo é um ótimo presente criativo para os fãs de games retrô. Você mais geek até na hora de carregar suas chaves!"
+        },
         {
           "name": "Sonic the Hedgehog",
           "price": "11.99",
           "image": "chaveiro-sonic.webp",
-          "description": "Chaveiro Sonic precisa de uma ajudinha para derrotar o boss e passar de fase com algumas moedinhas extras? gente te ajuda! Com esse chaveiro, suas gameplays ficam muito mais completas e divertidas! "        },
+          "description": "Chaveiro Sonic precisa de uma ajudinha para derrotar o boss e passar de fase com algumas moedinhas extras? gente te ajuda! Com esse chaveiro, suas gameplays ficam muito mais completas e divertidas! "
+        },
         {
           "name": "Escola do Lobo ─ The Witcher",
           "price": "22.99",
           "image": "chaveiro-escola-do-lobo-the-witcher.jpg",
-          "description": ""        },
+          "description": "Tenha o poder do lobo branco em suas mãos com esse lindo colar do witcher!"
+        },
         {
           "name": "Spider-Man",
           "price": "28.88",
           "image": "chaveiro-spiderman.jpg",
-          "description": "Chaveiros personalizados, Homem Aranha Colecionáveis! Homem Aranha, para você ou para Presente é um produto que todos querem ter ou ganhar! Todos nossos produtos são embalados individualmente em um blister super bacana!! Pedidos confirmados até as 12:00 serão expedidos no mesmo dia!"        },
+          "description": "Chaveiros personalizados, Homem Aranha Colecionáveis! Homem Aranha, para você ou para Presente é um produto que todos querem ter ou ganhar! Todos nossos produtos são embalados individualmente em um blister super bacana!! Pedidos confirmados até as 12:00 serão expedidos no mesmo dia!"
+        },
         {
           "name": "Kindred ─ League of Legends",
           "price": "19.89",
           "image": "chaveiro-kindred-league-of-legends.webp",
-          "description": "Leve para todo lado com as suas chaves esse chaveiro irado inspirado no seu jogo favorito! Dimensões aproximadas: 4,5 cm x 5 cm Peso: 0,015 kg Materiais:metal."        }
+          "description": "Leve para todo lado com as suas chaves esse chaveiro irado inspirado no seu jogo favorito! Dimensões aproximadas: 4,5 cm x 5 cm Peso: 0,015 kg Materiais:metal."
+        }
       ]
     },
     {
@@ -133,42 +154,50 @@
           "name": "Capitão América",
           "price": "135.90",
           "image": "quadro-capitao-america.webp",
-          "description": "Os quadros e pôsteres são peças indispensáveis na decoração de qualquer cômodo ou estabelecimento. Na realidade, é quase que indispensável em qualquer ambiente, se tornando peça essencial. Capitão América é um super-herói de histórias em quadrinhos americanos publicado pela Marvel Comics. Criado por Joe Simon e Jack Kirby, o primeiro personagem apareceu em Captain America Comics # 1 (março de 1941) da Timely Comics, antecessora da Marvel Comics."        },
+          "description": "Os quadros e pôsteres são peças indispensáveis na decoração de qualquer cômodo ou estabelecimento. Na realidade, é quase que indispensável em qualquer ambiente, se tornando peça essencial. Capitão América é um super-herói de histórias em quadrinhos americanos publicado pela Marvel Comics. Criado por Joe Simon e Jack Kirby, o primeiro personagem apareceu em Captain America Comics # 1 (março de 1941) da Timely Comics, antecessora da Marvel Comics."
+        },
         {
           "name": "Rock Lee vs. Gaara ─ Naruto",
           "price": "79.99",
           "image": "quadro-rock-lee-vs-gaara-naruto.jpeg",
-          "description": "Transformar o seu ambiente ficou muito mais fácil e criativo com o Quadro com moldura Rock Lee vs Gaara, do anime Naruto. Sua decoração será elogiada por todos e seu ambiente terá um toque moderno e diferenciado.O quadro é impresso com imagens de Alta Definição, a moldura é de excelentíssima qualidade."        },
+          "description": "Transformar o seu ambiente ficou muito mais fácil e criativo com o Quadro com moldura Rock Lee vs Gaara, do anime Naruto. Sua decoração será elogiada por todos e seu ambiente terá um toque moderno e diferenciado.O quadro é impresso com imagens de Alta Definição, a moldura é de excelentíssima qualidade."
+        },
         {
           "name": "Darth Vader ─ Star Wars",
           "price": "39.90",
           "image": "quadro-darth-vader-star-wars.webp",
-          "description": "Quadro Darth Vader grande Quadro Darth Vader grande, elegante e moderno para ambientes sofisticados. Este quadro decorativo filme e séries Star Wars, está disponível em duas versões: canvas e chassis de madeira de eucalipto e canvas com moldura canaleta (branca, preta, tons de madeira)."        },
+          "description": "Quadro Darth Vader grande Quadro Darth Vader grande, elegante e moderno para ambientes sofisticados. Este quadro decorativo filme e séries Star Wars, está disponível em duas versões: canvas e chassis de madeira de eucalipto e canvas com moldura canaleta (branca, preta, tons de madeira)."
+        },
         {
           "name": "Mickey Mouse",
           "price": "49.89",
           "image": "quadro-mickey.webp",
-          "description": "Quadro Descorativo de Mickey Vintage Moldura Preta Aos apaixonados pelos clássicos Mickey, que adoram peças vintages e exclusivas, aqui vai uma novidade: coleção de quadros retrô que marcam a trajetória inesquecível e divertida do nosso amado camundongo."        },
+          "description": "Quadro Descorativo de Mickey Vintage Moldura Preta Aos apaixonados pelos clássicos Mickey, que adoram peças vintages e exclusivas, aqui vai uma novidade: coleção de quadros retrô que marcam a trajetória inesquecível e divertida do nosso amado camundongo."
+        },
         {
           "name": "Homem de Ferro",
           "price": "59.99",
           "image": "quadro-homem-de-ferro.webp",
-          "description": "Lindo Quadro Homem de Ferro Face Fundo Preto, é perfeito para você decorar qualquer ambiente, seja sua sala, quarto, cozinha até mesmo seu escritório. Impressão em alta definição e com película de proteção à sujeira, água e desbotamento."        },
+          "description": "Lindo Quadro Homem de Ferro Face Fundo Preto, é perfeito para você decorar qualquer ambiente, seja sua sala, quarto, cozinha até mesmo seu escritório. Impressão em alta definição e com película de proteção à sujeira, água e desbotamento."
+        },
         {
           "name": "Seu Madruga ─ Chaves",
           "price": "25.97",
           "image": "quadro-seu-madruga.jpg",
-          "description": "Quadro com Impressão Fotográfica em alta resolução, papel glossy fotográfico laminado em polaseal cristal 0,05mm especial com filtro Uv e alta flexibilidade, deixa a arte muito bonita e com uma durabilidade incrível evitando risco de quebras e acidentes com vidro durante o transporte e limpeza."        },
+          "description": "Quadro com Impressão Fotográfica em alta resolução, papel glossy fotográfico laminado em polaseal cristal 0,05mm especial com filtro Uv e alta flexibilidade, deixa a arte muito bonita e com uma durabilidade incrível evitando risco de quebras e acidentes com vidro durante o transporte e limpeza."
+        },
         {
           "name": "Superman",
           "price": "119.90",
           "image": "quadro-superman.jpeg",
-          "description": "Nossa coleção de quadros oficiais de Superman são perfeitos para decorar a casa de qualquer fã, enquanto te transportam para dentro do mundo do herói! Quadros decorativos, Quadros para Sala, Quadros para Quarto, Quadro decorativo. Porque, ao contrário de quadros baratos, são os quadros de parede mais PREMIUM e únicos que você já encontrou."        },
+          "description": "Nossa coleção de quadros oficiais de Superman são perfeitos para decorar a casa de qualquer fã, enquanto te transportam para dentro do mundo do herói! Quadros decorativos, Quadros para Sala, Quadros para Quarto, Quadro decorativo. Porque, ao contrário de quadros baratos, são os quadros de parede mais PREMIUM e únicos que você já encontrou."
+        },
         {
           "name": "Link ─ The Legend of Zelda",
           "price": "54.90",
           "image": "quadro-link-the-legend-of-zelda.jpg",
-          "description": "Quadro The Legend of Zelda Beath of Wild Guardião com Moldura e Vidro - Um quadro lindo com o Link, Zelda e diversos personagens de Breath of the Wild. Quadro com moldura de madeira e acabamento de gesso com vidro em 2mm e fundo de MDF. Todos os nossos quadros também acompanham o pendurador móvel que pode ser utilizado tanto na horizontal quanto na vertical. Tenha esse Quadro The Legend of Zelda Beath of Wild Guardião com Moldura e Vidro em sua parede."        }
+          "description": "Quadro The Legend of Zelda Beath of Wild Guardião com Moldura e Vidro - Um quadro lindo com o Link, Zelda e diversos personagens de Breath of the Wild. Quadro com moldura de madeira e acabamento de gesso com vidro em 2mm e fundo de MDF. Todos os nossos quadros também acompanham o pendurador móvel que pode ser utilizado tanto na horizontal quanto na vertical. Tenha esse Quadro The Legend of Zelda Beath of Wild Guardião com Moldura e Vidro em sua parede."
+        }
       ]
     }
   ]
