@@ -10,6 +10,11 @@ const load = (page) => {
   document.body.insertBefore(page, document.body.childNodes[2]);
 };
 
+const set = (context) => {
+  const contextWrapper = document.querySelector("body");
+  contextWrapper.setAttribute("data-context", context);
+};
+
 const loadPage = (page, target) => {
   const parser = new DOMParser();
 
@@ -48,7 +53,6 @@ const render = (context) => {
 
 const renderFactory = {
   products: () => {
-    document.removeEventListener("click", productsController.setRendering);
     render("products");
 
     setTimeout(productsController.renderCatalogs, 200);
@@ -59,8 +63,6 @@ const renderFactory = {
   },
 
   search: () => {
-    document.removeEventListener("click", productsController.setRendering);
-
     const searchForm = document.querySelector('[data-form="search"]');
     const searchBar = searchForm.elements["search"];
 
@@ -77,7 +79,6 @@ const renderFactory = {
   },
 
   login: () => {
-    document.removeEventListener("click", productsController.setRendering);
     render("login");
 
     setTimeout(() => {
@@ -87,15 +88,12 @@ const renderFactory = {
   },
 
   index: () => {
-    document.removeEventListener("click", productsController.setRendering);
     setTimeout(productsController.renderCatalogs, 200);
 
     document.addEventListener("click", productsController.setRendering);
   },
 
   editor: () => {
-    document.removeEventListener("click", productsController.setRendering);
-
     render("editor");
     setTimeout(editorController.load, 200);
 
@@ -103,7 +101,9 @@ const renderFactory = {
   },
 };
 
-const observe = (target) => {
+const observe = () => {
+  const contextWrapper = document.querySelector("[data-context]");
+
   const config = {
     attributes: true,
     childList: false,
@@ -116,6 +116,8 @@ const observe = (target) => {
         mutation.type === "attributes" && contextService.get() !== undefined;
 
       if (hasChangedContext) {
+        document.removeEventListener("click", productsController.setRendering);
+
         const context = contextService.get();
         renderFactory[context]();
       }
@@ -124,9 +126,10 @@ const observe = (target) => {
 
   const observer = new MutationObserver(checkMutation);
 
-  observer.observe(target, config);
+  observer.observe(contextWrapper, config);
 };
 
 export const contextController = {
   observe,
+  set,
 };
