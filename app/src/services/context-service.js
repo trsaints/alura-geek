@@ -1,28 +1,16 @@
 const load = async (context) => {
   const ctx = await fetch(`./app/screens/${context}.html`);
 
-  if (ctx.ok) {
-    return ctx.text();
+  try {
+    if (ctx.ok) return ctx.text();
+  } catch (error) {
+    throw new Error(`Não foi possível carregar contexto: ${error}`);
   }
-
-  throw new Error(`Não foi possível carregar contexto: ${ctx.status}`);
 };
 
-const check = (target, context) => {
-  return target.getAttribute("data-context") === context;
-};
-
-const get = () => {
-  return document.body.getAttribute("data-context");
-};
-
-const set = (target, context) => {
-  target.setAttribute("data-context", context)
-}
+const get = () => document.body.getAttribute("data-context");
 
 export const contextService = {
   fetch: load,
-  check,
   get,
-  set
 };

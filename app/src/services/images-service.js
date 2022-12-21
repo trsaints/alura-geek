@@ -1,19 +1,21 @@
+import { LocalDB } from "../models/LocalDB.js";
 import { productsService } from "./products-service.js";
 
 const preloadBlob = async (name) => {
   const file = await fetch(`./app/assets/images/${name}`);
 
-  if (file.ok) {
-    return file.blob();
+  try {
+    if (file.ok) return file.blob();
+  } catch (error) {
+    throw new Error(`Não foi possível pré-carregar imagem: ${error}`);
   }
 };
 
 const preloadNames = async () => {
-  const names = await productsService.loadAll("products");
-  const categories = names.map((list) => list);
+  const products = await productsService.loadAll();
   const images = [];
 
-  categories.map(({ image }) => images.push(image));
+  products.map(({ image }) => images.push(image));
 
   return images;
 };
@@ -25,76 +27,53 @@ const preload = async () => {
     return new File([blob], name);
   });
 
-  return Promise.all(blobs).then((values) => Promise.resolve(values));
+  const results = await Promise.all(blobs);
+  return await Promise.resolve(results);
 };
 
-const add = async (blob) => {
-  const request = window.indexedDB.open("ag_images", 1);
-
-  request.addEventListener("success", (e) => {
-    const { result } = e.target;
-    const objStore = result
-      .transaction("images", "readwrite")
-      .objectStore("images");
-
-    objStore.add(blob);
-  });
-};
-
-const setStructure = (db, blobs) => {
-  const newObjStore = db.createObjectStore("images", { keyPath: "name" });
-
-  newObjStore.transaction.addEventListener("complete", (evt) => {
-    const objStore = db
-      .transaction("images", "readwrite")
-      .objectStore("images");
-
-    blobs.forEach((blob) => {
-      objStore.add(blob);
-    });
-
-    console.log("Banco de imagens configurado com sucesso");
-  });
-};
-
-const load = async (name) => {
-  return new Promise((resolve, reject) => {
-    const request = window.indexedDB.open("ag_images", 1);
-
-    request.addEventListener("success", (evt) => {
-      const { result } = evt.target;
-      const objStore = result.transaction("images").objectStore("images");
-      const data = objStore.get(name);
-
-      data.addEventListener("success", () => {
-        resolve(data.result);
-      });
-
-      data.addEventListener("error", () =>
-        reject(new Error("Não foi possível realizar a operação"))
-      );
-    });
-  });
-};
+const imagesDB = new LocalDB({
+  name: "ag_images",
+  index: "name",
+  keyPath: "name",
+  objectStore: "images",
+});
 
 const configure = async () => {
-  const blobs = await preload();
+  const baseList = await preload();
 
-  const request = window.indexedDB.open("ag_images", 1);
+  const options = {
+    options: {
+      keyPath: imagesDB.keyPath,
+    },
 
-  request.addEventListener("upgradeneeded", (e) => {
-    const { result } = e.target;
+    baseData: baseList,
+  };
 
-    setStructure(result, blobs);
-  });
+  imagesDB.configure(options);
+};
 
-  request.addEventListener("error", () => {
-    throw new Error("Não foi possível configurar o banco de imagens");
+const checkPreload = imagesDB.checkPreload;
+const load = (image) => imagesDB.load(image);
+const loadAll = () => imagesDB.loadAll();
+const add = (image) => imagesDB.addObject(image);
+const remove = (image) => imagesDB.removeObject(image);
+const reset = () => imagesDB.reset();
+
+const loadURLs = async () => {
+  const images = await loadAll();
+
+  images.forEach((image) => {
+    const imageURL = URL.createObjectURL(image);
+    localStorage.setItem(image.name, imageURL);
   });
 };
 
 export const imagesService = {
+  checkPreload,
   configure,
   load,
   add,
+  remove,
+  reset,
+  loadURLs,
 };

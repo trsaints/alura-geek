@@ -4,7 +4,6 @@
     <p class="hero__desc">Crie, edite e exclua produtos do seu catálogo</p>
   </header>
 
-
   <section class="editor__menu" data-editor="menu">
     <h1 class="editor__menu--title">Menu</h1>
 
@@ -28,12 +27,126 @@
             data-option="list"
           >
             Listar Produtos
-            <i class="fa-solid fa-square-plus" aria-hidden="true"></i>
+            <i class="fa-solid fa-list" aria-hidden="true"></i>
           </button>
+        </li>
+
+        <li class="menu__option">
+          <button
+            type="button"
+            class="editor__option--button"
+            data-option="reset"
+          >
+            Restaurar configurações
+            <i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i>
+          </button>
+
+          <dialog
+            class="editor__warning hidden"
+            data-editor="reset"
+            aria-hidden="true"
+          >
+            <menu class="editor__warning--options">
+              <p class="editor__warning--message">
+                Deseja mesmo restaurar as configurações?
+              </p>
+
+              <p class="editor__warning--info">
+                Após realizar esta operação,
+                <strong>Todos os dados</strong> serão apagados
+              </p>
+
+              <button
+                class="editor__warning--action"
+                data-reset="confirm"
+                type="button"
+                value="remove"
+              >
+                Sim<span class="sr-only">, excluir dados</span>
+                <i class="fa-solid fa-trash-can" aria-hidden="true"></i>
+              </button>
+
+              <button
+                class="editor__warning--action"
+                data-reset="cancel"
+                type="button"
+                value="cancel"
+              >
+                Não<span class="sr-only">, manter minhas configurações</span>
+                <i class="fa-solid fa-circle-xmark" aria-hidden="true"></i>
+              </button>
+            </menu>
+          </dialog>
         </li>
       </ul>
     </nav>
   </section>
+
+  <nav class="main__nav hidden" aria-hidden="true" data-content="navbar">
+    <h2 class="main__nav--title">Navegue por categoria</h2>
+    <ul class="main__nav--links">
+      <li class="main__nav--item">
+        <a class="main__nav--link" href="#actionFigures">
+          <figure class="nav__link--figure">
+            <img
+              src="./app/assets/images/erik-mclean-yan_kDfdttA-unsplash.jpg"
+              alt=""
+            />
+            <figcaption>
+              Action Figures
+              <i class="fa-solid fa-robot" aria-hidden="true"></i>
+            </figcaption>
+          </figure>
+        </a>
+      </li>
+
+      <li class="main__nav--item">
+        <a class="main__nav--link" href="#consoles">
+          <figure class="nav__link--figure">
+            <img
+              src="./app/assets/images/martin-katler-caNzzoxls8Q-unsplash.jpg"
+              alt=""
+            />
+            <figcaption>
+              Consoles
+              <i class="fa-solid fa-gamepad" aria-hidden="true"></i>
+            </figcaption>
+          </figure>
+        </a>
+      </li>
+      <li class="main__nav--item">
+        <a class="main__nav--link" href="#canvases">
+          <figure class="nav__link--figure">
+            <img
+              src="./app/assets/images/nick-fewings-U32A5WknnA4-unsplash.jpg"
+              alt=""
+            />
+            <figcaption>
+              Quadros <i class="fa-solid fa-palette" aria-hidden="true"></i>
+            </figcaption>
+          </figure>
+        </a>
+      </li>
+      <li class="main__nav--item">
+        <a class="main__nav--link" href="#keyrings">
+          <figure class="nav__link--figure">
+            <img
+              src="./app/assets/images/pexels-melike-benli-12615733.jpg"
+              alt=""
+            />
+            <figcaption>
+              Chaveiros <i class="fa-solid fa-key" aria-hidden="true"></i>
+            </figcaption>
+          </figure>
+        </a>
+      </li>
+    </ul>
+
+    <a href="#" class="main__nav--scrollup">
+      <span class="sr-only">Voltar ao topo</span>
+      <i class="fa-solid fa-chevron-up" aria-hidden="true"></i>
+    </a>
+  </nav>
 
   <div class="editor__content">
     <section class="editor hidden" data-editor="form" aria-hidden="true">
@@ -125,5 +238,39 @@
       data-content="catalog"
       aria-hidden="true"
     ></div>
+
+    <dialog
+      class="editor__warning hidden"
+      data-editor="warning"
+      aria-hidden="true"
+    >
+      <menu class="editor__warning--options">
+        <p class="editor__warning--message">
+          Deseja mesmo excluir o seguinte produto?
+        </p>
+
+        <p class="editor__warning--info" data-warning="content"></p>
+
+        <button
+          class="editor__warning--action"
+          data-warning="confirm"
+          type="button"
+          value="remove"
+        >
+          Sim<span class="sr-only">, excluir produto</span>
+          <i class="fa-solid fa-trash-can" aria-hidden="true"></i>
+        </button>
+
+        <button
+          class="editor__warning--action"
+          data-warning="cancel"
+          type="button"
+          value="cancel"
+        >
+          Não<span class="sr-only">, manter produto</span>
+          <i class="fa-solid fa-circle-xmark" aria-hidden="true"></i>
+        </button>
+      </menu>
+    </dialog>
   </div>
 </main>

@@ -1,25 +1,21 @@
 import { elementController } from "../controllers/element-controller.js";
-import { iconController } from "../controllers/icon-controller.js";
 import { contextService } from "../services/context-service.js";
 import { Card } from "./Card.js";
+import { ClassElement } from "./ClassElement.js";
+import { Icon } from "./Icon.js";
 
-export class ProductCatalog {
+export class ProductCatalog extends ClassElement {
   #renderCard = (product, target) => {
     const card = new Card(product, contextService.get());
-    elementController.render(card, target);
+    target.appendChild(card);
   };
 
   #generateList = (products) => {
-    const frag = document.createDocumentFragment();
-    const ul = elementController.generate("ul", "products__list");
+    const ul = new ClassElement("ul", "products__list");
 
-    products.forEach((product) => {
-      this.#renderCard(product, ul);
-    });
+    products.forEach((product) => this.#renderCard(product, ul));
 
-    elementController.render(ul, frag);
-
-    return frag;
+    return ul;
   };
 
   #changeIcon = (button) => {
@@ -29,7 +25,7 @@ export class ProductCatalog {
 
     let statusText = "Ocultar ";
 
-    const buttonIcon = iconController.generate("eye");
+    const buttonIcon = new Icon("eye");
 
     if (target.classList.contains("hidden")) {
       statusText = "Mostrar ";
@@ -42,7 +38,7 @@ export class ProductCatalog {
     }
 
     button.textContent = statusText;
-    elementController.render(buttonIcon, button);
+    button.appendChild(buttonIcon);
   };
 
   #setOption = {
@@ -50,7 +46,7 @@ export class ProductCatalog {
       button.setAttribute("data-load", "products");
       button.setAttribute("type", "button");
 
-      const rightArrow = iconController.generate("arrow-right");
+      const rightArrow = new Icon("arrow-right");
 
       const buttonText = document.createTextNode("Ver Todos ");
 
@@ -63,8 +59,8 @@ export class ProductCatalog {
       button.setAttribute("type", "button");
       button.textContent = "Ocultar ";
 
-      const buttonIcon = iconController.generate("eye-slash");
-      elementController.render(buttonIcon, button);
+      const buttonIcon = new Icon("eye-slash");
+      button.appendChild(buttonIcon);
 
       button.addEventListener("click", () => {
         const target = button
@@ -78,14 +74,11 @@ export class ProductCatalog {
 
     search: (button) => this.#setOption.index(button),
 
-    editor: (button) => this.#setOption.products(button)
+    editor: (button) => this.#setOption.products(button),
   };
 
   #generateOption = (context) => {
-    const option = elementController.generate(
-      "button",
-      "products__header--option"
-    );
+    const option = new ClassElement("button", "products__header--option");
 
     this.#setOption[context](option);
 
@@ -93,9 +86,8 @@ export class ProductCatalog {
   };
 
   #generateHeader = (context, heading) => {
-    const frag = document.createDocumentFragment();
-    const header = elementController.generate("header", "products__header");
-    const title = elementController.generate("h2", "products__header--title");
+    const header = new ClassElement("header", "products__header");
+    const title = new ClassElement("h2", "products__header--title");
     title.setAttribute("id", heading);
 
     const option = this.#generateOption(context);
@@ -108,37 +100,30 @@ export class ProductCatalog {
     };
 
     const titleText = document.createTextNode(categories[heading]);
-    const titleSpan = elementController.generate("span", "sr-only");
+    const titleSpan = new ClassElement("span", "sr-only");
     titleSpan.textContent = "Categoria: ";
 
-    elementController.render(titleSpan, title);
-    elementController.render(titleText, title);
+    title.appendChild(titleSpan);
+    title.appendChild(titleText);
 
-    elementController.render(title, header);
-    elementController.render(option, header);
-    elementController.render(header, frag);
+    header.appendChild(title);
+    header.appendChild(option);
 
-    return frag;
+    return header;
   };
 
-  #generateCatalog = (products, category) => {
+  constructor(products, category) {
     const context = contextService.get();
 
-    const frag = document.createDocumentFragment();
-    const catalog = elementController.generate("div", "main__catalog");
-    catalog.dataset.catalog = category;
+    const catalog = super("div", "main__catalog");
+    catalog.setAttribute("data-catalog", category);
 
     const header = this.#generateHeader(context, category);
     const list = this.#generateList(products);
 
-    elementController.render(header, catalog);
-    elementController.render(list, catalog);
-    elementController.render(catalog, frag);
+    catalog.appendChild(header);
+    catalog.appendChild(list);
 
-    return frag;
-  };
-
-  constructor(products, category) {
-    return this.#generateCatalog(products, category);
+    return catalog;
   }
 }

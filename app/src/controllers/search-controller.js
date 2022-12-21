@@ -4,18 +4,19 @@ import { productsController } from "./products-controller.js";
 
 const render = async (keywords) => {
   const contentWrapper = document.querySelector("[data-search='results']");
-  const renderCount = document.querySelector('[data-search="count"]')
+  const renderCount = document.querySelector('[data-search="count"]');
   const categories = ["actionFigures", "consoles", "canvases", "keyrings"];
-  
-  const searchCount = await searchingService.getCount(keywords);
-  renderCount.textContent = `Encontrado(s) ${searchCount} resultado(s)`
 
-  categories.forEach(async (category) => {
-    const list = await productsService.loadCategory(category);
-    const match = await searchingService.search(keywords, list)
+  const products = await productsService.loadAll();
+  const { result, length } = searchingService.search(keywords, products);
 
-    productsController.renderCatalog(match, contentWrapper);
-  });  
+  renderCount.textContent = `Encontrado(s) ${length} resultado(s)`;
+
+  categories.forEach((category) => {
+    const list = productsService.loadCategory(result, category);
+
+    productsController.renderCatalog(list, contentWrapper);
+  });
 };
 
 export const searchController = {

@@ -1,16 +1,13 @@
 import { contextController } from "./controllers/context-controller.js";
-import { contextService } from "./services/context-service.js";
 import { imagesService } from "./services/images-service.js";
 import { productsService } from "./services/products-service.js";
 
 (async () => {
-  const preLoadStatus = productsService.checkPreLoad() === "true";
+  const preLoadStatus = productsService.checkPreload();
 
-  const control = () => {
-    const contextWrapper = document.querySelector("[data-context]");
-
-    contextController.observe(contextWrapper);
-    contextService.set(contextWrapper, "index");
+  const control = async () => {
+    contextController.observe();
+    contextController.set("index");
 
     const searchForm = document.querySelector('[data-form="search"]');
     searchForm.addEventListener("submit", (e) => e.preventDefault());
@@ -19,8 +16,11 @@ import { productsService } from "./services/products-service.js";
       const { target } = e;
       const dataLoader = target.closest("[data-load]");
 
-      if (dataLoader) contextService.set(contextWrapper, dataLoader.getAttribute('data-load'));
+      if (dataLoader)
+        contextController.set(dataLoader.getAttribute("data-load"));
     });
+
+    await imagesService.loadURLs();
   };
 
   if (preLoadStatus) {
