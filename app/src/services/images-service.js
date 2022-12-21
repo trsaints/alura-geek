@@ -57,6 +57,7 @@ const load = (image) => imagesDB.load(image);
 const loadAll = () => imagesDB.loadAll();
 const add = (image) => imagesDB.addObject(image);
 const remove = (image) => imagesDB.removeObject(image);
+const reset = () => imagesDB.reset();
 
 const loadURLs = async () => {
   const images = await loadAll();
@@ -73,5 +74,6 @@ export const imagesService = {
   load,
   add,
   remove,
+  reset,
   loadURLs,
 };

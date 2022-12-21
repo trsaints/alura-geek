@@ -37,6 +37,7 @@ const loadAll = () => productsDB.loadAll();
 const load = (id) => productsDB.load(id);
 const add = (product) => productsDB.addObject(product);
 const remove = (id) => productsDB.removeObject(id);
+const reset = () => productsDB.reset();
 
 const loadCategory = (data, category) =>
   data.filter((product) => product.category === category);
@@ -49,4 +50,5 @@ export const productsService = {
   loadCategory,
   add,
   remove,
+  reset,
 };

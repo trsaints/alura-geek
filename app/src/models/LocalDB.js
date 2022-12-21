@@ -40,6 +40,11 @@ export class LocalDB {
     });
   };
 
+  #reset = () => {
+    indexedDB.deleteDatabase(this.#name);
+    localStorage.removeItem(`${this.#name}_db_loaded`);
+  };
+
   #openRequest = () => window.indexedDB.open(this.#name, this.#version);
 
   #openOS = ({ result }, mode) => {
@@ -144,6 +149,10 @@ export class LocalDB {
 
   get configure() {
     return this.#configure;
+  }
+
+  get reset() {
+    return this.#reset;
   }
 
   get addObject() {

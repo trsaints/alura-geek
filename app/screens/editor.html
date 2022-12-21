@@ -27,8 +27,56 @@
             data-option="list"
           >
             Listar Produtos
-            <i class="fa-solid fa-square-plus" aria-hidden="true"></i>
+            <i class="fa-solid fa-list" aria-hidden="true"></i>
           </button>
+        </li>
+
+        <li class="menu__option">
+          <button
+            type="button"
+            class="editor__option--button"
+            data-option="reset"
+          >
+            Restaurar configurações
+            <i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i>
+          </button>
+
+          <dialog
+            class="editor__warning hidden"
+            data-editor="reset"
+            aria-hidden="true"
+          >
+            <menu class="editor__warning--options">
+              <p class="editor__warning--message">
+                Deseja mesmo restaurar as configurações?
+              </p>
+
+              <p class="editor__warning--info">
+                Após realizar esta operação,
+                <strong>Todos os dados</strong> serão apagados
+              </p>
+
+              <button
+                class="editor__warning--action"
+                data-reset="confirm"
+                type="button"
+                value="remove"
+              >
+                Sim<span class="sr-only">, excluir dados</span>
+                <i class="fa-solid fa-trash-can" aria-hidden="true"></i>
+              </button>
+
+              <button
+                class="editor__warning--action"
+                data-reset="cancel"
+                type="button"
+                value="cancel"
+              >
+                Não<span class="sr-only">, manter minhas configurações</span>
+                <i class="fa-solid fa-circle-xmark" aria-hidden="true"></i>
+              </button>
+            </menu>
+          </dialog>
         </li>
       </ul>
     </nav>
@@ -197,16 +245,28 @@
       aria-hidden="true"
     >
       <menu class="editor__warning--options">
-        <p class="editor__warning--message">Deseja mesmo excluir o seguinte produto?</p>
+        <p class="editor__warning--message">
+          Deseja mesmo excluir o seguinte produto?
+        </p>
 
         <p class="editor__warning--info" data-warning="content"></p>
 
-        <button class="editor__warning--action" data-warning="confirm" type="button" value="remove">
+        <button
+          class="editor__warning--action"
+          data-warning="confirm"
+          type="button"
+          value="remove"
+        >
           Sim<span class="sr-only">, excluir produto</span>
           <i class="fa-solid fa-trash-can" aria-hidden="true"></i>
         </button>
 
-        <button class="editor__warning--action" data-warning="cancel" type="button" value="cancel">
+        <button
+          class="editor__warning--action"
+          data-warning="cancel"
+          type="button"
+          value="cancel"
+        >
           Não<span class="sr-only">, manter produto</span>
           <i class="fa-solid fa-circle-xmark" aria-hidden="true"></i>
         </button>

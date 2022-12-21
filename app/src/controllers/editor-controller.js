@@ -5,7 +5,23 @@ import { elementController } from "./element-controller.js";
 import { productsController } from "./products-controller.js";
 
 const load = () => {
+  const resetModal = document.querySelector('[data-editor="reset"]');
+  const resetButton = resetModal.querySelector('[data-reset="confirm"]');
+  const noResetButton = resetModal.querySelector('[data-reset="cancel"]');
   const buttons = document.querySelectorAll("[data-option]");
+
+  resetButton.addEventListener("click", () => {
+    productsService.reset();
+    imagesService.reset();
+
+    window.location.reload();
+  });
+
+  noResetButton.addEventListener("click", () => {
+    console.log(noResetButton);
+    elementController.hide(resetModal);
+    resetModal.close();
+  });
 
   buttons.forEach((button) => {
     const { option } = button.dataset;
@@ -31,8 +47,8 @@ const menu = {
   list: () => {
     const editorForm = document.querySelector('[data-editor="form"]');
     const editorCatalog = document.querySelector('[data-content="catalog"]');
-    const form = document.querySelector('[data-form="editor"]');
     const editorNavbar = document.querySelector('[data-content="navbar"]');
+    const form = document.querySelector('[data-form="editor"]');
 
     elementController.clear(editorCatalog);
     elementController.show(editorCatalog);
@@ -42,6 +58,13 @@ const menu = {
 
     elementController.hide(editorForm);
     form.removeEventListener("submit", add);
+  },
+
+  reset: () => {
+    const modal = document.querySelector('[data-editor="reset"]');
+
+    elementController.show(modal);
+    modal.showModal();
   },
 };
 
@@ -92,17 +115,17 @@ const setRendering = (e) => {
 
   editorOptions[editorAction](productId);
 
-  const modal = document.querySelector('[data-editor="warning"]');
-  const deleteButton = modal.querySelector('[data-warning="confirm"]');
-  const cancelButton = modal.querySelector('[data-warning="cancel"]');
+  const actionModal = document.querySelector('[data-editor="warning"]');
+  const deleteButton = actionModal.querySelector('[data-warning="confirm"]');
+  const cancelButton = actionModal.querySelector('[data-warning="cancel"]');
 
   deleteButton.addEventListener("click", () => {
     remove(productId);
   });
 
   cancelButton.addEventListener("click", () => {
-    elementController.hide(modal);
-    modal.close();
+    elementController.hide(actionModal);
+    actionModal.close();
   });
 };
 
