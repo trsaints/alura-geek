@@ -1,87 +1,57 @@
-const checkEntry = () => localStorage.getItem("has_account_db_created");
+import { LocalDB } from "../models/LocalDB.js";
 
-const setStructure = (db) =>
-  db.createObjectStore("accounts", { keyPath: "user", autoIncrement: false });
-
-const createAccount = (account) => {
-  const dbRequest = window.indexedDB.open("ag_user", 1);
-
-  dbRequest.addEventListener("success", (evt) => {
-    const { result } = evt.target;
-    const transaction = result.transaction(["accounts"], "readwrite");
-
-    const accStore = transaction.objectStore("accounts");
-    const request = accStore.add(account);
-
-    request.addEventListener("success", (_e) =>
-      console.log("Conta registrada com sucesso")
-    );
-  });
-};
-
-const login = (user, password) => {
-  return new Promise((resolve, reject) => {
-    const request = window.indexedDB.open("ag_user", 1);
-
-    request.addEventListener("success", (evt) => {
-      const { result } = evt.target;
-      const objStore = result.transaction("accounts").objectStore("accounts");
-      const storeData = objStore.get(user);
-
-      storeData.addEventListener("success", (_evt) => {
-        const account = auth(storeData, password);
-
-        if (account.valid) {
-          resolve(account);
-        } else {
-          reject(new Error("Usuário ou senha inválidos"));
-        }
-      });
-    });
-  });
-};
-
-const auth = (store, password) => {
-  const account = store.result;
-
-  const result = {
-    valid: false,
-    root: false,
-  };
-
-  if (account !== undefined) {
-    if (account.user === "root") {
-      result.root = true;
-    }
-
-    if (account.password === password) {
-      result.valid = true;
-    }
-  }
-
-  return result;
-};
+const accountsDB = new LocalDB({
+  name: "ag_accounts",
+  index: "user",
+  keyPath: "user",
+  objectStore: "accounts",
+});
 
 const configure = () => {
-  const request = window.indexedDB.open("ag_user", 1);
-
-  request.addEventListener("upgradeneeded", (evt) => {
-    const { result } = evt.target;
-
-    setStructure(result);
-
-    loginService.createAccount({
+  const baseList = [
+    {
       user: "root",
       password: "alura4GEEK",
-    });
+    },
+  ];
 
-    localStorage.setItem("has_account_db_created", true);
-  });
+  const options = {
+    options: {
+      keyPath: accountsDB.keyPath,
+    },
+
+    baseData: baseList,
+  };
+
+  accountsDB.configure(options);
+};
+
+const load = (user) => accountsDB.load(user);
+const add = (account) => accountsDB.addObject(account);
+const checkPreload = () => accountsDB.checkPreload();
+
+const auth = async (user, password) => {
+  const account = await load(user);
+  const isEmpty = user === "" || user === null;
+
+  if (isEmpty)
+    throw new Error("Falha ao realizar autenticação: usuário não foi inserido");
+
+  if (account === undefined) throw new Error("Conta inexistente");
+
+  if (password !== account.password) throw new Error("Senha inválida");
+
+  if (account.user === "root")
+    return {
+      root: true,
+    };
+
+  return { root: false };
 };
 
 export const loginService = {
-  checkEntry,
+  checkPreload,
   configure,
-  createAccount,
-  login,
+  auth,
+  add
 };
