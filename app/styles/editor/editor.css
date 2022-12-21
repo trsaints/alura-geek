@@ -1,6 +1,6 @@
 .context__main--editor {
   display: grid;
-  grid-template-areas: "header" "nav" "options";
+  grid-template-areas: "header" "mainMenu" "nav" "options";
   grid-template-rows: auto auto;
   gap: 16px;
 }
@@ -10,8 +10,12 @@
 }
 
 .editor__menu {
-  grid-area: nav;
+  grid-area: mainMenu;
   align-items: center;
+}
+
+.context__main--editor .main__nav {
+  grid-area: nav;
 }
 
 .menu__option {
@@ -136,6 +140,64 @@
   padding: 16px;
 }
 
+.editor__warning {
+  margin: auto;
+  padding: 16px;
+  border-radius: 8px;
+  border: 2px solid var(--c-carbon);
+  max-width: 90vw;
+  background-image: linear-gradient(
+    to bottom,
+    var(--c-black--ls),
+    var(--c-carbon)
+  );
+  color: inherit;
+  text-align: center;
+}
+
+.editor__warning::backdrop {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.editor__warning--options {
+  gap: 16px;
+  display: grid;
+  grid-template-areas:
+    "title"
+    "info"
+    "option1"
+    "option2";
+}
+
+.editor__warning--message {
+  grid-area: title;
+}
+
+.editor__warning--info {
+  font-weight: 700;
+  grid-area: info;
+}
+
+.editor__warning--action {
+  background-image: linear-gradient(
+    to bottom,
+    var(--c-red--d),
+    var(--c-red--ds)
+  );
+  border-radius: 8px;
+  box-shadow: 0 0 2px black;
+  padding: 4px 8px;
+  color: inherit;
+}
+
+.editor__warning--action:first-child {
+  grid-area: option1;
+}
+
+.editor__warning--action:last-child {
+  grid-area: option2;
+}
+
 @media screen and (min-width: 768px) {
   .editor__title {
     padding-left: 40px;
@@ -165,6 +227,22 @@
   .editor__field:last-child input {
     max-width: calc(100vw - 104px);
   }
+
+  .editor__warning {
+    font-size: 1.1rem;
+  }
+
+  .editor__warning--info {
+    font-size: 1.2rem;
+  }
+
+  .editor__warning--options {
+    grid-template-areas: "title title" "info info" "option1 option2";
+  }
+
+  .editor__warning--action {
+    padding: 8px 16px;
+  }
 }
 
 @media screen and (min-width: 1140px) {
@@ -186,6 +264,14 @@
   .editor__submit {
     max-width: 50vw;
     align-self: center;
+  }
+
+  .editor__warning {
+    font-size: 1.2rem;
+  }
+
+  .editor__warning--info {
+    font-size: 1.3rem;
   }
 
   .editor__field:last-child input {

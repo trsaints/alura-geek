@@ -6,37 +6,46 @@ import { productsController } from "./products-controller.js";
 
 const load = () => {
   const buttons = document.querySelectorAll("[data-option]");
-  const editorForm = document.querySelector('[data-editor="form"]');
-  const editorCatalog = document.querySelector('[data-content="catalog"]');
-  const form = document.querySelector('[data-form="editor"]');
-
-  const menuOptions = {
-    create: () => {
-      elementController.show(editorForm);
-      elementController.clear(editorCatalog);
-
-      form.addEventListener("submit", add);
-    },
-
-    list: () => {
-      elementController.clear(editorCatalog);
-      elementController.show(editorCatalog);
-
-      productsController.renderCatalogs();
-
-      elementController.hide(editorForm);
-      form.removeEventListener("submit", add);
-    },
-  };
 
   buttons.forEach((button) => {
     const { option } = button.dataset;
 
-    button.addEventListener("click", menuOptions[option]);
+    button.addEventListener("click", menu[option]);
   });
 };
 
-const add = async () => {
+const menu = {
+  create: () => {
+    const editorForm = document.querySelector('[data-editor="form"]');
+    const editorCatalog = document.querySelector('[data-content="catalog"]');
+    const editorNavbar = document.querySelector('[data-content="navbar"]');
+    const form = document.querySelector('[data-form="editor"]');
+
+    elementController.show(editorForm);
+    elementController.clear(editorCatalog);
+    elementController.hide(editorNavbar);
+
+    form.addEventListener("submit", add);
+  },
+
+  list: () => {
+    const editorForm = document.querySelector('[data-editor="form"]');
+    const editorCatalog = document.querySelector('[data-content="catalog"]');
+    const form = document.querySelector('[data-form="editor"]');
+    const editorNavbar = document.querySelector('[data-content="navbar"]');
+
+    elementController.clear(editorCatalog);
+    elementController.show(editorCatalog);
+    elementController.show(editorNavbar);
+
+    productsController.renderCatalogs();
+
+    elementController.hide(editorForm);
+    form.removeEventListener("submit", add);
+  },
+};
+
+const add = () => {
   const form = document.querySelector('[data-form="editor"]');
   const editorMenu = document.querySelector('[data-editor="menu"]');
   const formWrapper = document.querySelector('[data-editor="form"]');
@@ -54,8 +63,8 @@ const add = async () => {
   };
 
   try {
-    await productsService.add(product);
-    await imagesService.add(image);
+    productsService.add(product);
+    imagesService.add(image);
   } catch (error) {
     form.remove();
     formWrapper.remove();
@@ -72,11 +81,75 @@ const add = async () => {
 
 const edit = async (id) => {};
 
+const setRendering = (e) => {
+  const { target } = e;
+
+  const { editorAction } = target.dataset;
+
+  if (editorAction === undefined) return;
+
+  const { productId } = target.closest("[data-product-id]").dataset;
+
+  editorOptions[editorAction](productId);
+
+  const modal = document.querySelector('[data-editor="warning"]');
+  const deleteButton = modal.querySelector('[data-warning="confirm"]');
+  const cancelButton = modal.querySelector('[data-warning="cancel"]');
+
+  deleteButton.addEventListener("click", () => {
+    remove(productId);
+  });
+
+  cancelButton.addEventListener("click", () => {
+    elementController.hide(modal);
+    modal.close();
+  });
+};
+
 const remove = async (id) => {
+  const editorMenu = document.querySelector('[data-editor="menu"]');
+  const editor = document.querySelector('[data-main="context"]');
+  const ID = Number(id);
+
+  const product = await productsService.load(ID);
+  const { image } = product;
+
+  if (product === undefined) return;
+
   try {
-  } catch (error) {}
+    productsService.remove(ID);
+    imagesService.remove(image);
+  } catch (error) {
+    editorMenu.remove();
+    elementController.clear(editor);
+    editor.appendChild(new StatusPanel("fail", "remove"));
+    return;
+  }
+  editorMenu.remove();
+  elementController.clear(editor);
+  editor.appendChild(new StatusPanel("success", "remove"));
+};
+
+const showModal = async (id) => {
+  const modal = document.querySelector('[data-editor="warning"]');
+  const modalTitle = modal.querySelector('[data-warning="content"]');
+
+  const product = await productsService.load(Number(id));
+  const { name } = product;
+
+  if (product === undefined) return;
+
+  modalTitle.textContent = name;
+  elementController.show(modal);
+  modal.showModal();
+};
+
+const editorOptions = {
+  remove: (id) => showModal(id),
+  edit: (id) => edit(id),
 };
 
 export const editorController = {
   load,
+  setRendering,
 };

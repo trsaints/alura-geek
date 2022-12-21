@@ -55,7 +55,7 @@ export class Card extends ClassElement {
         const actionsWrapper = new ClassElement("div", "card__actions");
 
         editButton.setAttribute("data-editor-action", "edit");
-        deleteButton.setAttribute("data-editor-action", "delete");
+        deleteButton.setAttribute("data-editor-action", "remove");
 
         actionsWrapper.appendChild(editButton);
         actionsWrapper.appendChild(deleteButton);

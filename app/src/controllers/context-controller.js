@@ -97,7 +97,7 @@ const renderFactory = {
     render("editor");
     setTimeout(editorController.load, 200);
 
-    document.addEventListener("click", productsController.setRendering);
+    document.addEventListener("click", editorController.setRendering);
   },
 };
 
