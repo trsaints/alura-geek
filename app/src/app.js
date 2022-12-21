@@ -3,7 +3,7 @@ import { imagesService } from "./services/images-service.js";
 import { productsService } from "./services/products-service.js";
 
 (async () => {
-  const preLoadStatus = productsService.checkPreLoad() === "true";
+  const preLoadStatus = productsService.checkPreload();
 
   const control = () => {
     contextController.observe();

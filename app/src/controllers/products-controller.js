@@ -4,26 +4,27 @@ import { contextService } from "../services/context-service.js";
 import { productsService } from "../services/products-service.js";
 import { elementController } from "./element-controller.js";
 
-const renderPanel = (category, ID, target) => {
-  productsService.loadCategory(category).then((products) => {
-    const mainProduct = products.filter(({ id }) => id === Number(ID));
+const renderPanel = async (category, ID, target) => {
+  const products = await productsService.loadAll();
+  const categoryList = productsService.loadCategory(products, category);
 
-    const panel = new ProductPanel(mainProduct[0]);
+  const mainProduct = categoryList.filter(({ id }) => id === Number(ID));
 
-    target.appendChild(panel);
-    renderCatalog(products, panel);
+  const panel = new ProductPanel(mainProduct[0]);
 
-    const backButton = document.querySelector('[data-panel="back"]');
-    const contentWrappers = document.querySelectorAll("[data-content]");
+  target.appendChild(panel);
+  renderCatalog(categoryList, panel);
 
-    backButton.addEventListener("click", (e) => {
-      const { parentNode } = e.target;
-      parentNode.remove();
+  const backButton = document.querySelector('[data-panel="back"]');
+  const contentWrappers = document.querySelectorAll("[data-content]");
 
-      contentWrappers.forEach((wrapper) => elementController.show(wrapper));
+  backButton.addEventListener("click", (e) => {
+    const { parentNode } = e.target;
+    parentNode.remove();
 
-      setTimeout(() => (window.location.href = `#${category}`), 100);
-    });
+    contentWrappers.forEach((wrapper) => elementController.show(wrapper));
+
+    setTimeout(() => (window.location.href = `#${category}`), 100);
   });
 };
 
@@ -70,15 +71,15 @@ const renderCatalog = (products, target) => {
   }
 };
 
-const renderCatalogs = () => {
+const renderCatalogs = async () => {
   const contentWrapper = document.querySelector("[data-content='catalog']");
 
   const categories = ["actionFigures", "consoles", "canvases", "keyrings"];
 
+  const list = await productsService.loadAll();
   categories.forEach(async (category) => {
-    const list = await productsService.loadCategory(category);
-
-    renderCatalog(list, contentWrapper);
+    const categoryList = productsService.loadCategory(list, category);
+    renderCatalog(categoryList, contentWrapper);
   });
 };
 

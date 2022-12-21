@@ -8,7 +8,7 @@ const displayValidity = (input, message) => {
 
 const login = (user, password) => {
   loginService
-    .login(user.value, password.value)
+    .auth(user.value, password.value)
     .then((success) => {
       displayValidity(user, "");
       displayValidity(password, "");
@@ -26,8 +26,6 @@ const login = (user, password) => {
       console.log(error);
     });
 };
-
-const register = (user, password) => {};
 
 const handlerOptions = {
   login: (user, password) => login(user, password),
@@ -47,7 +45,7 @@ const setHandler = (form, type) => {
 };
 
 const load = (form) => {
-  if (loginService.checkEntry()) {
+  if (loginService.checkPreload()) {
     setHandler(form, "login");
   } else {
     loginService.configure();
