@@ -5,7 +5,7 @@ import { productsService } from "./services/products-service.js";
 (async () => {
   const preLoadStatus = productsService.checkPreload();
 
-  const control = () => {
+  const control = async () => {
     contextController.observe();
     contextController.set("index");
 
@@ -19,6 +19,8 @@ import { productsService } from "./services/products-service.js";
       if (dataLoader)
         contextController.set(dataLoader.getAttribute("data-load"));
     });
+
+    await imagesService.loadURLs();
   };
 
   if (preLoadStatus) {
