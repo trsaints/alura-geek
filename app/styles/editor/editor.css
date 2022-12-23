@@ -31,6 +31,15 @@
   white-space: nowrap;
 }
 
+.editor__option--button:hover,
+.editor__option--button:focus {
+  background-color: var(--c-carbon--ls);
+}
+
+.editor__option--button:active {
+  background-color: var(--c-carbon--l);
+}
+
 .editor__content {
   grid-area: options;
 }
@@ -197,6 +206,19 @@
 .editor__warning--action:last-child {
   grid-area: option2;
 }
+
+
+.editor__warning--action:hover,
+.editor__warning--action:focus {
+  background-image: none;
+  background-color: var(--c-red--ds);
+  box-shadow: 0 0 3px 3px var(--c-black--ls);
+}
+
+.editor__warning--action:active {
+  box-shadow: none;
+}
+
 
 @media screen and (min-width: 768px) {
   .editor__title {

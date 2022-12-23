@@ -83,6 +83,7 @@
   grid-area: warn;
   margin-top: 4px;
   min-height: 1ch;
+  color: var(--c-red--l);
 }
 
 .login__title,
@@ -92,10 +93,14 @@
 
 .login__button {
   padding: 16px 24px;
-  background-color: var(--c-red--l);
+  background-color: var(--c-red--d);
   color: var(--c-white--ls);
   max-width: 125px;
   border-radius: 4px;
+}
+
+.login__button:active {
+  background-color: var(--c-red);
 }
 
 @media screen and (min-width: 768px) {

@@ -36,8 +36,35 @@
   font-weight: 500;
 }
 
-.nav__link {
+.context__info .nav__item {
+  position: relative;
+}
+
+.context__info .nav__link {
   text-decoration: none;
+}
+
+.context__info .nav__link:active {
+  color: var(--c-red--ls);
+}
+
+.context__info .nav__item::before {
+  display: block;
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 15px;
+  top: 0.5ch;
+  left: -2ch;
+  background-color: transparent;
+}
+
+.context__info .nav__item:hover::before {
+  background-color: var(--c-white);
+}
+
+.context__info .nav__item:active::before {
+  background-color: var(--c-red--ls);
 }
 
 .info__logo,
@@ -63,8 +90,28 @@
 
 .contact__section {
   background-color: var(--c-white--ds);
-  padding: 8px 12px;
   color: var(--c-black);
+}
+
+.section__input,
+.contact__section--label,
+.section__textarea {
+  padding: 8px 12px;
+}
+
+.contact__section--label {
+  width: fit-content;
+}
+
+.contact__section--label:hover,
+.contact__section--label:focus,
+.contact__section:focus-within .contact__section--label {
+  background-color: var(--c-black);
+  color: var(--c-white--ds);
+}
+
+.contact__section--label:active {
+  color: var(--c-red--ls);
 }
 
 .contact__section,
