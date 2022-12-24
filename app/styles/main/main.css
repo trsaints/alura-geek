@@ -157,7 +157,23 @@ select:focus {
 
 @media (prefers-reduced-motion: no-preference) {
   dialog[open] {
-    transition: all .1s ease-in;
+    transition: all 0.1s ease-in;
+    transform: scale(0);
+    animation: grow-up 0.2s forwards;
+  }
+
+  .hidden {
+    animation: fade-away 0.2s forwards;
+  }
+}
+
+@keyframes grow-up {
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1);
   }
 }
 
@@ -168,5 +184,15 @@ select:focus {
 
   to {
     opacity: 1;
+  }
+}
+
+@keyframes fade-away {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
   }
 }

@@ -134,6 +134,17 @@
   color: var(--c-white--ls);
 }
 
+.contact__submit:hover,
+.contact__submit:focus {
+  background-color: var(--c-red);
+  transform: scale(1.05);
+}
+
+.contact__submit:active {
+  background-color: var(--c-red--l);
+  transform: scale(1);
+}
+
 @media screen and (min-width: 768px) {
   .context__info {
     grid-template-areas: "logo form" "links form";
@@ -159,15 +170,16 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .info__logo {
-    transition: all .1s linear;
+    transition: all 0.1s linear;
   }
 
   .context__info .nav__link,
   .nav__item::before {
-    transition: all .1s ease;
+    transition: all 0.1s ease;
   }
 
-  .contact__section--label {
-    transition: all .1s ease-out;
+  .contact__section--label,
+  .contact__submit {
+    transition: all 0.1s ease-out;
   }
 }

@@ -315,7 +315,8 @@
     transition: all .1s ease-out;
   }
 
-  .products__card {
+  .products__card,
+  .product__panel--close {
     transition: all .1s ease;
   }
 
