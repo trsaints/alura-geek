@@ -59,7 +59,8 @@
   background-color: transparent;
 }
 
-.context__info .nav__item:hover::before {
+.context__info .nav__item:hover::before,
+.context__info .nav__item:focus-within::before {
   background-color: var(--c-white);
 }
 
@@ -74,6 +75,12 @@
 
 .info__logo {
   min-width: 160px;
+  padding: 4px;
+  border-radius: 8px;
+}
+
+.info__logo:hover {
+  box-shadow: 0 0 1px 2px var(--c-black--l);
 }
 
 .info__contact {
@@ -147,5 +154,20 @@
     grid-template-areas: "logo links form";
     grid-template-columns: 1fr 2fr 3fr;
     gap: 64px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .info__logo {
+    transition: all .1s linear;
+  }
+
+  .context__info .nav__link,
+  .nav__item::before {
+    transition: all .1s ease;
+  }
+
+  .contact__section--label {
+    transition: all .1s ease-out;
   }
 }

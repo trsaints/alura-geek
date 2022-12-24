@@ -66,6 +66,10 @@
   justify-content: space-between;
 }
 
+.login__field:focus-within .login__label {
+  background-color: var(--c-carbon);
+}
+
 .login__label,
 .login__warn {
   font-weight: 600;
@@ -77,6 +81,10 @@
   color: var(--c-black--ds);
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
+}
+
+.login__input:focus {
+  background-color: var(--c-gray--ls);
 }
 
 .login__warn {
@@ -99,9 +107,17 @@
   border-radius: 4px;
 }
 
-.login__button:active {
+.login__button:hover,
+.login__button:focus {
+  transform: scale(1.05);
   background-color: var(--c-red);
 }
+
+.login__button:active {
+  transform: scale(1);
+  background-color: var(--c-red--l);
+}
+
 
 @media screen and (min-width: 768px) {
   .login {
@@ -117,5 +133,16 @@
   .login__fieldset,
   .login__button {
     max-width: 420px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .login__label,
+  .login__input {
+    transition: all .1s ease-in;
+  }
+
+  .login__button {
+    transition: all .1s linear;
   }
 }

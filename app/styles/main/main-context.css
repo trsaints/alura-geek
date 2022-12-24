@@ -67,12 +67,18 @@
   border-radius: 32px;
 }
 
-.hero__btn:hover {
+.hero__btn:hover,
+.hero__btn:focus {
   background-image: linear-gradient(
     to bottom,
     var(--c-red--d),
     var(--c-black--l)
   );
+  transform: scale(1.05);
+}
+
+.hero__btn:active {
+  transform: scale(1);
 }
 
 .main__nav--title {
@@ -170,10 +176,19 @@
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  background-color: var(--c-red);
+  background-color: var(--c-red--d);
   position: fixed;
   bottom: 8px;
   right: 8px;
+}
+
+.main__nav--scrollup:hover {
+  transform: scale(1.05);
+  background-color: var(--c-red);
+}
+
+.main__nav--scrollup:active {
+  transform: scale(1);
 }
 
 .main__nav--scrollup .fa-solid {
@@ -240,5 +255,19 @@
 
   .nav__link--figure {
     min-height: 320px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero__btn {
+    transition: all .1s cubic-bezier(.19,1,.22,1);
+  }
+
+  .nav__link--figure img {
+    transition: .1s all ease-out;
+  }
+
+  .nav__link--figure figcaption {
+    transition: .1s all ease;
   }
 }

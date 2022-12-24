@@ -81,6 +81,10 @@
   background-color: var(--c-black--ls);
 }
 
+.products__header--option:active {
+  color: var(--c-red--l);
+}
+
 .products__header--option,
 .card__button {
   box-shadow: 0 0 1px 1px var(--c-black);
@@ -166,6 +170,7 @@
     var(--c-red--d),
     var(--c-red--ds)
   );
+  background-color: var(--c-red--ds);
   height: 100%;
   line-height: 0;
 }
@@ -173,12 +178,12 @@
 .card__button:hover,
 .card__button:focus {
   background-image: none;
-  background-color: var(--c-red--ds);
   box-shadow: 0 0 3px 3px var(--c-black--ls);
 }
 
 .card__button:active {
   box-shadow: none;
+  background-color: var(--c-red--d);
 }
 
 .card__actions {
@@ -302,5 +307,19 @@
 
   .product__panel--title {
     font-size: 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .products__header--option {
+    transition: all .1s ease-out;
+  }
+
+  .products__card {
+    transition: all .1s ease;
+  }
+
+  .card__button {
+    transition: all .1s linear;
   }
 }

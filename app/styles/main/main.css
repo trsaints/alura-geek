@@ -111,6 +111,7 @@ a:hover {
   height: 0;
   padding: 0;
   margin: 0;
+  opacity: 0;
 }
 
 .fa-solid {
@@ -145,5 +146,27 @@ select:focus {
 @media screen and (min-width: 512px) {
   *::-webkit-scrollbar {
     width: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduced) {
+  * {
+    transition: all 0.1s ease;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  dialog[open] {
+    transition: all .1s ease-in;
+  }
+}
+
+@keyframes show-up {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }

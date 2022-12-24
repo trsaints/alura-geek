@@ -98,12 +98,25 @@
 
 .editor__field {
   background-color: var(--c-carbon--ls);
-  padding: 8px 12px 13px 12px;
   border-bottom: 2px solid var(--c-gray--ls);
+}
+
+.editor__field:nth-child(4) {
+  flex-direction: row;
+  gap: 16px;
+  justify-content: stretch;
+}
+
+.editor__field:nth-child(4):focus-within {
+  background-color: var(--c-carbon--ls);
 }
 
 .editor__field:last-child input {
   max-width: calc(100vw - 72px);
+}
+
+.editor__field:focus-within {
+  background-color: var(--c-gray--ls);
 }
 
 .editor__label,
@@ -113,12 +126,31 @@
 
 .editor__label {
   font-size: 1.1rem;
+  max-width: fit-content;
+  padding: 4px 8px;
+}
+
+.editor__label:hover,
+.editor__field:focus-within .editor__label {
+  background-color: var(--c-black--ls);
+}
+
+.editor__label:active {
+  color: var(--c-red--l);
 }
 
 .editor__label,
 .editor__input,
 .editor__select {
   color: var(--c-white);
+}
+
+.editor__input {
+  padding: 4px 8px;
+}
+
+.editor__input:focus {
+  color: var(--c-black);
 }
 
 .editor__field,
@@ -136,6 +168,13 @@
   border: 1px solid var(--c-carbon--l);
   text-align: center;
   padding: 4px;
+  flex: 5;
+}
+
+.editor__select:hover,
+.editor__select:focus {
+  background-image: none;
+  background-color: var(--c-carbon);
 }
 
 .editor__select option {
@@ -143,10 +182,21 @@
 }
 
 .editor__submit {
-  background-color: var(--c-red--l);
+  background-color: var(--c-red--d);
   color: var(--c-white--ls);
   text-transform: uppercase;
   padding: 16px;
+}
+
+.editor__submit:hover,
+.editor__submit:focus {
+  transform: scale(1.05);
+  background-color: var(--c-red);
+}
+
+.editor__submit:active {
+  transform: scale(1);
+  background-color: var(--c-red--l);
 }
 
 .editor__warning {
@@ -193,6 +243,7 @@
     var(--c-red--d),
     var(--c-red--ds)
   );
+  background-color: var(--c-red--ds);
   border-radius: 8px;
   box-shadow: 0 0 2px black;
   padding: 4px 8px;
@@ -207,18 +258,16 @@
   grid-area: option2;
 }
 
-
 .editor__warning--action:hover,
 .editor__warning--action:focus {
   background-image: none;
-  background-color: var(--c-red--ds);
   box-shadow: 0 0 3px 3px var(--c-black--ls);
 }
 
 .editor__warning--action:active {
   box-shadow: none;
+  background-color: var(--c-red--d);
 }
-
 
 @media screen and (min-width: 768px) {
   .editor__title {
@@ -298,5 +347,21 @@
 
   .editor__field:last-child input {
     max-width: calc(50vw - 24px);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .editor__label,
+  .editor__field,
+  .editor__submit {
+    transition: all 0.1s linear;
+  }
+
+  .editor__option--button {
+    transition: all 0.1s ease-in-out;
+  }
+
+  .editor__warning--action {
+    transition: all 0.1s ease;
   }
 }
