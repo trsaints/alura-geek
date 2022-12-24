@@ -36,8 +36,36 @@
   font-weight: 500;
 }
 
-.nav__link {
+.context__info .nav__item {
+  position: relative;
+}
+
+.context__info .nav__link {
   text-decoration: none;
+}
+
+.context__info .nav__link:active {
+  color: var(--c-red--ls);
+}
+
+.context__info .nav__item::before {
+  display: block;
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 15px;
+  top: 0.5ch;
+  left: -2ch;
+  background-color: transparent;
+}
+
+.context__info .nav__item:hover::before,
+.context__info .nav__item:focus-within::before {
+  background-color: var(--c-white);
+}
+
+.context__info .nav__item:active::before {
+  background-color: var(--c-red--ls);
 }
 
 .info__logo,
@@ -47,6 +75,12 @@
 
 .info__logo {
   min-width: 160px;
+  padding: 4px;
+  border-radius: 8px;
+}
+
+.info__logo:hover {
+  box-shadow: 0 0 1px 2px var(--c-black--l);
 }
 
 .info__contact {
@@ -63,8 +97,28 @@
 
 .contact__section {
   background-color: var(--c-white--ds);
-  padding: 8px 12px;
   color: var(--c-black);
+}
+
+.section__input,
+.contact__section--label,
+.section__textarea {
+  padding: 8px 12px;
+}
+
+.contact__section--label {
+  width: fit-content;
+}
+
+.contact__section--label:hover,
+.contact__section--label:focus,
+.contact__section:focus-within .contact__section--label {
+  background-color: var(--c-black);
+  color: var(--c-white--ds);
+}
+
+.contact__section--label:active {
+  color: var(--c-red--ls);
 }
 
 .contact__section,
@@ -78,6 +132,17 @@
   max-width: 192px;
   font-weight: 600;
   color: var(--c-white--ls);
+}
+
+.contact__submit:hover,
+.contact__submit:focus {
+  background-color: var(--c-red);
+  transform: scale(1.05);
+}
+
+.contact__submit:active {
+  background-color: var(--c-red--l);
+  transform: scale(1);
 }
 
 @media screen and (min-width: 768px) {
@@ -100,5 +165,21 @@
     grid-template-areas: "logo links form";
     grid-template-columns: 1fr 2fr 3fr;
     gap: 64px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .info__logo {
+    transition: all 0.1s linear;
+  }
+
+  .context__info .nav__link,
+  .nav__item::before {
+    transition: all 0.1s ease;
+  }
+
+  .contact__section--label,
+  .contact__submit {
+    transition: all 0.1s ease-out;
   }
 }
