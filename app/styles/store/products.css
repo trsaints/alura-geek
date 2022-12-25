@@ -154,8 +154,7 @@
 }
 
 .card__option,
-.card__figure,
-.product__panel--content {
+.card__figure {
   gap: 8px;
 }
 
@@ -226,6 +225,8 @@
 
 .product__panel--content {
   grid-area: main;
+  gap: 16px;
+  margin-bottom: 48px;
 }
 
 .product__panel--banner {
@@ -267,11 +268,11 @@
   }
 
   .product__panel--banner {
-    padding: 16px 8px 16px 40px;
+    padding: 24px 12px 24px 40px;
   }
 
   .product__panel--content {
-    padding: 16px 40px 16px 8px;
+    padding: 24px 40px 24px 12px;
   }
 }
 
@@ -288,17 +289,22 @@
     max-height: 200px;
   }
 
+  .product__panel {
+    gap: 24px;
+  }
+
   .product__panel--close {
     margin-left: 72px;
   }
 
   .product__panel--banner {
-    padding: 16px 16px 16px 72px;
+    padding: 0 0 0 72px;
   }
 
   .product__panel--content {
-    padding: 16px 72px 16px 16px;
+    padding: 0 72px 0 0;
     align-self: center;
+    margin-bottom: 0;
   }
 
   .product__panel--price {

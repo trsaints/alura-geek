@@ -5,8 +5,7 @@
       center / cover;
 }
 
-[class*="context__main"] .main__hero,
-.main__nav {
+[class*="context__main"] .main__hero {
   padding: 24px;
 }
 
@@ -39,7 +38,7 @@
   display: flex;
   flex-flow: column nowrap;
   color: var(--c-white);
-  gap: 8px;
+  gap: 16px;
 }
 
 .hero__title {
@@ -79,6 +78,10 @@
 
 .hero__btn:active {
   transform: scale(1);
+}
+
+.main__nav {
+  padding: 64px 24px 24px;
 }
 
 .main__nav--title {
@@ -213,7 +216,7 @@
   }
 
   .main__nav {
-    padding: 32px 40px;
+    padding: 64px 40px 40px;
   }
 
   .main__nav--links {
@@ -245,7 +248,7 @@
   }
 
   .main__nav {
-    padding: 48px 72px;
+    padding: 64px 72px 72px; 
   }
 
   .main__nav--links {
