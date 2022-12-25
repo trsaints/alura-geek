@@ -1,5 +1,4 @@
-.search__count,
-.search__placeholder {
+.search__count {
   padding-inline: 24px;
 }
 
@@ -13,6 +12,7 @@
   place-items: center;
   text-align: center;
   font-weight: 600;
+  padding: 24px;
 }
 
 .search__placeholder .placeholder--img {
@@ -24,19 +24,25 @@
 }
 
 @media screen and (min-width: 768px) {
-  .search__count,
-  .search__placeholder {
+  .search__count {
     padding-inline: 40px;
   }
 
   .search__results {
     padding-block: 48px;
   }
+
+  .search__placeholder {
+    padding: 40px;
+  }
 }
 
 @media screen and (min-width: 1140px) {
-  .search__count,
-  .search__placeholder {
+  .search__count {
     padding-inline: 72px;
+  }
+
+  .search__placeholder {
+    padding: 72px;
   }
 }

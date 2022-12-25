@@ -2,17 +2,10 @@
   background-color: var(--c-black--l);
   color: var(--c-white);
   text-align: center;
-  padding: 32px;
+  padding: 40px 24px;
 }
 
 .footer__link {
   color: var(--c-red--ls);
   font-weight: 600;
-}
-
-@media screen and (min-width: 1140px) {
-  .context__footer {
-    padding-inline: 64px;
-    padding-block: 32px;
-  }
 }

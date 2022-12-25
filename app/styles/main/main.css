@@ -49,15 +49,6 @@ body {
   color: var(--c-white);
 }
 
-input,
-textarea,
-button,
-select {
-  appearance: none;
-  border: none;
-  background-color: transparent;
-}
-
 button,
 label,
 select {
@@ -69,40 +60,12 @@ select {
   color: var(--c-white);
 }
 
-input,
-img {
+input {
   max-width: 100%;
 }
 
 textarea {
-  resize: none;
-}
-
-a {
-  color: inherit;
-}
-
-a:hover {
-  text-decoration: none;
-}
-
-.context__header,
-.context__info {
-  padding: 16px 24px;
-}
-
-@media screen and (min-width: 768px) {
-  .context__header,
-  .context__info {
-    padding: 32px 40px;
-  }
-}
-
-@media screen and (min-width: 1140px) {
-  .context__header,
-  .context__info {
-    padding: 40px 72px;
-  }
+  resize: vertical;
 }
 
 .hidden {
@@ -146,6 +109,16 @@ select:focus {
 @media screen and (min-width: 512px) {
   *::-webkit-scrollbar {
     width: 8px;
+  }
+}
+
+@supports (-webkit-tap-highlight-color: transparent) or
+  (-webkit-tap-highlight-color: rgba(0, 0, 0, 0)) {
+  a,
+  label,
+  button {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
   }
 }
 

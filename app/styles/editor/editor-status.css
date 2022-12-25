@@ -5,7 +5,7 @@
 }
 
 .status__panel {
-  padding: 24px;
+  padding: 72px 24px;
 }
 
 .status__panel--banner {
@@ -55,12 +55,12 @@
 
 @media screen and (min-width: 768px) {
   .status__panel {
-    padding: 40px;
+    padding: 120px 40px;
   } 
 }
 
 @media screen and (min-width: 1140px) {
   .status__panel {
-    padding: 72px;
+    padding: 144px 72px;
   }
 }

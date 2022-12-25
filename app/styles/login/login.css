@@ -3,9 +3,9 @@
   padding-block: 4.75rem;
   background: linear-gradient(
         to right,
-        hsl(260, 9%, 15%),
-        hsla(260, 9%, 15%, 0.7),
-        hsla(260, 9%, 15%, 0.5)
+        hsl(260, 14%, 7%),
+        hsla(260, 9%, 7%, 0.7),
+        hsla(260, 9%, 7%, 0.5)
       )
       100%,
     url("../../assets/images/lorenzo-herrera-p0j-mE6mGo4-unsplash.jpg")
@@ -55,7 +55,6 @@
 .login__label,
 .login__input {
   padding: 0.75rem 1rem;
-  vertical-align: middle;
 }
 
 .login__label {
@@ -64,6 +63,10 @@
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
   justify-content: space-between;
+}
+
+.login__label:hover {
+  background-color: var(--c-black--ls);
 }
 
 .login__field:focus-within .login__label {
@@ -121,13 +124,13 @@
 
 @media screen and (min-width: 768px) {
   .login {
-    padding: 32px;
+    padding: 120px 40px;
   }
 }
 
 @media screen and (min-width: 1140px) {
   .login {
-    padding: 64px;
+    padding: 144px 72px;
   }
 
   .login__fieldset,
