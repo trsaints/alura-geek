@@ -28,6 +28,6 @@ import { productsService } from "./services/products-service.js";
   } else {
     await productsService.configure();
     await imagesService.configure();
-    control();
+    window.location.reload();
   }
 })();
