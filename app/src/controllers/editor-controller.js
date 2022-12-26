@@ -148,6 +148,7 @@ const remove = async (id) => {
     editor.appendChild(new StatusPanel("fail", "remove"));
     return;
   }
+
   editorMenu.remove();
   elementController.clear(editor);
   editor.appendChild(new StatusPanel("success", "remove"));
@@ -162,9 +163,13 @@ const showModal = async (id) => {
 
   if (product === undefined) return;
 
-  modalTitle.textContent = name;
-  elementController.show(modal);
-  modal.showModal();
+  try {
+    modalTitle.textContent = name;
+    elementController.show(modal);
+    modal.showModal();
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 const editorOptions = {
