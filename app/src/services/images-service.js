@@ -13,11 +13,13 @@ const preloadBlob = async (name) => {
 
 const preloadNames = async () => {
   const products = await productsService.loadAll();
-  const images = [];
-
-  products.map(({ image }) => images.push(image));
-
-  return images;
+  const images = products.map(({ image }) => image);
+  
+  try {
+    return images;
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 const preload = async () => {
@@ -28,7 +30,12 @@ const preload = async () => {
   });
 
   const results = await Promise.all(blobs);
-  return await Promise.resolve(results);
+
+  try {
+    return await Promise.resolve(results);
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 const imagesDB = new LocalDB({
@@ -49,7 +56,11 @@ const configure = async () => {
     baseData: baseList,
   };
 
-  imagesDB.configure(options);
+  try {
+    imagesDB.configure(options);
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 const checkPreload = imagesDB.checkPreload;
@@ -62,10 +73,14 @@ const reset = () => imagesDB.reset();
 const loadURLs = async () => {
   const images = await loadAll();
 
-  images.forEach((image) => {
-    const imageURL = URL.createObjectURL(image);
-    localStorage.setItem(image.name, imageURL);
-  });
+  try {
+    images.forEach((image) => {
+      const imageURL = URL.createObjectURL(image);
+      localStorage.setItem(image.name, imageURL);
+    });
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export const imagesService = {

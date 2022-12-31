@@ -10,13 +10,17 @@ const render = async (keywords) => {
   const products = await productsService.loadAll();
   const { result, length } = searchingService.search(keywords, products);
 
-  renderCount.textContent = `Encontrado(s) ${length} resultado(s)`;
+  try {
+    renderCount.textContent = `Encontrado(s) ${length} resultado(s)`;
 
-  categories.forEach((category) => {
-    const list = productsService.loadCategory(result, category);
+    categories.forEach((category) => {
+      const list = productsService.loadCategory(result, category);
 
-    productsController.renderCatalog(list, contentWrapper);
-  });
+      productsController.renderCatalog(list, contentWrapper);
+    });
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export const searchController = {

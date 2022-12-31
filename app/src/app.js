@@ -20,14 +20,22 @@ import { productsService } from "./services/products-service.js";
         contextController.set(dataLoader.getAttribute("data-load"));
     });
 
-    await imagesService.loadURLs();
+    try {
+      await imagesService.loadURLs();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   if (preLoadStatus) {
     control();
   } else {
-    await productsService.configure();
-    await imagesService.configure();
-    control();
+    try {
+      await productsService.configure();
+      await imagesService.configure();
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
   }
 })();

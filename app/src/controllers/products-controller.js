@@ -5,15 +5,19 @@ import { productsService } from "../services/products-service.js";
 import { elementController } from "./element-controller.js";
 
 const renderPanel = async (category, ID, target) => {
-  const products = await productsService.loadAll();
-  const categoryList = productsService.loadCategory(products, category);
+  try {
+    const products = await productsService.loadAll();
+    const categoryList = productsService.loadCategory(products, category);
 
-  const mainProduct = categoryList.filter(({ id }) => id === Number(ID));
+    const mainProduct = categoryList.filter(({ id }) => id === Number(ID));
 
-  const panel = new ProductPanel(mainProduct[0]);
+    const panel = new ProductPanel(mainProduct[0]);
 
-  target.appendChild(panel);
-  renderCatalog(categoryList, panel);
+    target.appendChild(panel);
+    renderCatalog(categoryList, panel);
+  } catch (error) {
+    console.error(error);
+  }
 
   const backButton = document.querySelector('[data-panel="back"]');
   const contentWrappers = document.querySelectorAll("[data-content]");
@@ -77,10 +81,15 @@ const renderCatalogs = async () => {
   const categories = ["actionFigures", "consoles", "canvases", "keyrings"];
 
   const list = await productsService.loadAll();
-  categories.forEach(async (category) => {
-    const categoryList = productsService.loadCategory(list, category);
-    renderCatalog(categoryList, contentWrapper);
-  });
+
+  try {
+    categories.forEach(async (category) => {
+      const categoryList = productsService.loadCategory(list, category);
+      renderCatalog(categoryList, contentWrapper);
+    });
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export const productsController = {

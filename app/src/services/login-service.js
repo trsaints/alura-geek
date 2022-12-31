@@ -41,17 +41,21 @@ const auth = async (user, password) => {
 
   if (password !== account.password) throw new Error("Senha inválida");
 
-  if (account.user === "root")
-    return {
-      root: true,
-    };
+  try {
+    if (account.user === "root")
+      return {
+        root: true,
+      };
 
-  return { root: false };
+    return { root: false };
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export const loginService = {
   checkPreload,
   configure,
   auth,
-  add
+  add,
 };

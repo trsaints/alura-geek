@@ -29,7 +29,11 @@ const configure = async () => {
     baseData: baseList.products,
   };
 
-  productsDB.configure(options);
+  try {
+    productsDB.configure(options);
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 const checkPreload = productsDB.checkPreload;

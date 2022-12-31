@@ -73,7 +73,12 @@ const renderFactory = {
 
       setTimeout(async () => {
         document.addEventListener("click", productsController.setRendering);
-        await searchController.render(searchBar.value);
+
+        try {
+          await searchController.render(searchBar.value);
+        } catch (error) {
+          console.error(error);
+        }
       }, 200);
     }
   },
@@ -101,6 +106,20 @@ const renderFactory = {
   },
 };
 
+const checkMutation = (mutationList, _observer) => {
+  mutationList.forEach((mutation) => {
+    const hasChangedContext =
+      mutation.type === "attributes" && contextService.get() !== undefined;
+
+    if (hasChangedContext) {
+      document.removeEventListener("click", productsController.setRendering);
+
+      const context = contextService.get();
+      renderFactory[context]();
+    }
+  });
+};
+
 const observe = () => {
   const contextWrapper = document.querySelector("[data-context]");
 
@@ -108,20 +127,6 @@ const observe = () => {
     attributes: true,
     childList: false,
     subtree: false,
-  };
-
-  const checkMutation = (mutationList, _observer) => {
-    mutationList.forEach((mutation) => {
-      const hasChangedContext =
-        mutation.type === "attributes" && contextService.get() !== undefined;
-
-      if (hasChangedContext) {
-        document.removeEventListener("click", productsController.setRendering);
-
-        const context = contextService.get();
-        renderFactory[context]();
-      }
-    });
   };
 
   const observer = new MutationObserver(checkMutation);
